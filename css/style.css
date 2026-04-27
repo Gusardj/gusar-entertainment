@@ -1925,7 +1925,7 @@ body.page-scrolled nav {
     height: auto !important;
     min-height: 100svh;
     align-items: flex-start;
-    padding: calc(env(safe-area-inset-top, 0px) + 138px) 24px 72px !important;
+    padding: calc(env(safe-area-inset-top, 0px) + 156px) 24px 72px !important;
     overflow: hidden;
   }
 
@@ -2039,7 +2039,7 @@ body.page-scrolled nav {
 
   #hero {
     min-height: auto;
-    padding: calc(env(safe-area-inset-top, 0px) + 104px) 20px 64px !important;
+    padding: calc(env(safe-area-inset-top, 0px) + 150px) 20px 64px !important;
   }
 
   .hero-label {
@@ -2105,7 +2105,7 @@ body.page-scrolled nav {
   }
 
   #hero {
-    padding-top: calc(env(safe-area-inset-top, 0px) + 98px) !important;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 142px) !important;
   }
 
   .hero-title {
