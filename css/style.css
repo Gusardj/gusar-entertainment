@@ -2487,10 +2487,25 @@ body.page-scrolled nav {
   }
 
   .hero-actions {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
     align-items: stretch;
-    gap: 14px;
+    gap: 10px;
     width: 100%;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost-gold {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-wa-short {
+    display: inline;
+  }
+
+  .hero-wa-full {
+    display: none;
   }
 
   .hero-microcopy,
@@ -2607,10 +2622,10 @@ body.page-scrolled nav {
 
   .btn-primary,
   .btn-ghost-gold {
-    min-height: 58px !important;
-    padding: 0 16px !important;
-    font-size: 10px;
-    letter-spacing: 0.16em;
+    min-height: 54px !important;
+    padding: 0 10px !important;
+    font-size: 9px;
+    letter-spacing: 0.12em;
   }
 }
 
