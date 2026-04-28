@@ -96,7 +96,7 @@ body.page-scrolled nav {
   .nav-actions { display: flex; align-items: center; gap: 10px; }
   .nav-wa {
     display: flex; align-items: center; gap: 8px;
-    font-family: var(--mono); font-size: 10px;
+    font-family: var(--sans); font-size: 10px;
     letter-spacing: 0.14em; text-transform: uppercase;
     color: var(--cream-dim); text-decoration: none;
     padding: 9px 16px; border: 1px solid var(--border);
@@ -183,7 +183,7 @@ body.page-scrolled nav {
 
   .hero-content { position: relative; z-index: 2; width: 100%; max-width: 780px; }
   .hero-label {
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -231,6 +231,18 @@ body.page-scrolled nav {
     color: var(--gold);
     font-size: clamp(36px, 5.2vw, 80px);
   }
+  .hero-support {
+    max-width: 720px;
+    margin: 0 0 22px;
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: clamp(15px, 1.45vw, 22px);
+    font-weight: 300;
+    line-height: 1.45;
+    letter-spacing: 0;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
   .hero-sub {
     font-size: 15px;
     color: var(--cream-dim);
@@ -252,7 +264,7 @@ body.page-scrolled nav {
   }
   /* Microcopy under primary CTA */
   .hero-microcopy {
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -260,6 +272,9 @@ body.page-scrolled nav {
     opacity: 0;
     margin-top: 12px;
     animation: fadeIn 1s 1.8s both;
+  }
+  .hero-micro-icon {
+    color: var(--gold);
   }
   /* Secondary CTA gold border */
   .btn-ghost-gold {
@@ -323,9 +338,21 @@ body.page-scrolled nav {
     50%      { transform: translateY(4px); }
   }
   /* Trust tags */
-  .hcb-trust { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; opacity: 0; animation: fadeIn 1s 2s forwards; }
+  .hero-category-title {
+    margin-top: 28px;
+    margin-bottom: 10px;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    animation: fadeIn 1s 1.95s forwards;
+  }
+  .hcb-trust { display: flex; flex-wrap: wrap; gap: 10px; opacity: 0; animation: fadeIn 1s 2s forwards; }
   .hcb-tag {
-    font-family: var(--mono); font-size: 10px;
+    font-family: var(--sans); font-size: 10px;
     letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--cream-dim);
     border: 1px solid rgba(201,169,97,0.3);
@@ -356,6 +383,7 @@ body.page-scrolled nav {
     font-size: 15px;
     color: var(--cream);
     font-weight: 400;
+    font-family: var(--sans);
   }
   .hero-checks li::before {
     content: '✓';
@@ -368,6 +396,12 @@ body.page-scrolled nav {
     opacity: 0;
     animation: fadeIn 1s 1.5s forwards;
   }
+  .hero-actions-single {
+    width: 100%;
+  }
+  .hero-actions-single .btn-primary {
+    width: 100%;
+  }
   .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -376,7 +410,7 @@ body.page-scrolled nav {
   height: 56px; /* такая же высота */
   padding: 0 36px;
 
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -2300,7 +2334,7 @@ body.page-scrolled nav {
   min-height: 56px !important;
   padding: 0 36px !important;
   line-height: 1 !important;
-  font-family: var(--mono);
+  font-family: var(--sans);
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -2626,6 +2660,13 @@ body.page-scrolled nav {
     margin-bottom: 18px;
   }
 
+  .hero-support {
+    max-width: 620px;
+    margin-bottom: 18px;
+    font-size: clamp(14px, 2.45vw, 18px);
+    line-height: 1.45;
+  }
+
   .hero-title-line {
     overflow: visible;
   }
@@ -2648,8 +2689,7 @@ body.page-scrolled nav {
   }
 
   .hero-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    display: flex;
     align-items: stretch;
     gap: 10px;
     width: 100%;
@@ -2678,6 +2718,11 @@ body.page-scrolled nav {
     justify-content: center;
     width: 100%;
   }
+
+  .hero-category-title {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 @media (max-width: 430px) {
@@ -2704,15 +2749,14 @@ body.page-scrolled nav {
 
   .nav-actions {
     width: auto;
-    display: grid;
-    grid-template-columns: 94px 118px;
+    display: flex;
     justify-content: end;
     gap: 7px;
   }
 
   .nav-wa,
   .nav-cta {
-    width: 100%;
+    width: auto;
     min-width: 0;
     min-height: 40px;
     padding: 0 8px;
@@ -2754,6 +2798,12 @@ body.page-scrolled nav {
     margin-bottom: 18px;
   }
 
+  .hero-support {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
   .hero-outcome {
     font-size: clamp(27px, 8vw, 38px);
     line-height: 1.2;
@@ -2766,7 +2816,7 @@ body.page-scrolled nav {
 
   .hero-microcopy {
     text-align: center;
-    font-size: 7px;
+    font-size: 8px;
     letter-spacing: 0.15em;
   }
 
@@ -2806,7 +2856,7 @@ body.page-scrolled nav {
   }
 
   .nav-actions {
-    grid-template-columns: 88px 108px;
+    display: flex;
     gap: 6px;
   }
 
