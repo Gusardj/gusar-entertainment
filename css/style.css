@@ -2452,17 +2452,17 @@ body.page-scrolled nav {
 
   .hero-label {
     max-width: 100%;
-    margin-bottom: 22px;
-    font-size: 10px;
+    margin-bottom: 18px;
+    font-size: 8px;
     line-height: 1.55;
     letter-spacing: 0.2em;
   }
 
   .hero-title {
-    font-size: clamp(34px, 8.8vw, 54px);
+    font-size: clamp(24px, 6.2vw, 38px);
     line-height: 1.02;
     letter-spacing: 0;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
 
   .hero-title-line {
@@ -2476,13 +2476,13 @@ body.page-scrolled nav {
   }
 
   .hero-checks {
-    gap: 12px;
-    margin-bottom: 30px;
+    gap: 9px;
+    margin-bottom: 24px;
   }
 
   .hero-checks li {
     align-items: flex-start;
-    font-size: 15px;
+    font-size: 11px;
     line-height: 1.35;
   }
 
@@ -2578,8 +2578,8 @@ body.page-scrolled nav {
   }
 
   .hero-label {
-    margin-bottom: 18px;
-    font-size: 9px;
+    margin-bottom: 14px;
+    font-size: 7px;
     letter-spacing: 0.16em;
   }
 
@@ -2588,9 +2588,9 @@ body.page-scrolled nav {
   }
 
   .hero-title {
-    font-size: clamp(31px, 9.8vw, 44px);
+    font-size: clamp(22px, 6.9vw, 31px);
     line-height: 1.02;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
 
   .hero-outcome {
@@ -2600,12 +2600,12 @@ body.page-scrolled nav {
   }
 
   .hero-checks li {
-    font-size: 15px;
+    font-size: 11px;
   }
 
   .hero-microcopy {
     text-align: center;
-    font-size: 9px;
+    font-size: 7px;
     letter-spacing: 0.15em;
   }
 
@@ -2661,6 +2661,6 @@ body.page-scrolled nav {
   }
 
   .hero-title {
-    font-size: 30px;
+    font-size: 21px;
   }
 }
