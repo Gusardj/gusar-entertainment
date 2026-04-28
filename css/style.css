@@ -1509,7 +1509,7 @@ body.page-scrolled nav {
   }
 
   #quiz-section {
-    padding: 56px 52px 120px;
+    padding: 38px 52px 72px;
     background: var(--black);
     border-top: 1px solid var(--border);
     position: relative;
@@ -1531,20 +1531,13 @@ body.page-scrolled nav {
   }
   .quiz-section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 26px;
   }
   .quiz-section-header .section-label {
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .quiz-section-header .section-title {
-    margin-bottom: 16px;
-  }
-  .quiz-section-header p {
-    font-size: 15px;
-    color: var(--cream-dim);
-    line-height: 1.8;
-    max-width: 480px;
     margin: 0 auto;
   }
 
@@ -1588,6 +1581,39 @@ body.page-scrolled nav {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     opacity: 0.5;
+  }
+  .quiz-whatsapp-cta {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--cream-dim);
+  }
+  .quiz-whatsapp-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 46px;
+    padding: 0 22px;
+    border: 1px solid rgba(37, 211, 102, 0.42);
+    color: #168a45;
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .quiz-whatsapp-cta a:hover {
+    background: #25D366;
+    border-color: #25D366;
+    color: #ffffff;
+    transform: translateY(-1px);
   }
 
   /* Steps */
@@ -1967,16 +1993,25 @@ body.page-scrolled nav {
 
   /* Responsive */
   @media (max-width: 900px) {
-    #quiz-section { padding: 44px 24px 80px; }
+    #quiz-section { padding: 32px 24px 60px; }
     .quiz-card { padding: 36px 28px 32px; }
     .qchoices { grid-template-columns: repeat(2, 1fr); }
     .qservices { grid-template-columns: repeat(2, 1fr); }
     .qfield-group.col2 { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
+    .quiz-section-header { margin-bottom: 20px; }
     .quiz-card { padding: 28px 20px 24px; }
     .qchoices { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .qservices { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .quiz-whatsapp-cta {
+      align-items: stretch;
+      gap: 12px;
+      text-align: center;
+    }
+    .quiz-whatsapp-cta a {
+      width: 100%;
+    }
   }
   @media (max-width: 360px) {
     .qchoices, .qservices { grid-template-columns: 1fr; }
