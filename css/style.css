@@ -2506,6 +2506,7 @@ body.page-scrolled nav {
   nav.scrolled,
   body.page-scrolled nav {
     padding: 14px 24px !important;
+    border-bottom: 1px solid transparent !important;
   }
 
   .hero-actions {
@@ -2614,6 +2615,7 @@ body.page-scrolled nav {
   nav.scrolled,
   body.page-scrolled nav {
     padding: calc(env(safe-area-inset-top, 0px) + 12px) 24px 12px !important;
+    border-bottom: 1px solid transparent !important;
   }
 
   .nav-links {
@@ -2750,6 +2752,7 @@ body.page-scrolled nav {
   nav.scrolled,
   body.page-scrolled nav {
     padding: calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px !important;
+    border-bottom: 1px solid transparent !important;
   }
 
   .nav-logo-top {
