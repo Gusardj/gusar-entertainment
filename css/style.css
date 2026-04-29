@@ -363,6 +363,17 @@ body.page-scrolled nav {
     display: inline-block;
   }
   .hcb-tag:hover { border-color: var(--gold); color: var(--gold); background: oklch(0.75 0.11 74 / 0.07); }
+  .services-category-title {
+    margin-top: 28px;
+    text-align: center;
+    opacity: 1;
+    animation: none;
+  }
+  .services-hcb-trust {
+    justify-content: center;
+    opacity: 1;
+    animation: none;
+  }
   @media (max-width: 900px) {
     .hcb-trust { gap: 8px; }
     .hcb-tag { font-size: 9px; padding: 5px 10px; }
@@ -1396,8 +1407,8 @@ body.page-scrolled nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 1px solid;
-    border-image: linear-gradient(90deg, transparent, var(--ed-gold) 30%, var(--ed-gold) 70%, transparent) 1;
+    border-bottom: 0;
+    border-image: none;
     padding-bottom: 80px;
     position: relative;
     z-index: 1;
