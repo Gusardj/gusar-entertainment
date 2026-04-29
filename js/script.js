@@ -1,14 +1,25 @@
 const nav = document.querySelector("nav");
+const heroLabel = document.querySelector(".hero-label");
 
-window.addEventListener("scroll", () => {
+function updateNavState() {
   if (!nav) return;
 
-  if (window.scrollY > 10) {
+  const threshold = heroLabel
+    ? heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight
+    : 120;
+
+  if (window.scrollY >= threshold) {
     nav.classList.add("scrolled");
+    document.body.classList.add("page-scrolled");
   } else {
     nav.classList.remove("scrolled");
+    document.body.classList.remove("page-scrolled");
   }
-});
+}
+
+window.addEventListener("scroll", updateNavState, { passive: true });
+window.addEventListener("resize", updateNavState);
+updateNavState();
 
 (function initServicesEditorial() {
   const section = document.getElementById("services-editorial");
