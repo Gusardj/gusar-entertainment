@@ -1,3 +1,21 @@
+// Custom cursor tracking
+(function initCursor() {
+  const cursor = document.getElementById('cursor');
+  if (!cursor) return;
+  let raf;
+  let mx = -100, my = -100;
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(() => {
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+      raf = null;
+    });
+  });
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+})();
+
 const nav = document.querySelector("nav");
 const heroLabel = document.querySelector(".hero-label");
 
