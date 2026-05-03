@@ -1034,6 +1034,53 @@ body.page-scrolled nav {
     line-height: 1.8;
     margin-top: 24px;
   }
+  .partner-apply-intro {
+    width: min(100%, 720px);
+    margin: -24px auto 42px;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .partner-process {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    width: min(100%, 1120px);
+    margin: 0 auto 72px;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+  .partner-process-step {
+    min-height: 190px;
+    padding: 34px 32px 32px;
+    background: rgba(8, 8, 8, 0.86);
+  }
+  .partner-process-num {
+    display: block;
+    margin-bottom: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+  .partner-process-step h2 {
+    margin: 0 0 12px;
+    font-family: var(--serif);
+    font-size: clamp(24px, 2vw, 32px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--cream);
+  }
+  .partner-process-step p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--cream-dim);
+  }
   .partner-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1325,6 +1372,7 @@ body.page-scrolled nav {
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item:first-child { min-height: 300px; grid-row: auto; }
     .process-steps { grid-template-columns: 1fr 1fr; }
+    .partner-process { grid-template-columns: 1fr; margin-bottom: 56px; }
     .partner-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
     body { cursor: auto; }
@@ -1332,6 +1380,8 @@ body.page-scrolled nav {
   }
 
   @media (max-width: 520px) {
+    .partner-apply-intro { margin: 0 auto 32px; font-size: 10px; }
+    .partner-process-step { min-height: auto; padding: 28px 24px; }
     .partner-grid { grid-template-columns: 1fr; }
     .partner-card { cursor: auto; }
   }

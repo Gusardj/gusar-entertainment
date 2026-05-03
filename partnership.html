@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=ticker-slow">
+  <link rel="stylesheet" href="css/style.css?v=artist-modal-quiz">
 </head>
 <body class="partnership-page" data-cc-id="cc-partnership">
   <div id="cursor"></div>
@@ -79,38 +79,56 @@
         <h1 class="section-title reveal reveal-delay-1">Join the <em>GUSAR Network</em></h1>
         <p class="partner-subtitle reveal reveal-delay-2">We are always looking for exceptional talent and reliable technical partners for our luxury events.</p>
       </div>
+      <div class="partner-apply-intro reveal reveal-delay-3">SELECT YOUR CATEGORY BELOW TO APPLY</div>
+      <div class="partner-process reveal reveal-delay-4" aria-label="Partnership application process">
+        <div class="partner-process-step">
+          <span class="partner-process-num">01</span>
+          <h2>Submit Your Application</h2>
+          <p>Complete the form for your category. Takes under 5 minutes.</p>
+        </div>
+        <div class="partner-process-step">
+          <span class="partner-process-num">02</span>
+          <h2>We Review</h2>
+          <p>Our team evaluates every application within 5-7 business days.</p>
+        </div>
+        <div class="partner-process-step">
+          <span class="partner-process-num">03</span>
+          <h2>Welcome Aboard</h2>
+          <p>Qualified partners are added to our curated vendor roster and contacted for onboarding.</p>
+        </div>
+      </div>
       <div class="partner-grid">
-        <a href="#partner-form" class="partner-card reveal">
+        <a href="#collab-section" class="partner-card reveal" data-open-collab aria-haspopup="dialog">
           <span class="partner-card-num">01</span>
           <h3 class="partner-card-title">Artists &amp; Talent</h3>
           <p class="partner-card-desc">DJs, cover bands, vocalists, musicians, dancers, and specialty acts.</p>
           <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="#partner-form" class="partner-card reveal reveal-delay-1">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-1">
           <span class="partner-card-num">02</span>
           <h3 class="partner-card-title">Technical Production</h3>
           <p class="partner-card-desc">Sound engineers, lighting designers, special FX, and AV technicians.</p>
           <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="#partner-form" class="partner-card reveal reveal-delay-2">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-2">
           <span class="partner-card-num">03</span>
           <h3 class="partner-card-title">Decor &amp; Scenography</h3>
           <p class="partner-card-desc">Florists, event decorators, stage designers, and custom builders.</p>
           <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="#partner-form" class="partner-card reveal reveal-delay-3">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-3">
           <span class="partner-card-num">04</span>
           <h3 class="partner-card-title">Catering &amp; Hospitality</h3>
           <p class="partner-card-desc">Catering companies, mixologists, sommeliers, and premium event staff.</p>
           <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="#partner-form" class="partner-card reveal reveal-delay-4">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-4">
           <span class="partner-card-num">05</span>
           <h3 class="partner-card-title">Event Management</h3>
           <p class="partner-card-desc">Project managers, event coordinators, directors, and planners.</p>
           <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
         </a>
-        <a href="#partner-form" class="partner-card reveal reveal-delay-5">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-5">
           <span class="partner-card-num">06</span>
           <h3 class="partner-card-title">Other / Propose a Service</h3>
           <p class="partner-card-desc">PR, SMM specialists, photo/video production, and creative agencies.</p>
@@ -118,13 +136,605 @@
         </a>
       </div>
     </section>
+<!-- ============================================================
+     BLOCK — COLLABORATION QUIZ (TALENT ROSTER APPLICATION)
+     ============================================================ -->
 
-    <section id="partner-form" class="partnership-teaser">
-      <div class="section-label reveal">Apply</div>
-      <h2 class="section-title reveal reveal-delay-1">Ready to <em>collaborate?</em></h2>
-      <p class="partner-subtitle reveal reveal-delay-2">Send us a message on WhatsApp and tell us what services you provide.</p>
-      <a href="https://wa.me/19402793660" class="btn-primary reveal reveal-delay-3">Contact on WhatsApp</a>
-    </section>
+<section id="collab-section" class="collab-modal" role="dialog" aria-modal="true" aria-labelledby="collab-title" aria-hidden="true">
+<style>
+  #collab-section {
+    --gq-bg: #0A0A0A;
+    --gq-card: #111111;
+    --gq-input-bg: #151515;
+    --gq-border: rgba(255, 255, 255, 0.1);
+    --gq-border-hover: rgba(255, 255, 255, 0.2);
+    --gq-gold: #C9A961;
+    --gq-gold-hover: #B8985A;
+    --gq-gold-mut: rgba(201, 169, 97, 0.1);
+    --gq-text: #F5F1EA;
+    --gq-text-mut: rgba(245, 241, 234, 0.65);
+    --gq-text-dim: rgba(245, 241, 234, 0.4);
+    --gq-error: #E06B6B;
+    --ez: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    background:
+      radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.12), transparent 36%),
+      rgba(0, 0, 0, 0.86);
+    color: var(--gq-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    padding: 48px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100dvh;
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    overflow-y: auto;
+    display: none;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  #collab-section.is-open { display: block; }
+  body.collab-modal-open { overflow: hidden; }
+  #collab-section *, #collab-section *::before, #collab-section *::after { box-sizing: border-box; }
+  
+  #collab-section .gq-inner { max-width: 820px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  #collab-section .gq-modal-close {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    width: 46px;
+    height: 46px;
+    margin: 0 0 18px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(17, 17, 17, 0.94);
+    border: 1px solid var(--gq-border);
+    color: var(--gq-text);
+    cursor: pointer;
+    transition: border-color 0.3s var(--ez), color 0.3s var(--ez), background 0.3s var(--ez);
+  }
+  #collab-section .gq-modal-close:hover {
+    color: var(--gq-gold);
+    border-color: var(--gq-gold);
+    background: rgba(10, 10, 10, 0.98);
+  }
+  #collab-section .gq-modal-close svg { width: 20px; height: 20px; }
+  
+  #collab-section .gq-head { text-align: center; margin-bottom: 48px; }
+  #collab-section .gq-label { font-size: 11px; font-weight: 600; letter-spacing: 0.25em; color: var(--gq-gold); text-transform: uppercase; margin-bottom: 16px; display: block; }
+  #collab-section .gq-title { font-size: clamp(34px, 4vw, 48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 16px; color: var(--gq-text); }
+  #collab-section .gq-title em { font-style: italic; font-weight: 400; color: var(--gq-gold); }
+  #collab-section .gq-subtitle { font-size: 16px; color: var(--gq-text-mut); line-height: 1.6; max-width: 500px; margin: 0 auto; }
+  
+  #collab-section .gq-prog { margin-bottom: 32px; }
+  #collab-section .gq-prog-label { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gq-text-mut); margin-bottom: 12px; text-align: left; }
+  #collab-section .gq-track { height: 2px; background: var(--gq-border); border-radius: 2px; overflow: hidden; }
+  #collab-section .gq-fill { height: 100%; background: var(--gq-gold); transition: width 0.6s var(--ez); width: 20%; }
+  
+  #collab-section .gq-card { background: var(--gq-card); border: 1px solid var(--gq-border); padding: 56px 48px; border-radius: 2px; }
+  #collab-section .gq-step { display: none; }
+  #collab-section .gq-step.active { display: block; animation: gqFadeIn 0.4s var(--ez); }
+  @keyframes gqFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  
+  #collab-section .gq-num { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gq-gold); font-weight: 600; display: block; margin-bottom: 16px; }
+  #collab-section .gq-stitle { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; margin: 0 0 8px; color: var(--gq-text); }
+  #collab-section .gq-sub { font-size: 15px; color: var(--gq-text-mut); margin: 0 0 32px; line-height: 1.5; }
+  
+  #collab-section .qz-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+  #collab-section .quiz-card { background: #141414; border: 1px solid rgba(184, 147, 90, 0.2); border-radius: 12px; padding: 20px; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; cursor: pointer; position: relative; transition: all 0.3s var(--ez); color: #FFFFFF; text-align: center; width: 100%; outline: none; }
+  #collab-section .quiz-card:hover { border-color: rgba(184, 147, 90, 0.5); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(184, 147, 90, 0.15); }
+  #collab-section .quiz-card.sel, #collab-section .quiz-card[aria-pressed="true"] { border: 1.5px solid #D4AF37; background: rgba(212, 175, 55, 0.08); }
+  #collab-section .quiz-card:focus-visible { outline: 2px solid #D4AF37; outline-offset: 2px; }
+  
+  #collab-section .quiz-card__icon { color: #B8935A; width: 44px; height: 44px; transition: color 0.3s var(--ez); flex-shrink: 0; }
+  #collab-section .quiz-card.sel .quiz-card__icon { color: #D4AF37; }
+  
+  #collab-section .quiz-card__label { font-size: 14px; font-weight: 500; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+  
+  #collab-section .quiz-card__check { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; background: #D4AF37; border-radius: 50%; color: #000; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.5); transition: all 0.3s var(--ez); }
+  #collab-section .quiz-card__check svg { width: 14px; height: 14px; stroke-width: 3px; display: block; }
+  #collab-section .quiz-card.sel .quiz-card__check { opacity: 1; transform: scale(1); }
+
+  /* Grid for specializations (more items, smaller) */
+  #collab-section .qz-grid-sm { grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; display: grid;}
+  #collab-section .qz-grid-sm .quiz-card { aspect-ratio: auto; padding: 16px 12px; min-height: 90px; border-radius: 8px; }
+  #collab-section .qz-grid-sm .quiz-card__icon { width: 28px; height: 28px; }
+  #collab-section .qz-grid-sm .quiz-card__label { font-size: 13px; }
+  
+  /* --- INPUTS & FIELDS --- */
+  #collab-section .gq-field { margin-bottom: 24px; width: 100%; }
+  #collab-section .gq-flabel { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gq-text-mut); font-weight: 600; margin-bottom: 10px; }
+  #collab-section .gq-input { width: 100%; background: var(--gq-input-bg) !important; border: 1px solid var(--gq-border) !important; color: var(--gq-text) !important; -webkit-text-fill-color: var(--gq-text) !important; padding: 16px 20px; font-size: 16px !important; border-radius: 4px !important; outline: none; transition: border-color 0.3s, background 0.3s; opacity: 1 !important; visibility: visible !important; font-family: inherit; }
+  #collab-section .gq-input:focus { border-color: var(--gq-gold) !important; background: var(--gq-bg) !important; }
+  #collab-section .gq-input::placeholder { color: var(--gq-text-dim) !important; -webkit-text-fill-color: var(--gq-text-dim) !important; }
+  #collab-section .gq-ta { min-height: 100px; resize: vertical; line-height: 1.6; }
+  #collab-section .gq-col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  
+  /* --- CHECKBOXES & CHIPS --- */
+  #collab-section .gq-fcheck { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: var(--gq-text-mut); cursor: pointer; user-select: none; }
+  #collab-section .gq-fcheck input { accent-color: var(--gq-gold); cursor: pointer; width: 16px; height: 16px; }
+
+  #collab-section .gq-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+  #collab-section .gq-chip { background: #141414; border: 1px solid rgba(184, 147, 90, 0.2); border-radius: 100px; padding: 10px 18px; cursor: pointer; font-size: 13px; color: #FFFFFF; transition: all 0.3s var(--ez); user-select: none; font-weight: 500; }
+  #collab-section .gq-chip:hover { border-color: rgba(184, 147, 90, 0.5); }
+  #collab-section .gq-chip.sel { border: 1.5px solid #D4AF37; background: rgba(212, 175, 55, 0.08); color: var(--gq-gold); }
+  
+  #collab-section .gq-cons { margin: 24px 0; }
+  #collab-section .gq-cons-lbl { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; user-select: none; }
+  #collab-section .gq-cons-box { width: 20px; height: 20px; border: 1px solid var(--gq-border); background: var(--gq-input-bg); border-radius: 2px; flex-shrink: 0; position: relative; transition: all 0.2s; }
+  #collab-section .gq-cons-chk { display: none; }
+  #collab-section .gq-cons-chk:checked + .gq-cons-box { background: var(--gq-gold); border-color: var(--gq-gold); }
+  #collab-section .gq-cons-chk:checked + .gq-cons-box::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #collab-section .gq-cons-txt { font-size: 14px; color: var(--gq-text-mut); line-height: 1.4; }
+  
+  /* --- BUTTONS & ALERTS --- */
+  #collab-section .gq-err { font-size: 13px; font-weight: 500; color: var(--gq-error); margin: 0 0 16px; display: none; }
+  #collab-section .gq-err.show { display: block; animation: gqFadeIn 0.3s ease; }
+  
+  #collab-section .gq-row { display: flex; gap: 12px; justify-content: space-between; margin-top: 32px; flex-wrap: wrap; }
+  #collab-section .gq-btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; border: 1px solid transparent; cursor: pointer; transition: all 0.3s var(--ez); font-family: inherit; }
+  #collab-section .gq-btn-primary { background: var(--gq-gold); color: #000; border-color: var(--gq-gold); margin-left: auto; }
+  #collab-section .gq-btn-primary:hover { background: var(--gq-gold-hover); border-color: var(--gq-gold-hover); }
+  #collab-section .gq-btn-secondary { background: transparent; color: var(--gq-text-mut); border-color: var(--gq-border); }
+  #collab-section .gq-btn-secondary:hover { color: var(--gq-text); border-color: var(--gq-gold-mut); background: rgba(255,255,255,0.02); }
+  
+  /* --- SUCCESS SCREEN --- */
+  #collab-section .gq-succ { display: none; text-align: center; padding: 24px 0; }
+  #collab-section .gq-succ.show { display: block; animation: gqFadeIn 0.5s var(--ez); }
+  #collab-section .gq-succ-ic { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--gq-gold); color: var(--gq-gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; background: var(--gq-gold-mut); }
+  #collab-section .gq-succ-ic svg { width: 32px; height: 32px; }
+  #collab-section .gq-succ-t { font-size: clamp(28px, 4vw, 36px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 16px; color: var(--gq-text); }
+  #collab-section .gq-succ-s { color: var(--gq-text-mut); font-size: 16px; line-height: 1.6; max-width: 480px; margin: 0 auto 32px; }
+  #collab-section .gq-close { background: none; border: none; color: var(--gq-text-mut); font-size: 13px; font-weight: 500; cursor: pointer; padding: 8px 16px; text-decoration: underline; text-underline-offset: 4px; transition: color 0.3s; font-family: inherit; }
+  #collab-section .gq-close:hover { color: var(--gq-gold); }
+  
+  #collab-section .gq-trust { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; font-size: 12px; font-weight: 500; color: var(--gq-text-dim); letter-spacing: 0.05em; text-transform: uppercase; }
+  #collab-section .gq-trust-i { display: inline-flex; align-items: center; gap: 8px; }
+  #collab-section .gq-trust-i svg { width: 14px; height: 14px; color: var(--gq-gold); }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    #collab-section { padding: 28px 16px; }
+    #collab-section .gq-card { padding: 40px 32px; }
+    #collab-section .qz-grid, #collab-section .qz-grid-sm { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    #collab-section .gq-col2 { grid-template-columns: 1fr; gap: 0; }
+  }
+  @media (max-width: 480px) {
+    #collab-section { padding: 18px 12px; }
+    #collab-section .gq-card { padding: 32px 20px; }
+    #collab-section .gq-title { font-size: 28px; }
+    #collab-section .qz-grid, #collab-section .qz-grid-sm { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    #collab-section .quiz-card { padding: 12px; gap: 10px; }
+    #collab-section .quiz-card__icon { width: 36px; height: 36px; }
+    #collab-section .quiz-card__label { font-size: 13px; }
+    #collab-section .gq-btn { width: 100%; justify-content: center; }
+    #collab-section .gq-btn-primary { margin-left: 0; margin-bottom: 12px; }
+    #collab-section .gq-row { flex-direction: column-reverse; gap: 0; }
+  }
+</style>
+
+<div class="gq-inner">
+  <button type="button" class="gq-modal-close" data-close-collab aria-label="Close application form">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- HEADER -->
+  <div class="gq-head">
+    <span class="gq-label">— JOIN OUR NETWORK</span>
+    <h2 class="gq-title" id="collab-title">Collaborate With <em>Gusar Entertainment</em></h2>
+    <p class="gq-subtitle">Tell us about yourself in 5 quick steps. Our partnership team reviews every application personally.</p>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="gq-prog">
+    <div class="gq-prog-label" id="cProgLabel">Step 1 of 5 · Category</div>
+    <div class="gq-track"><div class="gq-fill" id="cProgFill"></div></div>
+  </div>
+
+  <!-- QUIZ CARD -->
+  <div class="gq-card">
+
+    <!-- STEP 1 — ARTIST TYPE -->
+    <div class="gq-step active" data-step="1">
+      <span class="gq-num">01 · Artist Type</span>
+      <h3 class="gq-stitle">What kind of artist are you?</h3>
+      <p class="gq-sub">Select the role that best describes your act.</p>
+      
+      <div class="qz-grid" data-name="collabCategory" data-multi="false">
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="DJ">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span class="quiz-card__label">DJ</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Singer / Vocalist">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/><path d="M8 22h8"/></svg>
+          <span class="quiz-card__label">Singer /<br>Vocalist</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Live Band">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M3 6h5l2 4"/><path d="M14 6h4"/></svg>
+          <span class="quiz-card__label">Live<br>Band</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Dancer">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M15 22v-7l-2-2V9l3-3 2 4 3 1"/><path d="M9 22v-6l-3-2 1-5 3-3"/></svg>
+          <span class="quiz-card__label">Dancer</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Acrobat / Aerialist">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 6c3 0 5 2 5 5"/><path d="M7 11c0-3 2-5 5-5"/><circle cx="12" cy="11" r="2"/><path d="M12 13l-4 7"/><path d="M12 13l4 7"/><path d="M8 20h8"/></svg>
+          <span class="quiz-card__label">Acrobat /<br>Aerialist</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Other">
+          <svg class="quiz-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="quiz-card__label">Other</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+      </div>
+
+      <div class="gq-field">
+        <label class="gq-flabel" for="cOtherArtistType">Other artist type</label>
+        <input type="text" class="gq-input" id="cOtherArtistType" placeholder="Describe your act">
+      </div>
+
+      <p class="gq-err" id="cerr-1">Please select or type your artist type</p>
+      <div class="gq-row">
+        <button type="button" class="gq-btn gq-btn-primary gq-next" data-next="1">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — SPECIALIZATION (SMALL GRID) -->
+    <div class="gq-step" data-step="2">
+      <span class="gq-num">02 · Specialization</span>
+      <h3 class="gq-stitle">What exactly do you do?</h3>
+      <p class="gq-sub">Select your main roles (you can pick multiple)</p>
+      
+      <div class="qz-grid-sm" data-name="specialization" data-multi="true">
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="DJ">
+          <span class="quiz-card__label">DJ</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Singer / Vocalist">
+          <span class="quiz-card__label">Singer</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Live Band">
+          <span class="quiz-card__label">Live Band</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Dancer">
+          <span class="quiz-card__label">Dancer</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Acrobat / Aerialist">
+          <span class="quiz-card__label">Acrobat</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+        <button type="button" class="quiz-card" aria-pressed="false" data-val="Specialty Act">
+          <span class="quiz-card__label">Specialty Act</span>
+          <span class="quiz-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </button>
+      </div>
+
+      <div class="gq-field">
+        <label class="gq-flabel" for="cCustomSpec">Other specialization</label>
+        <input type="text" class="gq-input" id="cCustomSpec" placeholder="e.g. Magician, saxophonist, violinist...">
+      </div>
+
+      <p class="gq-err" id="cerr-2">Please select or type a specialization</p>
+      <div class="gq-row">
+        <button type="button" class="gq-btn gq-btn-secondary gq-back" data-back="2">&larr; Back</button>
+        <button type="button" class="gq-btn gq-btn-primary gq-next" data-next="2">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — PORTFOLIO -->
+    <div class="gq-step" data-step="3">
+      <span class="gq-num">03 · Portfolio</span>
+      <h3 class="gq-stitle">Show us your work</h3>
+      <p class="gq-sub">The best way to impress us is to show us what you can do.</p>
+      
+      <div class="gq-field">
+        <label class="gq-flabel" for="cInsta">Instagram Handle</label>
+        <input type="text" class="gq-input" id="cInsta" placeholder="@yourprofile">
+      </div>
+      
+      <div class="gq-field">
+        <label class="gq-flabel" for="cVideo">Promo Video / Reel URL (Important)</label>
+        <input type="url" class="gq-input" id="cVideo" placeholder="YouTube, Vimeo, or Drive link">
+      </div>
+
+      <div class="gq-field">
+        <label class="gq-flabel" for="cWeb">Website / Press Kit (Optional)</label>
+        <input type="url" class="gq-input" id="cWeb" placeholder="https://yourwebsite.com">
+      </div>
+
+      <p class="gq-err" id="cerr-3">Please provide at least your Instagram or a Video link</p>
+      <div class="gq-row">
+        <button type="button" class="gq-btn gq-btn-secondary gq-back" data-back="3">&larr; Back</button>
+        <button type="button" class="gq-btn gq-btn-primary gq-next" data-next="3">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — LOCATION & LANGUAGES -->
+    <div class="gq-step" data-step="4">
+      <span class="gq-num">04 · Details</span>
+      <h3 class="gq-stitle">Location & Languages</h3>
+      <p class="gq-sub">Help us match you with the right events.</p>
+      
+      <div class="gq-field">
+        <label class="gq-flabel" for="cCity">Where are you currently based?</label>
+        <input type="text" class="gq-input" id="cCity" placeholder="e.g. Miami, FL">
+        <label class="gq-fcheck"><input type="checkbox" id="cTravel"> <span>I am willing to travel for events</span></label>
+      </div>
+
+      <div class="gq-field" style="margin-top: 32px;">
+        <label class="gq-flabel">Spoken Languages</label>
+        <div class="gq-chips" data-name="collabLangs">
+          <button type="button" class="gq-chip" data-val="English">English</button>
+          <button type="button" class="gq-chip" data-val="Spanish">Spanish</button>
+          <button type="button" class="gq-chip" data-val="Russian">Russian</button>
+          <button type="button" class="gq-chip" data-val="Portuguese">Portuguese</button>
+          <button type="button" class="gq-chip" data-val="French">French</button>
+        </div>
+      </div>
+
+      <p class="gq-err" id="cerr-4">Please tell us where you are based</p>
+      <div class="gq-row">
+        <button type="button" class="gq-btn gq-btn-secondary gq-back" data-back="4">&larr; Back</button>
+        <button type="button" class="gq-btn gq-btn-primary gq-next" data-next="4">Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — CONTACT -->
+    <div class="gq-step" data-step="5">
+      <span class="gq-num">05 · Contact</span>
+      <h3 class="gq-stitle">How can we reach you?</h3>
+      <p class="gq-sub">Final step! Leave your details so our booking team can contact you.</p>
+      
+      <div class="gq-col2">
+        <div class="gq-field">
+          <label class="gq-flabel" for="cName">Full Name / Stage Name</label>
+          <input type="text" class="gq-input" id="cName" placeholder="Your name">
+        </div>
+        <div class="gq-field">
+          <label class="gq-flabel" for="cPhone">Phone / WhatsApp</label>
+          <input type="tel" class="gq-input" id="cPhone" placeholder="+1 (305) 555-0000">
+        </div>
+      </div>
+      
+      <div class="gq-field">
+        <label class="gq-flabel" for="cEmail">Email</label>
+        <input type="email" class="gq-input" id="cEmail" placeholder="you@example.com">
+      </div>
+
+      <div class="gq-field">
+        <label class="gq-flabel" for="cBio">Short Bio / Rates (Optional)</label>
+        <textarea class="gq-input gq-ta" id="cBio" placeholder="Tell us a bit about your experience or standard rates..."></textarea>
+      </div>
+      
+      <p class="gq-err" id="cerr-5">Please complete name, phone, and email</p>
+      
+      <div class="gq-row">
+        <button type="button" class="gq-btn gq-btn-secondary gq-back" data-back="5">&larr; Back</button>
+        <button type="button" class="gq-btn gq-btn-primary" id="cSubmit">Submit Application &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS SCREEN -->
+    <div class="gq-succ" id="cSucc">
+      <div class="gq-succ-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3 class="gq-succ-t">Application Received</h3>
+      <p class="gq-succ-s">Thank you for wanting to join Gusar Entertainment.<br>Our talent managers will review your portfolio and reach out if there's a match for our upcoming events.</p>
+      <button type="button" class="gq-close" id="cClose" style="margin-top:20px;">Back to Home</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- COLLABORATION SCRIPT -->
+<script>
+(function(){
+  const sec = document.getElementById('collab-section');
+  if(!sec) return;
+
+  // URL скрипта для формы артистов (Обновлен на ваш новый развернутый URL)
+  const COLLAB_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyERCBhNWg5FZMPO96XJK_3Wo_9eslOugO8GNGDeYnRJHcblYYJU-bM28SwTblAQHhM/exec';
+  
+  let step = 1;
+  const totalSteps = 5;
+  const stepTitles = ['Artist Type', 'Specialization', 'Portfolio', 'Details', 'Contact'];
+
+  // Update UI
+  function updateUI() {
+    sec.querySelector('#cProgFill').style.width = ((step / totalSteps) * 100) + '%';
+    sec.querySelector('#cProgLabel').innerText = `Step ${step} of ${totalSteps} · ${stepTitles[step-1]}`;
+    sec.querySelectorAll('.gq-step').forEach(s => s.classList.remove('active'));
+    sec.querySelector(`.gq-step[data-step="${step}"]`)?.classList.add('active');
+    sec.querySelectorAll('.gq-err').forEach(e => e.classList.remove('show'));
+  }
+
+  function openModal(event) {
+    if(event) event.preventDefault();
+    sec.classList.add('is-open');
+    sec.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('collab-modal-open');
+    step = 1;
+    updateUI();
+    window.setTimeout(() => sec.querySelector('.quiz-card')?.focus(), 80);
+  }
+
+  function closeModal() {
+    sec.classList.remove('is-open');
+    sec.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('collab-modal-open');
+  }
+
+  document.querySelectorAll('[data-open-collab]').forEach(trigger => {
+    trigger.addEventListener('click', openModal);
+  });
+
+  sec.querySelectorAll('[data-close-collab]').forEach(trigger => {
+    trigger.addEventListener('click', closeModal);
+  });
+
+  sec.addEventListener('click', event => {
+    if(event.target === sec) closeModal();
+  });
+
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && sec.classList.contains('is-open')) closeModal();
+  });
+
+  // Handle Square Cards (Steps 1 & 2)
+  sec.querySelectorAll('.quiz-card').forEach(choice => {
+    choice.addEventListener('click', function() {
+      const parent = this.closest('[data-multi]');
+      if (parent.dataset.multi === 'false') {
+        parent.querySelectorAll('.quiz-card').forEach(c => {
+          c.classList.remove('sel');
+          c.setAttribute('aria-pressed', 'false');
+        });
+      }
+      this.classList.toggle('sel');
+      const isSel = this.classList.contains('sel');
+      this.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+      sec.querySelectorAll('.gq-err').forEach(e => e.classList.remove('show'));
+    });
+  });
+
+  // Handle Chips (Languages)
+  sec.querySelectorAll('.gq-chip').forEach(chip => {
+    chip.addEventListener('click', function() {
+      this.classList.toggle('sel');
+    });
+  });
+
+  // Validation
+  function validate(s) {
+    let err = sec.querySelector(`#cerr-${s}`);
+    if(s === 1) {
+      const hasType = sec.querySelector('.gq-step[data-step="1"] .quiz-card.sel');
+      const hasCustomType = sec.querySelector('#cOtherArtistType')?.value.trim() !== '';
+      if(!hasType && !hasCustomType) { err.classList.add('show'); return false; }
+    }
+    if(s === 2) {
+      const hasSpec = sec.querySelector('.gq-step[data-step="2"] .quiz-card.sel');
+      const hasCustom = sec.querySelector('#cCustomSpec').value.trim() !== '';
+      if(!hasSpec && !hasCustom) { err.classList.add('show'); return false; }
+    }
+    if(s === 3) {
+      const ig = sec.querySelector('#cInsta').value.trim();
+      const vid = sec.querySelector('#cVideo').value.trim();
+      if(!ig && !vid) { err.classList.add('show'); return false; }
+    }
+    if(s === 4) {
+      const loc = sec.querySelector('#cCity').value.trim();
+      if(!loc) { err.classList.add('show'); return false; }
+    }
+    if(s === 5) {
+      const n = sec.querySelector('#cName').value.trim();
+      const p = sec.querySelector('#cPhone').value.trim();
+      const e = sec.querySelector('#cEmail').value.trim();
+      if(!n || !p || !e) { err.classList.add('show'); return false; }
+    }
+    return true;
+  }
+
+  // Next / Back Buttons
+  sec.querySelectorAll('.gq-next').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const s = parseInt(this.dataset.next);
+      if(validate(s)) { step = s + 1; updateUI(); }
+    });
+  });
+  sec.querySelectorAll('.gq-back').forEach(btn => {
+    btn.addEventListener('click', function() {
+      step = parseInt(this.dataset.back) - 1; updateUI();
+    });
+  });
+
+  // Submit Application
+  const submitBtn = sec.querySelector('#cSubmit');
+  if(submitBtn) {
+    submitBtn.addEventListener('click', async function() {
+      if(!validate(5)) return;
+      
+      const origText = this.innerText;
+      this.innerText = 'Submitting...';
+      this.style.opacity = '0.7';
+      this.style.pointerEvents = 'none';
+      
+      // Collect Data
+      const selectedCat = sec.querySelector('.gq-step[data-step="1"] .quiz-card.sel')?.dataset.val || '';
+      const typedCat = sec.querySelector('#cOtherArtistType')?.value.trim() || '';
+      const cat = typedCat || selectedCat || 'Not specified';
+      
+      const specs = Array.from(sec.querySelectorAll('.gq-step[data-step="2"] .quiz-card.sel')).map(c => c.dataset.val);
+      const customSpec = sec.querySelector('#cCustomSpec').value.trim();
+      if(customSpec) specs.push(customSpec);
+
+      const langs = Array.from(sec.querySelectorAll('.gq-step[data-step="4"] .gq-chip.sel')).map(c => c.dataset.val);
+      
+      const data = {
+        type: "TalentApplication", // Флаг, чтобы скрипт понимал, что это от артистов
+        category: cat,
+        specialization: specs.join(', '),
+        instagram: sec.querySelector('#cInsta').value,
+        videoLink: sec.querySelector('#cVideo').value,
+        website: sec.querySelector('#cWeb').value,
+        location: sec.querySelector('#cCity').value,
+        willingToTravel: sec.querySelector('#cTravel').checked ? "Yes" : "No",
+        languages: langs.join(', '),
+        name: sec.querySelector('#cName').value,
+        phone: sec.querySelector('#cPhone').value,
+        email: sec.querySelector('#cEmail').value,
+        bio: sec.querySelector('#cBio').value
+      };
+
+      try {
+        await fetch(COLLAB_SCRIPT_URL, {
+          method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+      } catch(e) { console.error(e); }
+      
+      // Show Success Screen
+      sec.querySelector('.gq-step[data-step="5"]').classList.remove('active');
+      sec.querySelector('.gq-prog').style.display = 'none';
+      sec.querySelector('#cSucc').classList.add('show');
+      
+      this.innerText = origText;
+      this.style.opacity = '1';
+      this.style.pointerEvents = 'auto';
+    });
+  }
+
+  // Close / Reset
+  const closeBtn = sec.querySelector('#cClose');
+  if(closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      sec.querySelector('#cSucc').classList.remove('show');
+      sec.querySelector('.gq-prog').style.display = 'block';
+      step = 1; updateUI();
+      
+      // Reset form
+      sec.querySelectorAll('.quiz-card').forEach(c => { c.classList.remove('sel'); c.setAttribute('aria-pressed', 'false'); });
+      sec.querySelectorAll('.gq-chip').forEach(c => c.classList.remove('sel'));
+      sec.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"], input[type="url"], textarea').forEach(i => i.value = '');
+      sec.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
+      closeModal();
+    });
+  }
+
+})();
+</script>
   </main>
 
   <footer style="position:relative;overflow:hidden;">
