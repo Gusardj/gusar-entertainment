@@ -1,3 +1,31 @@
+// Mobile burger menu
+(function initBurger() {
+  const burger  = document.querySelector('.nav-burger');
+  const menu    = document.getElementById('mobile-menu');
+  const close   = document.querySelector('.mobile-menu-close');
+  const links   = document.querySelectorAll('.mobile-menu-link');
+  if (!burger || !menu) return;
+
+  function openMenu() {
+    menu.classList.add('is-open');
+    menu.removeAttribute('aria-hidden');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', openMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  links.forEach(l => l.addEventListener('click', closeMenu));
+  menu.addEventListener('click', (e) => { if (e.target === menu) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+})();
+
 // Custom cursor tracking
 (function initCursor() {
   const cursor = document.getElementById('cursor');
