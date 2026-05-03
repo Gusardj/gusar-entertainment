@@ -2894,16 +2894,17 @@ body.page-scrolled nav {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 999998;
+  z-index: 1000001;
   background: rgba(8, 8, 8, 0.98);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 80px 40px 60px;
+  padding: calc(env(safe-area-inset-top, 0px) + 72px) 40px 60px;
   opacity: 0;
   transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
+  overflow-y: auto;
 }
 #mobile-menu.is-open {
   display: flex;
@@ -2911,8 +2912,8 @@ body.page-scrolled nav {
 }
 .mobile-menu-close {
   position: absolute;
-  top: calc(env(safe-area-inset-top, 0px) + 18px);
-  right: 24px;
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  right: 20px;
   width: 44px;
   height: 44px;
   background: none;
@@ -3015,8 +3016,30 @@ body.page-scrolled nav {
     border-bottom: 1px solid var(--border) !important;
   }
   .nav-links { display: none !important; }
-  .nav-actions { display: none !important; }
   .nav-burger { display: flex; }
+
+  /* Compact nav actions on mobile */
+  .nav-actions {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-call,
+  .nav-wa {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    gap: 6px;
+  }
+  .nav-call svg,
+  .nav-wa svg { width: 13px; height: 13px; }
+  /* hide text labels on very small screens, keep icons */
+  @media (max-width: 400px) {
+    .nav-call span,
+    .nav-wa span { display: none; }
+    .nav-call, .nav-wa { padding: 0 10px; }
+  }
 
   #hero {
     height: 100svh !important;
