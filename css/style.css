@@ -2912,21 +2912,26 @@ body.page-scrolled nav {
 }
 .mobile-menu-close {
   position: fixed;
-  top: calc(env(safe-area-inset-top, 0px) + 16px);
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: 1px solid var(--border);
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  right: calc(env(safe-area-inset-right, 0px) + 18px);
+  z-index: 1000002;
+  width: 48px;
+  height: 48px;
+  background: rgba(8, 8, 8, 0.72);
+  border: 1px solid rgba(201, 168, 97, 0.55);
   cursor: pointer;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   color: var(--cream);
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
-.mobile-menu-close:hover { border-color: var(--gold); color: var(--gold); }
-.mobile-menu-close svg { width: 18px; height: 18px; }
+.mobile-menu-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 168, 97, 0.08);
+}
+.mobile-menu-close svg { width: 20px; height: 20px; }
 
 .mobile-menu-nav {
   display: flex;
