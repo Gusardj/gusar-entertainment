@@ -2532,8 +2532,8 @@ body.page-scrolled nav {
   .mq-row { display: flex; width: 100%; overflow: hidden; padding: 13px 0; }
   .mq-row + .mq-row { border-top: 1px solid var(--mq-divider); }
   .mq-track { display: flex; width: max-content; min-width: max-content; white-space: nowrap; will-change: transform; }
-  .mq-track-a { animation: mq-scroll-left 38s linear infinite; }
-  .mq-track-b { animation: mq-scroll-right 52s linear infinite; }
+  .mq-track-a { animation: mq-scroll-left 54s linear infinite; }
+  .mq-track-b { animation: mq-scroll-right 74s linear infinite; }
   .mq-item { display: inline-flex; align-items: center; flex-shrink: 0; }
   .mq-text-a {
     font-family: var(--mono); font-size: 11px; font-weight: 400;
