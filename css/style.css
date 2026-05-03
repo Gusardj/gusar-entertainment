@@ -1318,9 +1318,6 @@ body.page-scrolled nav {
   .tweak-select option { background: var(--black); }
 
   @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    nav.scrolled { padding: 14px 24px; }
-    .nav-links { display: none; }
     #hero { padding: 0 24px 60px; }
     .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
     #services, #stats, #about, #roster, #portfolio, #process, #partnership, #cta { padding-left: 24px; padding-right: 24px; }
@@ -2880,23 +2877,20 @@ body.page-scrolled nav {
     align-items: center;
     gap: 0;
     padding: calc(env(safe-area-inset-top, 0px) + 14px) 24px 0 !important;
-    background: transparent !important;
-    border-bottom: 1px solid transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    background: rgba(8, 8, 8, 0.97) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid var(--border) !important;
   }
 
   nav.scrolled,
   body.page-scrolled nav {
     padding: calc(env(safe-area-inset-top, 0px) + 12px) 24px 0 !important;
-    border-bottom: 1px solid transparent !important;
   }
 
   .nav-logo {
     flex: 1;
     min-width: 0;
-    position: relative;
-    z-index: 2;
   }
 
   .nav-actions {
@@ -2905,8 +2899,6 @@ body.page-scrolled nav {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    position: relative;
-    z-index: 2;
   }
 
   .nav-wa,
@@ -2923,15 +2915,14 @@ body.page-scrolled nav {
   /* Second row — always-visible nav links */
   .nav-links {
     display: flex !important;
-    flex-basis: 100%;
+    flex-basis: 100% !important;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    gap: 0;
     list-style: none;
     border-top: 1px solid var(--border);
     margin: 10px -24px 0;
-    padding: 0 24px;
+    padding: 0 8px;
   }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links li { flex-shrink: 0; }
@@ -2943,12 +2934,13 @@ body.page-scrolled nav {
     text-transform: uppercase;
     color: var(--cream-dim);
     text-decoration: none;
-    padding: 10px 14px;
+    padding: 10px 12px;
     white-space: nowrap;
     transition: color 0.25s;
     cursor: auto;
   }
-  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover,
+  .nav-links a[href*="partnership"]:where([href="partnership.html"]) { color: var(--gold); }
 
   #hero {
     height: auto !important;
