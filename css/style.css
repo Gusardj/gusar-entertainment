@@ -2911,7 +2911,7 @@ body.page-scrolled nav {
   opacity: 1;
 }
 .mobile-menu-close {
-  position: absolute;
+  position: fixed;
   top: calc(env(safe-area-inset-top, 0px) + 16px);
   right: 20px;
   width: 44px;
