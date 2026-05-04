@@ -67,6 +67,21 @@ window.addEventListener("scroll", updateNavState, { passive: true });
 window.addEventListener("resize", updateNavState);
 updateNavState();
 
+(function initBottomNavReveal() {
+  const bottomNav = document.querySelector(".bottom-nav");
+  const firstBlock = document.querySelector("#hero, .pp-hero");
+  if (!bottomNav || !firstBlock) return;
+
+  function updateBottomNavState() {
+    const threshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
+    document.body.classList.toggle("bottom-nav-visible", window.scrollY >= threshold);
+  }
+
+  window.addEventListener("scroll", updateBottomNavState, { passive: true });
+  window.addEventListener("resize", updateBottomNavState);
+  updateBottomNavState();
+})();
+
 (function initServicesEditorial() {
   const section = document.getElementById("services-editorial");
   if (!section) return;
