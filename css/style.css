@@ -15,15 +15,42 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
   body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
     background: var(--black);
     color: var(--cream);
     font-family: var(--sans);
     font-weight: 300;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
     cursor: none;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
   }
 
   /* ── CURSOR ── */
@@ -3130,7 +3157,7 @@ body.page-scrolled nav {
     gap: 4px;
     width: 100%;
     min-width: 0;
-    min-height: 38px;
+    min-height: 34px;
     font-family: var(--mono);
     font-size: 8px;
     font-weight: 700;
@@ -3170,7 +3197,7 @@ body.page-scrolled nav {
     gap: 4px;
     width: 100%;
     min-width: 0;
-    min-height: 38px;
+    min-height: 34px;
     font-family: var(--mono);
     font-size: 8px;
     font-weight: 700;
@@ -3219,6 +3246,39 @@ body.page-scrolled nav {
   .bottom-nav span {
     line-height: 1;
     white-space: nowrap;
+  }
+
+  /* Tap ripple element */
+  .bnav-ripple {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(61, 50, 40, 0.18);
+    transform: translate(-50%, -50%) scale(0.3);
+    animation: bnav-ripple 0.7s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@keyframes bnav-ripple {
+  from { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  to   { transform: translate(-50%, -50%) scale(4.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (max-width: 900px) {
+  @keyframes bnav-pulse {
+    0%, 100% { box-shadow: 0 8px 22px rgba(61, 50, 40, 0.14), 0 0 0 0    rgba(61, 50, 40, 0.16); }
+    55%       { box-shadow: 0 8px 22px rgba(61, 50, 40, 0.14), 0 0 0 14px rgba(61, 50, 40, 0);   }
+  }
+  .bottom-nav-quote-ring {
+    animation: bnav-pulse 2.8s ease-in-out 2s infinite;
+  }
+  .bottom-nav-quote:active .bottom-nav-quote-ring {
+    animation: none;
   }
 }
 

@@ -67,25 +67,103 @@ window.addEventListener("scroll", updateNavState, { passive: true });
 window.addEventListener("resize", updateNavState);
 updateNavState();
 
+(function initMobileViewportLock() {
+  const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  if (!isCoarsePointer) return;
+
+  const preventZoomGesture = (event) => event.preventDefault();
+  let lastTouchEnd = 0;
+
+  ["gesturestart", "gesturechange", "gestureend"].forEach((eventName) => {
+    document.addEventListener(eventName, preventZoomGesture, { passive: false });
+  });
+
+  document.addEventListener("touchend", (event) => {
+    const now = Date.now();
+
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+  }, { passive: false });
+})();
+
 (function initBottomNavReveal() {
   const bottomNav = document.querySelector(".bottom-nav");
   const firstBlock = document.querySelector("#hero, .pp-hero");
   if (!bottomNav || !firstBlock) return;
+  let lastScrollY = window.scrollY;
+  let lastTouchY = 0;
+  let lastUpIntentAt = 0;
 
-  function updateBottomNavState() {
+  function isPastBottomNavThreshold() {
     const threshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
     const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
     const openedPastFirstBlock = hashTarget && !firstBlock.contains(hashTarget) && hashTarget !== firstBlock;
-    document.body.classList.toggle("bottom-nav-visible", openedPastFirstBlock || window.scrollY >= threshold);
+    return openedPastFirstBlock || window.scrollY >= threshold;
+  }
+
+  function updateBottomNavState(forceShow) {
+    const currentScrollY = window.scrollY;
+    const pastThreshold = isPastBottomNavThreshold();
+    const scrollingDown = currentScrollY > lastScrollY + 1;
+    const scrollingUp = currentScrollY < lastScrollY - 1;
+    const recentlyScrolledUp = Date.now() - lastUpIntentAt < 350;
+
+    if (!pastThreshold) {
+      document.body.classList.remove("bottom-nav-visible");
+    } else if (scrollingUp) {
+      lastUpIntentAt = Date.now();
+      document.body.classList.remove("bottom-nav-visible");
+    } else if (scrollingDown || (forceShow && !recentlyScrolledUp)) {
+      document.body.classList.add("bottom-nav-visible");
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  function handleDirectionalIntent(deltaY) {
+    if (Math.abs(deltaY) < 2) return;
+
+    if (deltaY < 0) {
+      lastUpIntentAt = Date.now();
+      document.body.classList.remove("bottom-nav-visible");
+      return;
+    }
+
+    if (deltaY > 0 && isPastBottomNavThreshold()) {
+      document.body.classList.add("bottom-nav-visible");
+    }
   }
 
   window.addEventListener("scroll", updateBottomNavState, { passive: true });
-  window.addEventListener("resize", updateBottomNavState);
-  window.addEventListener("hashchange", updateBottomNavState);
-  window.addEventListener("load", updateBottomNavState);
-  updateBottomNavState();
-  requestAnimationFrame(updateBottomNavState);
-  window.setTimeout(updateBottomNavState, 250);
+  window.addEventListener("wheel", (event) => handleDirectionalIntent(event.deltaY), { passive: true });
+  window.addEventListener("keydown", (event) => {
+    const upKeys = ["ArrowUp", "PageUp", "Home"];
+    const downKeys = ["ArrowDown", "PageDown", "End", " "];
+
+    if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
+      handleDirectionalIntent(-10);
+    } else if (downKeys.includes(event.key) && !event.shiftKey) {
+      handleDirectionalIntent(10);
+    }
+  });
+  window.addEventListener("touchstart", (event) => {
+    lastTouchY = event.touches[0] ? event.touches[0].clientY : 0;
+  }, { passive: true });
+  window.addEventListener("touchmove", (event) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    handleDirectionalIntent(lastTouchY - touch.clientY);
+    lastTouchY = touch.clientY;
+  }, { passive: true });
+  window.addEventListener("resize", () => updateBottomNavState(true));
+  window.addEventListener("hashchange", () => updateBottomNavState(true));
+  window.addEventListener("load", () => updateBottomNavState(true));
+  updateBottomNavState(true);
+  requestAnimationFrame(() => updateBottomNavState(true));
+  window.setTimeout(() => updateBottomNavState(true), 250);
 })();
 
 (function initServicesEditorial() {
