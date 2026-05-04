@@ -10,12 +10,14 @@
     menu.classList.add('is-open');
     menu.removeAttribute('aria-hidden');
     burger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('mobile-menu-open');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
     menu.classList.remove('is-open');
     menu.setAttribute('aria-hidden', 'true');
     burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
   }
 
@@ -94,8 +96,9 @@ updateNavState();
   const firstBlock = document.querySelector("#hero, .pp-hero");
   if (!bottomNav || !firstBlock) return;
   let lastScrollY = window.scrollY;
-  let lastTouchY = 0;
   let lastUpIntentAt = 0;
+  let ticking = false;
+  const directionThreshold = 8;
 
   function isPastBottomNavThreshold() {
     const threshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
@@ -107,11 +110,12 @@ updateNavState();
   function updateBottomNavState(forceShow) {
     const currentScrollY = window.scrollY;
     const pastThreshold = isPastBottomNavThreshold();
-    const scrollingDown = currentScrollY > lastScrollY + 1;
-    const scrollingUp = currentScrollY < lastScrollY - 1;
+    const deltaY = currentScrollY - lastScrollY;
+    const scrollingDown = deltaY > directionThreshold;
+    const scrollingUp = deltaY < -directionThreshold;
     const recentlyScrolledUp = Date.now() - lastUpIntentAt < 350;
 
-    if (!pastThreshold) {
+    if (document.body.classList.contains("mobile-menu-open") || !pastThreshold) {
       document.body.classList.remove("bottom-nav-visible");
     } else if (scrollingUp) {
       lastUpIntentAt = Date.now();
@@ -123,8 +127,17 @@ updateNavState();
     lastScrollY = currentScrollY;
   }
 
+  function requestBottomNavUpdate(forceShow) {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateBottomNavState(forceShow);
+      ticking = false;
+    });
+  }
+
   function handleDirectionalIntent(deltaY) {
-    if (Math.abs(deltaY) < 2) return;
+    if (Math.abs(deltaY) < directionThreshold) return;
 
     if (deltaY < 0) {
       lastUpIntentAt = Date.now();
@@ -137,7 +150,7 @@ updateNavState();
     }
   }
 
-  window.addEventListener("scroll", updateBottomNavState, { passive: true });
+  window.addEventListener("scroll", () => requestBottomNavUpdate(false), { passive: true });
   window.addEventListener("wheel", (event) => handleDirectionalIntent(event.deltaY), { passive: true });
   window.addEventListener("keydown", (event) => {
     const upKeys = ["ArrowUp", "PageUp", "Home"];
@@ -149,16 +162,7 @@ updateNavState();
       handleDirectionalIntent(10);
     }
   });
-  window.addEventListener("touchstart", (event) => {
-    lastTouchY = event.touches[0] ? event.touches[0].clientY : 0;
-  }, { passive: true });
-  window.addEventListener("touchmove", (event) => {
-    const touch = event.touches[0];
-    if (!touch) return;
-    handleDirectionalIntent(lastTouchY - touch.clientY);
-    lastTouchY = touch.clientY;
-  }, { passive: true });
-  window.addEventListener("resize", () => updateBottomNavState(true));
+  window.addEventListener("resize", () => requestBottomNavUpdate(false));
   window.addEventListener("hashchange", () => updateBottomNavState(true));
   window.addEventListener("load", () => updateBottomNavState(true));
   updateBottomNavState(true);

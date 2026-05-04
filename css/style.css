@@ -388,7 +388,18 @@ body.page-scrolled nav {
     width: min(100%, 1120px);
     margin: 0 auto 56px;
     text-align: center;
-    font-size: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    color: rgba(166, 139, 109, 0.78);
+    background-image: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: currentColor;
+    animation: fadeIn 0.7s 0.2s both;
+    text-shadow: none;
   }
   /* Secondary CTA gold border */
   .btn-ghost-gold {
@@ -2003,22 +2014,25 @@ body.page-scrolled nav {
   }
   @media (max-width: 768px) {
     .ed-card-technical {
-      min-height: 336px;
-      aspect-ratio: 1 / 1;
+      min-height: 0;
+      aspect-ratio: auto;
+      padding: 0;
     }
     .ed-card-technical .ed-tech-content {
-      width: 78%;
-      padding: 28px 0 0 24px;
+      width: 100%;
+      padding: 26px 24px 28px;
     }
+    .ed-card-technical .ed-card-top { margin-bottom: 18px; }
     .ed-card-technical .ed-card-title {
-      font-size: 26px;
-      margin-bottom: 18px;
+      font-size: 25px;
+      margin-bottom: 16px;
     }
     .ed-card-technical .ed-tech-list {
-      gap: 8px;
+      gap: 7px;
     }
     .ed-card-technical .ed-tech-list li {
       font-size: 10px;
+      line-height: 1.25;
     }
     .ed-card-technical .ed-tech-description {
       padding: 82px 10% 24px 24px;
@@ -3256,12 +3270,13 @@ body.page-scrolled nav {
     background: transparent;
     border: 0;
     box-shadow: none;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(110%);
+    transform: translate3d(0, 110%, 0);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    contain: layout paint;
   }
 
   .bottom-nav::before {
@@ -3284,7 +3299,14 @@ body.page-scrolled nav {
   body.bottom-nav-visible .bottom-nav {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  body.mobile-menu-open .bottom-nav {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translate3d(0, 110%, 0) !important;
   }
 
   .bottom-nav-side {
@@ -3557,15 +3579,20 @@ body.page-scrolled nav {
   #hero {
     height: 100svh !important;
     min-height: 0 !important;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     padding: calc(env(safe-area-inset-top, 0px) + 82px) 24px 64px !important;
     overflow: hidden;
+    text-align: center;
   }
 
   .hero-content {
     max-width: none;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .hero-label {
@@ -3574,6 +3601,8 @@ body.page-scrolled nav {
     font-size: 8px;
     line-height: 1.55;
     letter-spacing: 0.2em;
+    justify-content: center;
+    text-align: center;
   }
 
   .hero-title {
@@ -3588,6 +3617,7 @@ body.page-scrolled nav {
     margin-bottom: 18px;
     font-size: clamp(14px, 2.45vw, 18px);
     line-height: 1.45;
+    text-align: center;
   }
 
   .hero-title-line {
@@ -3601,12 +3631,15 @@ body.page-scrolled nav {
   }
 
   .hero-checks {
+    align-items: center;
     gap: 9px;
     margin-bottom: 24px;
   }
 
   .hero-checks li {
     align-items: flex-start;
+    justify-content: center;
+    text-align: center;
     font-size: 11px;
     line-height: 1.35;
   }
@@ -3614,6 +3647,7 @@ body.page-scrolled nav {
   .hero-actions {
     display: flex;
     align-items: stretch;
+    justify-content: center;
     gap: 10px;
     width: 100%;
   }
@@ -3643,7 +3677,12 @@ body.page-scrolled nav {
   }
 
   .services-tailored {
-    margin-bottom: 42px;
+    max-width: 320px;
+    margin: 0 0 34px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.65;
+    letter-spacing: 0.06em;
   }
 
   .hcb-trust {
@@ -3765,11 +3804,9 @@ body.page-scrolled nav {
   }
 
   .services-tailored {
-    max-width: 360px;
-    margin: 0 auto 38px;
-    font-size: 16px;
-    line-height: 1.6;
-    letter-spacing: 0.14em;
+    max-width: 300px;
+    margin: 0 0 34px;
+    text-align: left;
   }
 
   .hcb-trust {
