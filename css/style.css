@@ -3064,23 +3064,52 @@ body.page-scrolled nav {
     right: 0;
     bottom: 0;
     z-index: 1000000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: calc(78px + env(safe-area-inset-bottom, 0px));
-    padding: 9px 24px max(4px, calc(env(safe-area-inset-bottom, 0px) - 20px));
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: end;
+    min-height: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 14px 18px max(5px, calc(env(safe-area-inset-bottom, 0px) - 20px));
     color: #8a725a;
-    background: rgba(244, 237, 224, 0.94);
-    border: 1px solid rgba(209, 193, 177, 0.46);
-    border-bottom: 0;
-    border-radius: 24px 24px 0 0;
-    box-shadow: 0 -18px 48px rgba(61, 50, 40, 0.12);
+    background: transparent;
+    border: 0;
+    box-shadow: none;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     opacity: 0;
     pointer-events: none;
     transform: translateY(110%);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+
+  .bottom-nav::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(76px + env(safe-area-inset-bottom, 0px));
+    background: rgba(244, 237, 224, 0.96);
+    border: 1px solid rgba(209, 193, 177, 0.46);
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -18px 48px rgba(61, 50, 40, 0.12);
+    pointer-events: none;
+  }
+
+  .bottom-nav::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(54px + env(safe-area-inset-bottom, 0px));
+    width: 76px;
+    height: 38px;
+    transform: translateX(-50%);
+    background: rgba(244, 237, 224, 0.96);
+    border: 1px solid rgba(209, 193, 177, 0.46);
+    border-bottom: 0;
+    border-radius: 76px 76px 0 0;
+    box-shadow: 0 -14px 34px rgba(61, 50, 40, 0.10);
+    pointer-events: none;
   }
 
   body.bottom-nav-visible .bottom-nav {
@@ -3090,11 +3119,13 @@ body.page-scrolled nav {
   }
 
   .bottom-nav-side {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: calc(50% - 44px);
-    min-width: 0;
+    display: contents;
+  }
+
+  .bottom-nav-item,
+  .bottom-nav-quote {
+    position: relative;
+    z-index: 1;
   }
 
   .bottom-nav-item,
@@ -3111,8 +3142,9 @@ body.page-scrolled nav {
     align-items: center;
     justify-content: flex-end;
     gap: 5px;
-    width: 54px;
-    min-height: 48px;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
     font-family: var(--mono);
     font-size: 8px;
     font-weight: 700;
@@ -3142,38 +3174,45 @@ body.page-scrolled nav {
   }
 
   .bottom-nav-quote {
-    position: absolute;
-    left: 50%;
-    top: -22px;
-    transform: translateX(-50%);
+    grid-column: 3;
+    top: 0;
+    transform: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    justify-content: flex-end;
+    gap: 5px;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
     font-family: var(--mono);
     font-size: 8px;
     font-weight: 700;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #3d3228;
     transition: transform 0.2s ease;
   }
 
   .bottom-nav-quote-ring {
+    position: absolute;
+    left: 50%;
+    bottom: 17px;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #faf7f2;
     box-shadow: 0 10px 26px rgba(61, 50, 40, 0.12);
   }
 
   .bottom-nav-quote-ring svg {
-    width: 54px;
-    height: 54px;
-    padding: 15px;
+    width: 52px;
+    height: 52px;
+    padding: 14px;
     color: #faf7f2;
     background: #3d3228;
     border-radius: 50%;
@@ -3202,12 +3241,7 @@ body.page-scrolled nav {
     padding-right: 10px;
   }
 
-  .bottom-nav-side {
-    width: calc(50% - 40px);
-  }
-
   .bottom-nav-item {
-    width: 48px;
     font-size: 7px;
     letter-spacing: 0.06em;
   }
