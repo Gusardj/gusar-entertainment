@@ -5,7 +5,7 @@
 <title>GUSAR Entertainment — Miami's Premier Event Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-<link id="gfont-Noto-Sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap"><link id="gfont-Nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&amp;display=swap"><link id="gfont-Lato" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&amp;display=swap">  <link rel="stylesheet" href="css/style.css?v=partnership-teaser-removed">
+<link id="gfont-Noto-Sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap"><link id="gfont-Nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&amp;display=swap"><link id="gfont-Lato" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&amp;display=swap">  <link rel="stylesheet" href="css/style.css?v=quiz-microsoft-sans">
 </head>
 <body class="" data-cc-id="cc-1" style="cursor: crosshair; font-family: Lato;">
 
@@ -16,17 +16,20 @@
 
 <!-- NAV -->
 <nav id="nav">
+  <ul class="nav-links nav-links-left">
+    <li><a href="#services-editorial">Services</a></li>
+    <li><a href="#roster">Artists</a></li>
+    <li><a href="#portfolio">Events</a></li>
+  </ul>
   <a href="#" class="nav-logo">
     <span class="nav-logo-top">GUSAR</span>
     <span class="nav-logo-sub">Entertainment</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#services-editorial">Services</a></li>
-    <li><a href="#roster">Artists</a></li>
-    <li><a href="#portfolio">Events</a></li>
-    <li><a href="partnership.html">Partnership</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links nav-links-right">
+      <li><a href="partnership.html">Partnership</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
   <div class="nav-actions">
     <a href="tel:+19402793660" class="nav-call">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 16.92z"/></svg>
@@ -36,6 +39,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
+  </div>
   </div>
   <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1000,77 +1004,97 @@
 
 <!-- FOOTER -->
 
-<footer style="position:relative;overflow:hidden;">
+<footer>
+  <div class="nf-inner">
+    <div class="nf-grid">
 
-  <div class="botanical-layer" aria-hidden="true">
-    <svg viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <g opacity="0.12">
-        <!-- Left tall column -->
-        <path d="M24,0 C20,80 16,160 18,240 C20,320 22,360 18,400" stroke="#C9A84C" stroke-width="1.4" fill="none"/>
-        <path d="M22,60 C52,44 80,40 100,54" stroke="#C9A84C" stroke-width="1.1" fill="none"/>
-        <ellipse cx="124" cy="46" rx="72" ry="22" stroke="#C9A84C" stroke-width="1.2" fill="none" transform="rotate(16 124 46)"/>
-        <ellipse cx="124" cy="46" rx="52" ry="16" stroke="#C9A84C" stroke-width="0.7" fill="none" transform="rotate(16 124 46)" opacity="0.6"/>
-        <path d="M20,148 C50,132 78,128 98,140" stroke="#C9A84C" stroke-width="1.0" fill="none"/>
-        <ellipse cx="122" cy="132" rx="66" ry="20" stroke="#C9A84C" stroke-width="1.1" fill="none" transform="rotate(20 122 132)" opacity="0.8"/>
-        <path d="M19,238 C49,222 77,218 97,230" stroke="#C9A84C" stroke-width="1.0" fill="none"/>
-        <ellipse cx="121" cy="222" rx="60" ry="18" stroke="#C9A84C" stroke-width="1.0" fill="none" transform="rotate(14 121 222)" opacity="0.7"/>
-        <!-- Right tall column -->
-        <path d="M1416,0 C1420,80 1424,160 1422,240 C1420,320 1418,360 1422,400" stroke="#C9A84C" stroke-width="1.4" fill="none"/>
-        <path d="M1418,60 C1388,44 1360,40 1340,54" stroke="#C9A84C" stroke-width="1.1" fill="none"/>
-        <ellipse cx="1316" cy="46" rx="72" ry="22" stroke="#C9A84C" stroke-width="1.2" fill="none" transform="rotate(-16 1316 46)"/>
-        <ellipse cx="1316" cy="46" rx="52" ry="16" stroke="#C9A84C" stroke-width="0.7" fill="none" transform="rotate(-16 1316 46)" opacity="0.6"/>
-        <path d="M1420,148 C1390,132 1362,128 1342,140" stroke="#C9A84C" stroke-width="1.0" fill="none"/>
-        <ellipse cx="1318" cy="132" rx="66" ry="20" stroke="#C9A84C" stroke-width="1.1" fill="none" transform="rotate(-20 1318 132)" opacity="0.8"/>
-        <path d="M1421,238 C1391,222 1363,218 1343,230" stroke="#C9A84C" stroke-width="1.0" fill="none"/>
-        <ellipse cx="1319" cy="222" rx="60" ry="18" stroke="#C9A84C" stroke-width="1.0" fill="none" transform="rotate(-14 1319 222)" opacity="0.7"/>
-        <!-- Top rule -->
-        <line x1="0" y1="1" x2="1440" y2="1" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
-        <line x1="0" y1="5" x2="1440" y2="5" stroke="#C9A84C" stroke-width="0.4" opacity="0.18"/>
-      </g>
-    </svg>
+      <div class="nf-brand">
+        <div class="nf-logo-wrap">
+          <h2 class="nf-logo-name">GUSAR</h2>
+          <p class="nf-logo-sub">Entertainment</p>
+        </div>
+        <p class="nf-brand-desc">Miami's premier event production &amp; luxury wedding planning company.</p>
+      </div>
+
+      <div class="nf-col">
+        <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="services">
+          <span class="nf-col-title">Services</span>
+          <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <ul class="nf-list" id="nf-services">
+          <li><a href="#services-editorial">Luxury Weddings</a></li>
+          <li><a href="#services-editorial">Corporate Events</a></li>
+          <li><a href="#services-editorial">Artist Booking</a></li>
+          <li><a href="#services-editorial">AV Rentals</a></li>
+        </ul>
+      </div>
+
+      <div class="nf-col">
+        <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="company">
+          <span class="nf-col-title">Company</span>
+          <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <ul class="nf-list" id="nf-company">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#roster">Artist Roster</a></li>
+          <li><a href="#cta">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nf-col">
+        <span class="nf-contact-title">Contact</span>
+        <div class="nf-contact-list">
+          <a href="#" class="nf-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Miami, Florida</span>
+          </a>
+          <a href="mailto:info@gusarentertainment.com" class="nf-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@gusarentertainment.com</span>
+          </a>
+          <a href="tel:+19402793660" class="nf-contact-item nf-phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+1 (940) 279-3660</span>
+          </a>
+          <a href="https://wa.me/19402793660" class="nf-wa" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="nf-bottom">
+      <p class="nf-copy">© 2026 GUSAR ENTERTAINMENT. ALL RIGHTS RESERVED.</p>
+      <div class="nf-socials">
+        <a href="https://www.instagram.com/gusarentertainment/" target="_blank" rel="noopener" class="nf-social-link" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="nf-social-link" aria-label="TikTok">
+          <span class="nf-tiktok">TikTok</span>
+        </a>
+        <a href="#" class="nf-social-link" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">GUSAR <span style="font-size:12px">ENTERTAINMENT</span></div>
-      <p class="footer-desc">Miami's premier full-service event agency. From intimate gatherings to large-scale productions — we own every detail.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#">Luxury Weddings</a></li>
-        <li><a href="#">Corporate Events</a></li>
-        <li><a href="#">Artist Booking</a></li>
-        <li><a href="#">AV Rentals</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Artist Roster</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#">Miami, Florida</a></li>
-        <li><a href="mailto:info@gusarentertainment.com">info@gusarentertainment.com</a></li>
-        <li><a href="tel:+19402793660">+1 (940) 279 3660</a></li>
-        <li><a href="#" style="color: rgb(37,211,102)">WhatsApp</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2026 GUSAR Entertainment. All rights reserved.</p>
-    <div class="footer-socials">
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">Facebook</a>
-    </div>
-  </div>
+
+  <script>
+    (function() {
+      document.querySelectorAll('.nf-acc-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var id = 'nf-' + this.dataset.nfAcc;
+          var list = document.getElementById(id);
+          var open = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', open ? 'false' : 'true');
+          list.classList.toggle('is-open', !open);
+        });
+      });
+    })();
+  </script>
 </footer>
 
 <!-- TWEAKS PANEL -->
@@ -1103,5 +1127,5 @@
     </select>
   </div>
 </div>
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=quiz-buttons-fixed"></script>
 </body></html>

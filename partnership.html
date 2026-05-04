@@ -4,38 +4,144 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partnership - GUSAR Entertainment</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=artist-modal-quiz">
+  <link rel="stylesheet" href="css/style.css?v=partnership-nav-inline">
+  <style>
+    /* ── BASE ── */
+    .partnership-page, .partnership-page * { font-family: "Microsoft Sans Serif", sans-serif !important; }
+    .partnership-page { background: #faf7f2; }
+
+    /* ── NAV — LIGHT THEME ── */
+    .partnership-page nav {
+      background: rgba(250, 247, 242, 0.92) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(209, 193, 177, 0.4) !important;
+      box-shadow: 0 1px 24px rgba(61, 50, 40, 0.06) !important;
+    }
+    .partnership-page .nav-logo-top { color: #C9A961 !important; }
+    .partnership-page .nav-logo-sub { color: rgba(166, 139, 109, 0.7) !important; }
+    .partnership-page .nav-links a {
+      color: #8a725a !important;
+      cursor: pointer !important;
+    }
+    .partnership-page .nav-links a:hover { color: #3d3228 !important; }
+    .partnership-page .nav-links a[href="partnership.html"] { color: #3d3228 !important; font-weight: 700; }
+    .partnership-page .nav-call {
+      color: #3d3228 !important;
+      border-color: rgba(61, 50, 40, 0.25) !important;
+      cursor: pointer !important;
+      animation: none !important;
+    }
+    .partnership-page .nav-call:hover {
+      color: #a68b6d !important;
+      border-color: #a68b6d !important;
+      background: rgba(166, 139, 109, 0.06) !important;
+    }
+    .partnership-page .nav-call svg { stroke: currentColor !important; }
+    .partnership-page .nav-wa {
+      color: #3d3228 !important;
+      border-color: rgba(61, 50, 40, 0.2) !important;
+      cursor: pointer !important;
+      animation: none !important;
+    }
+    .partnership-page .nav-wa:hover {
+      border-color: rgba(37, 211, 102, 0.55) !important;
+      color: #128C7E !important;
+      background: rgba(37, 211, 102, 0.05) !important;
+    }
+    .partnership-page .nav-burger span { background: #3d3228 !important; }
+    @media (max-width: 900px) {
+      .partnership-page nav {
+        padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 14px !important;
+        justify-content: space-between !important;
+        gap: 12px;
+      }
+    }
+
+    /* ── HERO ── */
+    .pp-hero { padding: 160px 52px 96px; text-align: center; background: #faf7f2; position: relative; overflow: hidden; }
+    .pp-hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(201,169,97,0.07) 0%, transparent 65%); pointer-events: none; }
+    .pp-hero-inner { max-width: 760px; margin: 0 auto; position: relative; }
+    .pp-label { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase; color: #a68b6d; margin-bottom: 28px; }
+    .pp-title { font-size: clamp(44px, 7vw, 82px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; color: #3d3228; margin: 0 0 36px; }
+    .pp-title em { font-style: normal; color: #a68b6d; }
+    .pp-divider { width: 48px; height: 2px; background: linear-gradient(90deg, #C9A961, rgba(201,169,97,0.3)); margin: 0 auto 32px; border-radius: 2px; }
+    .pp-subtitle { font-size: 17px; color: #8a725a; line-height: 1.75; max-width: 500px; margin: 0 auto 64px; }
+    .pp-stats { display: flex; align-items: center; justify-content: center; border-top: 1px solid rgba(209,193,177,0.35); padding-top: 48px; }
+    .pp-stat { flex: 1; text-align: center; padding: 0 32px; }
+    .pp-stat strong { display: block; font-size: 38px; font-weight: 800; color: #3d3228; letter-spacing: -0.04em; margin-bottom: 6px; line-height: 1; }
+    .pp-stat span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #a68b6d; font-weight: 700; }
+    .pp-stat-sep { width: 1px; height: 44px; background: rgba(209,193,177,0.4); flex-shrink: 0; }
+
+    /* ── HOW IT WORKS (keep existing but tweak bg) ── */
+    .hiw-section { background: #faf7f2; padding-bottom: 0 !important; }
+
+    /* ── CATEGORIES ── */
+    .pp-cats { padding: 96px 52px 112px; background: #ffffff; border-top: 1px solid rgba(209,193,177,0.25); }
+    .pp-cats-inner { max-width: 1120px; margin: 0 auto; }
+    .pp-cats-header { text-align: center; margin-bottom: 64px; }
+    .pp-cats-title { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: #3d3228; letter-spacing: -0.03em; margin: 14px 0 0; line-height: 1.1; }
+    .pp-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(209,193,177,0.3); border: 1px solid rgba(209,193,177,0.3); border-radius: 20px; overflow: hidden; }
+    .pp-card { background: #ffffff; padding: 44px 38px 38px; position: relative; overflow: hidden; text-decoration: none; color: #3d3228; display: flex; flex-direction: column; cursor: pointer; transition: background 0.3s ease; }
+    .pp-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #C9A961, #a68b6d); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .pp-card:hover { background: #faf7f2; }
+    .pp-card:hover::after { transform: scaleX(1); }
+    .pp-card-num { font-size: 72px; font-weight: 800; color: rgba(61,50,40,0.04); line-height: 1; position: absolute; top: 16px; right: 24px; letter-spacing: -0.05em; user-select: none; pointer-events: none; transition: color 0.4s; }
+    .pp-card:hover .pp-card-num { color: rgba(201,169,97,0.1); }
+    .pp-card-icon { width: 48px; height: 48px; background: #f4ede0; color: #a68b6d; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 28px; flex-shrink: 0; transition: transform 0.35s ease; }
+    .pp-card:hover .pp-card-icon { transform: rotate(7deg); }
+    .pp-card-title { font-size: 18px; font-weight: 700; color: #3d3228; margin: 0 0 12px; line-height: 1.2; letter-spacing: -0.01em; }
+    .pp-card-desc { font-size: 13px; color: #8a725a; line-height: 1.7; flex: 1; margin: 0 0 28px; }
+    .pp-card-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #a68b6d; transition: gap 0.3s ease, color 0.3s ease; }
+    .pp-card:hover .pp-card-cta { gap: 14px; color: #C9A961; }
+    .pp-card-cta svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s ease; }
+    .pp-card:hover .pp-card-cta svg { transform: translateX(4px); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .pp-hero { padding: 140px 24px 72px; }
+      .pp-stat { padding: 0 16px; }
+      .pp-stat strong { font-size: 30px; }
+      .pp-cats { padding: 64px 24px 80px; }
+      .pp-cards-grid { grid-template-columns: repeat(2, 1fr); border-radius: 16px; }
+      .pp-card { padding: 36px 28px 32px; }
+    }
+    @media (max-width: 560px) {
+      .pp-hero { padding: 120px 20px 56px; }
+      .pp-stats { flex-direction: column; gap: 28px; padding-top: 36px; }
+      .pp-stat-sep { width: 40px; height: 1px; }
+      .pp-cats { padding: 48px 16px 64px; }
+      .pp-cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body class="partnership-page" data-cc-id="cc-partnership">
   <div id="cursor"></div>
   <nav id="nav">
+    <ul class="nav-links nav-links-left">
+      <li><a href="index.html#services-editorial">Services</a></li>
+      <li><a href="index.html#roster">Artists</a></li>
+      <li><a href="index.html#portfolio">Events</a></li>
+    </ul>
     <a href="index.html" class="nav-logo">
       <span class="nav-logo-top">GUSAR</span>
       <span class="nav-logo-sub">Entertainment</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html#services-editorial">Services</a></li>
-      <li><a href="index.html#roster">Artists</a></li>
-      <li><a href="index.html#portfolio">Events</a></li>
-      <li><a href="partnership.html">Partnership</a></li>
-      <li><a href="index.html#about">About</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="tel:+19402793660" class="nav-call" aria-label="Call GUSAR Entertainment">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8 9.72a16 16 0 0 0 6.28 6.28l1.28-1.28a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92z"/>
-        </svg>
-        <span>Call</span>
-      </a>
-      <a href="https://wa.me/19402793660" class="nav-wa" target="_blank" rel="noopener" aria-label="Message GUSAR Entertainment on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        <span>WhatsApp</span>
-      </a>
+    <div class="nav-right">
+      <ul class="nav-links nav-links-right">
+        <li><a href="partnership.html">Partnership</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:+19402793660" class="nav-call" aria-label="Call GUSAR Entertainment">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 16.92z"/></svg>
+          Call
+        </a>
+        <a href="https://wa.me/19402793660" class="nav-wa" target="_blank" rel="noopener" aria-label="Message GUSAR Entertainment on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
     <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -73,67 +179,188 @@
   </div>
 
   <main>
-    <section id="partnership">
-      <div class="partner-header">
-        <div class="section-label reveal">B2B Partnership</div>
-        <h1 class="section-title reveal reveal-delay-1">Join the <em>GUSAR Network</em></h1>
-        <p class="partner-subtitle reveal reveal-delay-2">We are always looking for exceptional talent and reliable technical partners for our luxury events.</p>
+
+    <!-- ── HERO ── -->
+    <section class="pp-hero">
+      <div class="pp-hero-inner">
+        <span class="pp-label">B2B Partnership</span>
+        <h1 class="pp-title">Join the <em>GUSAR</em><br>Network</h1>
+        <div class="pp-divider"></div>
+        <p class="pp-subtitle">We are always looking for exceptional talent and reliable technical partners for our luxury events in Miami and beyond.</p>
+        <div class="pp-stats">
+          <div class="pp-stat">
+            <strong>500+</strong>
+            <span>Events Produced</span>
+          </div>
+          <div class="pp-stat-sep"></div>
+          <div class="pp-stat">
+            <strong>150+</strong>
+            <span>Active Partners</span>
+          </div>
+          <div class="pp-stat-sep"></div>
+          <div class="pp-stat">
+            <strong>10+</strong>
+            <span>Years in Business</span>
+          </div>
+        </div>
       </div>
-      <div class="partner-apply-intro reveal reveal-delay-3">SELECT YOUR CATEGORY BELOW TO APPLY</div>
-      <div class="partner-process reveal reveal-delay-4" aria-label="Partnership application process">
-        <div class="partner-process-step">
-          <span class="partner-process-num">01</span>
-          <h2>Submit Your Application</h2>
-          <p>Complete the form for your category. Takes under 5 minutes.</p>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <style>
+      .hiw-section { width: 100%; padding: 80px 24px 96px; }
+      .hiw-inner { max-width: 1120px; margin: 0 auto; }
+      .hiw-header { text-align: center; margin-bottom: 64px; }
+      .hiw-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.4em; text-transform: uppercase; color: #a68b6d; margin-bottom: 16px; }
+      .hiw-heading { font-size: clamp(26px, 3.5vw, 40px); color: #3d3228; margin: 0; font-weight: 800; letter-spacing: -0.03em; }
+      .hiw-grid { display: flex; flex-direction: column; gap: 12px; }
+      .hiw-step { position: relative; display: flex; align-items: flex-start; gap: 16px; padding: 20px; border-radius: 16px; border: 1px solid rgba(209,193,177,0.3); background: white; transition: background 0.3s ease; overflow: hidden; }
+      .hiw-bg-num { display: none; }
+      .hiw-icon-wrap { flex-shrink: 0; width: 40px; height: 40px; background: #f4ede0; color: #a68b6d; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; transition: transform 0.3s ease; }
+      .hiw-step:hover .hiw-icon-wrap { transform: rotate(6deg); }
+      .hiw-icon-desktop { display: none; }
+      .hiw-num-mobile { display: block; }
+      .hiw-text-wrap { flex: 1; padding-top: 2px; }
+      .hiw-title { font-size: 13px; font-weight: 700; color: #3d3228; text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 4px; line-height: 1.2; }
+      .hiw-desc { font-size: 12px; color: #8a725a; line-height: 1.65; margin: 0; padding-right: 16px; }
+      .hiw-deco-line { display: none; }
+      @media (min-width: 768px) {
+        .hiw-header { margin-bottom: 72px; }
+        .hiw-label { font-size: 11px; }
+        .hiw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid rgba(209,193,177,0.4); border-radius: 20px; overflow: hidden; background: rgba(209,193,177,0.3); box-shadow: 0 24px 80px rgba(61,50,40,0.06); }
+        .hiw-step { flex-direction: column; align-items: flex-start; gap: 0; padding: 52px 44px; border-radius: 0; border: none; background: #fff; }
+        .hiw-step:hover { background: #faf7f2; }
+        .hiw-step-border { border-right: 1px solid rgba(209,193,177,0.4); }
+        .hiw-bg-num { display: block; position: absolute; top: 0; right: 0; padding: 28px; font-size: 9rem; font-weight: 900; color: #3d3228; opacity: 0.03; line-height: 1; user-select: none; pointer-events: none; transition: opacity 0.3s; }
+        .hiw-step:hover .hiw-bg-num { opacity: 0.09; }
+        .hiw-icon-wrap { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 36px; }
+        .hiw-icon-desktop { display: block; }
+        .hiw-num-mobile { display: none; }
+        .hiw-text-wrap { padding-top: 0; }
+        .hiw-title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; text-transform: none; margin-bottom: 14px; }
+        .hiw-desc { font-size: 14px; line-height: 1.8; padding-right: 0; }
+        .hiw-deco-line { display: block; margin-top: 32px; width: 0; height: 1px; background: #a68b6d; opacity: 0.35; transition: width 0.7s ease; }
+        .hiw-step:hover .hiw-deco-line { width: 100%; }
+      }
+    </style>
+
+    <section class="hiw-section">
+      <div class="hiw-inner">
+        <div class="hiw-header">
+          <span class="hiw-label">How It Works</span>
+          <p class="hiw-heading">Three steps to partnership</p>
         </div>
-        <div class="partner-process-step">
-          <span class="partner-process-num">02</span>
-          <h2>We Review</h2>
-          <p>Our team evaluates every application within 5-7 business days.</p>
-        </div>
-        <div class="partner-process-step">
-          <span class="partner-process-num">03</span>
-          <h2>Welcome Aboard</h2>
-          <p>Qualified partners are added to our curated vendor roster and contacted for onboarding.</p>
+        <div class="hiw-grid">
+          <div class="hiw-step hiw-step-border">
+            <div class="hiw-bg-num" aria-hidden="true">01</div>
+            <div class="hiw-icon-wrap">
+              <span class="hiw-num-mobile">01</span>
+              <div class="hiw-icon-desktop"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
+            </div>
+            <div class="hiw-text-wrap">
+              <h3 class="hiw-title">Submit Your Application</h3>
+              <p class="hiw-desc">Complete the form for your category. It takes under 5 minutes.</p>
+            </div>
+            <div class="hiw-deco-line"></div>
+          </div>
+          <div class="hiw-step hiw-step-border">
+            <div class="hiw-bg-num" aria-hidden="true">02</div>
+            <div class="hiw-icon-wrap">
+              <span class="hiw-num-mobile">02</span>
+              <div class="hiw-icon-desktop"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+            </div>
+            <div class="hiw-text-wrap">
+              <h3 class="hiw-title">We Review</h3>
+              <p class="hiw-desc">Our team evaluates every application within 5–7 business days.</p>
+            </div>
+            <div class="hiw-deco-line"></div>
+          </div>
+          <div class="hiw-step">
+            <div class="hiw-bg-num" aria-hidden="true">03</div>
+            <div class="hiw-icon-wrap">
+              <span class="hiw-num-mobile">03</span>
+              <div class="hiw-icon-desktop"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v0c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11v0c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98v0C9.52 4.9 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg></div>
+            </div>
+            <div class="hiw-text-wrap">
+              <h3 class="hiw-title">Welcome Aboard</h3>
+              <p class="hiw-desc">Qualified partners are added to our roster and contacted for onboarding.</p>
+            </div>
+            <div class="hiw-deco-line"></div>
+          </div>
         </div>
       </div>
-      <div class="partner-grid">
-        <a href="#collab-section" class="partner-card reveal" data-open-collab aria-haspopup="dialog">
-          <span class="partner-card-num">01</span>
-          <h3 class="partner-card-title">Artists &amp; Talent</h3>
-          <p class="partner-card-desc">DJs, cover bands, vocalists, musicians, dancers, and specialty acts.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-1">
-          <span class="partner-card-num">02</span>
-          <h3 class="partner-card-title">Technical Production</h3>
-          <p class="partner-card-desc">Sound engineers, lighting designers, special FX, and AV technicians.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-2">
-          <span class="partner-card-num">03</span>
-          <h3 class="partner-card-title">Decor &amp; Scenography</h3>
-          <p class="partner-card-desc">Florists, event decorators, stage designers, and custom builders.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-3">
-          <span class="partner-card-num">04</span>
-          <h3 class="partner-card-title">Catering &amp; Hospitality</h3>
-          <p class="partner-card-desc">Catering companies, mixologists, sommeliers, and premium event staff.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-4">
-          <span class="partner-card-num">05</span>
-          <h3 class="partner-card-title">Event Management</h3>
-          <p class="partner-card-desc">Project managers, event coordinators, directors, and planners.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="partner-card reveal reveal-delay-5">
-          <span class="partner-card-num">06</span>
-          <h3 class="partner-card-title">Other / Propose a Service</h3>
-          <p class="partner-card-desc">PR, SMM specialists, photo/video production, and creative agencies.</p>
-          <span class="partner-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
-        </a>
+    </section>
+
+    <!-- ── CATEGORIES ── -->
+    <section class="pp-cats">
+      <div class="pp-cats-inner">
+        <div class="pp-cats-header">
+          <span class="pp-label">Select Your Category</span>
+          <p class="pp-cats-title">Apply to Join Our Roster</p>
+        </div>
+        <div class="pp-cards-grid">
+
+          <a href="#collab-section" class="pp-card" data-open-collab aria-haspopup="dialog">
+            <span class="pp-card-num" aria-hidden="true">01</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/><path d="M8 22h8"/></svg>
+            </div>
+            <h3 class="pp-card-title">Artists &amp; Talent</h3>
+            <p class="pp-card-desc">DJs, cover bands, vocalists, musicians, dancers, and specialty acts.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="pp-card">
+            <span class="pp-card-num" aria-hidden="true">02</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+            </div>
+            <h3 class="pp-card-title">Technical Production</h3>
+            <p class="pp-card-desc">Sound engineers, lighting designers, special FX, and AV technicians.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="pp-card">
+            <span class="pp-card-num" aria-hidden="true">03</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+            </div>
+            <h3 class="pp-card-title">Decor &amp; Scenography</h3>
+            <p class="pp-card-desc">Florists, event decorators, stage designers, and custom builders.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="pp-card">
+            <span class="pp-card-num" aria-hidden="true">04</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+            </div>
+            <h3 class="pp-card-title">Catering &amp; Hospitality</h3>
+            <p class="pp-card-desc">Catering companies, mixologists, sommeliers, and premium event staff.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="pp-card">
+            <span class="pp-card-num" aria-hidden="true">05</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+            </div>
+            <h3 class="pp-card-title">Event Management</h3>
+            <p class="pp-card-desc">Project managers, event coordinators, directors, and planners.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="pp-card">
+            <span class="pp-card-num" aria-hidden="true">06</span>
+            <div class="pp-card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="pp-card-title">Other / Propose a Service</h3>
+            <p class="pp-card-desc">PR, SMM specialists, photo/video production, and creative agencies.</p>
+            <span class="pp-card-cta">Apply Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg></span>
+          </a>
+
+        </div>
       </div>
     </section>
 <!-- ============================================================
@@ -161,7 +388,7 @@
       radial-gradient(circle at 50% 0%, rgba(201, 169, 97, 0.12), transparent 36%),
       rgba(0, 0, 0, 0.86);
     color: var(--gq-text);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    font-family: "Microsoft Sans Serif", sans-serif !important;
     padding: 48px 24px;
     box-sizing: border-box;
     width: 100%;
@@ -737,48 +964,97 @@
 </script>
   </main>
 
-  <footer style="position:relative;overflow:hidden;">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">GUSAR <span style="font-size:12px">ENTERTAINMENT</span></div>
-        <p class="footer-desc">Miami's premier full-service event agency. From intimate gatherings to large-scale productions — we own every detail.</p>
+  <footer>
+    <div class="nf-inner">
+      <div class="nf-grid">
+
+        <div class="nf-brand">
+          <div class="nf-logo-wrap">
+            <h2 class="nf-logo-name">GUSAR</h2>
+            <p class="nf-logo-sub">Entertainment</p>
+          </div>
+          <p class="nf-brand-desc">Miami's premier event production &amp; luxury wedding planning company.</p>
+        </div>
+
+        <div class="nf-col">
+          <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="services">
+            <span class="nf-col-title">Services</span>
+            <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <ul class="nf-list" id="nf-services">
+            <li><a href="index.html#services-editorial">Luxury Weddings</a></li>
+            <li><a href="index.html#services-editorial">Corporate Events</a></li>
+            <li><a href="index.html#services-editorial">Artist Booking</a></li>
+            <li><a href="index.html#services-editorial">AV Rentals</a></li>
+          </ul>
+        </div>
+
+        <div class="nf-col">
+          <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="company">
+            <span class="nf-col-title">Company</span>
+            <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <ul class="nf-list" id="nf-company">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="index.html#roster">Artist Roster</a></li>
+            <li><a href="index.html#cta">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="nf-col">
+          <span class="nf-contact-title">Contact</span>
+          <div class="nf-contact-list">
+            <a href="#" class="nf-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Miami, Florida</span>
+            </a>
+            <a href="mailto:info@gusarentertainment.com" class="nf-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>info@gusarentertainment.com</span>
+            </a>
+            <a href="tel:+19402793660" class="nf-contact-item nf-phone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+1 (940) 279-3660</span>
+            </a>
+            <a href="https://wa.me/19402793660" class="nf-wa" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
       </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="index.html#services-editorial">Luxury Weddings</a></li>
-          <li><a href="index.html#services-editorial">Corporate Events</a></li>
-          <li><a href="index.html#services-editorial">Artist Booking</a></li>
-          <li><a href="index.html#services-editorial">AV Rentals</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="index.html#about">About Us</a></li>
-          <li><a href="index.html#portfolio">Portfolio</a></li>
-          <li><a href="index.html#roster">Artist Roster</a></li>
-          <li><a href="index.html#cta">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li>Miami, Florida</li>
-          <li>info@gusarentertainment.com</li>
-          <li>+1 (940) 279-3660</li>
-          <li><a href="https://wa.me/19402793660" style="color:rgb(37,211,102)">WhatsApp</a></li>
-        </ul>
+
+      <div class="nf-bottom">
+        <p class="nf-copy">© 2026 GUSAR ENTERTAINMENT. ALL RIGHTS RESERVED.</p>
+        <div class="nf-socials">
+          <a href="https://www.instagram.com/gusarentertainment/" target="_blank" rel="noopener" class="nf-social-link" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="nf-social-link" aria-label="TikTok">
+            <span class="nf-tiktok">TikTok</span>
+          </a>
+          <a href="#" class="nf-social-link" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 GUSAR Entertainment. All rights reserved.</div>
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/gusarentertainment/" target="_blank" rel="noopener">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="#">Facebook</a>
-      </div>
-    </div>
+
+    <script>
+      (function() {
+        document.querySelectorAll('.nf-acc-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var id = 'nf-' + this.dataset.nfAcc;
+            var list = document.getElementById(id);
+            var open = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', open ? 'false' : 'true');
+            list.classList.toggle('is-open', !open);
+          });
+        });
+      })();
+    </script>
   </footer>
 
   <script src="js/script.js"></script>

@@ -178,3 +178,269 @@ updateNavState();
     els.forEach((el) => el.classList.add('visible'));
   }
 })();
+
+// Proposal quiz controller. Kept global because the existing HTML uses inline handlers.
+(function initProposalQuiz() {
+  const quiz = document.getElementById('quiz-section');
+  if (!quiz) return;
+
+  const totalSteps = 5;
+  let currentStep = 1;
+  let budgetPersonal = false;
+
+  const stepEls = Array.from(quiz.querySelectorAll('.qstep'));
+  const progressLabel = document.getElementById('qProgressLabel');
+  const progressBar = document.getElementById('qProgressBar');
+  const progressFill = document.getElementById('qProgressFill');
+  const successScreen = document.getElementById('qSuccessScreen');
+  const submitBtn = document.getElementById('qSubmitBtn');
+  const waLink = document.getElementById('qWaLink');
+
+  function selectedText(selector) {
+    return quiz.querySelector(selector)?.dataset.val || '';
+  }
+
+  function selectedList(selector) {
+    return Array.from(quiz.querySelectorAll(selector)).map((el) => el.dataset.val).filter(Boolean);
+  }
+
+  function getField(id) {
+    return document.getElementById(id);
+  }
+
+  function getValue(id) {
+    return getField(id)?.value.trim() || '';
+  }
+
+  function setError(step, visible) {
+    const err = document.getElementById(`qerr${step}`);
+    if (!err) return;
+    err.classList.toggle('show', Boolean(visible));
+  }
+
+  function updateProgress() {
+    if (progressLabel) progressLabel.textContent = `Step ${currentStep} of ${totalSteps}`;
+    if (progressBar) progressBar.setAttribute('aria-valuenow', String(currentStep));
+    if (progressFill) progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
+  }
+
+  function showStep(step, direction = 'next') {
+    currentStep = Math.max(1, Math.min(totalSteps, step));
+    stepEls.forEach((el) => {
+      el.classList.remove('active', 'back');
+      if (el.id === `qstep${currentStep}`) {
+        el.classList.add('active');
+        if (direction === 'back') el.classList.add('back');
+      }
+    });
+    if (successScreen) successScreen.classList.remove('active');
+    updateProgress();
+  }
+
+  function validateStep(step) {
+    setError(step, false);
+
+    if (step === 1) {
+      const hasType = Boolean(quiz.querySelector('#qEventTypeChoices .qchoice.selected'));
+      setError(1, !hasType);
+      return hasType;
+    }
+
+    if (step === 2) {
+      const hasServices = quiz.querySelectorAll('.qsvc.selected').length > 0;
+      const hasCustom = getValue('qCustomService').length > 0;
+      setError(2, !hasServices && !hasCustom);
+      return hasServices || hasCustom;
+    }
+
+    if (step === 3) {
+      const valid = getValue('qEventDate').length > 0 && getValue('qEventLocation').length > 0;
+      setError(3, !valid);
+      return valid;
+    }
+
+    if (step === 5) {
+      const valid = getValue('qContactName').length > 0
+        && getValue('qContactPhone').length > 0
+        && Boolean(getField('qConsentCheck')?.checked);
+      setError(5, !valid);
+      return valid;
+    }
+
+    return true;
+  }
+
+  function formatGuests(raw) {
+    const value = Number(raw);
+    if (value >= 100) return '1000+';
+    return String(Math.max(0, value * 10));
+  }
+
+  function formatMoney(raw) {
+    return Number(raw).toLocaleString('en-US');
+  }
+
+  window.qSelectChoice = function qSelectChoice(el, groupId) {
+    const group = document.getElementById(groupId);
+    if (!group || !el) return;
+    group.querySelectorAll('.qchoice').forEach((choice) => choice.classList.remove('selected'));
+    el.classList.add('selected');
+    setError(1, false);
+  };
+
+  window.qSelectPill = function qSelectPill(el, groupId) {
+    const group = document.getElementById(groupId);
+    if (!group || !el) return;
+    group.querySelectorAll('.qpill').forEach((pill) => pill.classList.remove('selected'));
+    el.classList.add('selected');
+  };
+
+  window.qNextStep = function qNextStep(step) {
+    if (!validateStep(step)) return;
+    showStep(step + 1);
+  };
+
+  window.qPrevStep = function qPrevStep(step) {
+    showStep(step - 1, 'back');
+  };
+
+  window.qUpdateGuests = function qUpdateGuests(input) {
+    const output = document.getElementById('qGuestVal');
+    const suffix = document.getElementById('qGuestSuffix');
+    if (!output || !input) return;
+    output.textContent = formatGuests(input.value);
+    if (suffix) suffix.textContent = '';
+  };
+
+  window.qUpdateBudget = function qUpdateBudget(input) {
+    const output = document.getElementById('qBudgetVal');
+    if (!output || !input) return;
+    output.textContent = formatMoney(input.value);
+  };
+
+  window.qToggleBudgetPersonal = function qToggleBudgetPersonal() {
+    budgetPersonal = !budgetPersonal;
+    const sliderBlock = document.getElementById('qBudgetSliderBlock');
+    const personalBlock = document.getElementById('qBudgetPersonalBlock');
+    const toggleBtn = document.getElementById('qBudgetToggleBtn');
+
+    if (sliderBlock) sliderBlock.style.display = budgetPersonal ? 'none' : '';
+    if (personalBlock) personalBlock.classList.toggle('active', budgetPersonal);
+    if (toggleBtn) {
+      toggleBtn.textContent = budgetPersonal
+        ? '←  Show budget slider'
+        : "💬  I'd prefer to discuss the budget personally";
+    }
+  };
+
+  window.qPreselectTag = function qPreselectTag(value) {
+    const target = Array.from(document.querySelectorAll('#qEventTypeChoices .qchoice'))
+      .find((el) => el.dataset.val === value);
+    if (target) window.qSelectChoice(target, 'qEventTypeChoices');
+    showStep(1);
+    window.setTimeout(() => {
+      document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 20);
+  };
+
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyERCBhNWg5FZMPO96XJK_3Wo_9eslOugO8GNGDeYnRJHcblYYJU-bM28SwTblAQHhM/exec';
+
+  window.qSubmitQuiz = async function qSubmitQuiz() {
+    if (!validateStep(5)) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    }
+
+    const eventType = selectedText('#qEventTypeChoices .qchoice.selected') || 'Not selected';
+    const services = selectedList('.qsvc.selected');
+    const customService = getValue('qCustomService');
+    if (customService) services.push(customService);
+
+    const budget = budgetPersonal
+      ? 'Discuss personally'
+      : `$${formatMoney(getField('qBudgetSlider')?.value || 5000)}`;
+
+    const message = [
+      'New event proposal request',
+      `Event type: ${eventType}`,
+      `Services: ${services.join(', ') || 'Not selected'}`,
+      `Date: ${getValue('qEventDate') || 'Not provided'}`,
+      `Location: ${getValue('qEventLocation') || 'Not provided'}`,
+      `Guests: ${formatGuests(getField('qGuestSlider')?.value || 10)}`,
+      `Budget: ${budget}`,
+      `Name: ${getValue('qContactName')}`,
+      `Phone: ${getValue('qContactPhone')}`,
+      `Email: ${getValue('qContactEmail') || 'Not provided'}`,
+      `Heard from: ${selectedText('#qHeardPills .qpill.selected') || 'Not selected'}`,
+      `Preferred contact: ${selectedList('.qcmethod.selected').join(', ') || 'Not selected'}`,
+      `Notes: ${getValue('qContactNotes') || 'None'}`
+    ].join('\n');
+
+    if (waLink) {
+      waLink.href = `https://wa.me/19402793660?text=${encodeURIComponent(message)}`;
+    }
+
+    try {
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'EventProposal',
+          eventType,
+          services: services.join(', ') || 'Not selected',
+          date: getValue('qEventDate') || 'Not provided',
+          location: getValue('qEventLocation') || 'Not provided',
+          guests: formatGuests(getField('qGuestSlider')?.value || 10),
+          budget,
+          name: getValue('qContactName'),
+          phone: getValue('qContactPhone'),
+          email: getValue('qContactEmail') || 'Not provided',
+          heardFrom: selectedText('#qHeardPills .qpill.selected') || 'Not selected',
+          preferredContact: selectedList('.qcmethod.selected').join(', ') || 'Not selected',
+          notes: getValue('qContactNotes') || 'None'
+        })
+      });
+    } catch (e) {
+      console.error('Webhook error:', e);
+    }
+
+    window.setTimeout(() => {
+      stepEls.forEach((el) => el.classList.remove('active'));
+      if (successScreen) successScreen.classList.add('active');
+      if (progressLabel) progressLabel.textContent = 'Request received';
+      if (progressFill) progressFill.style.width = '100%';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get My Proposal →';
+      }
+    }, 350);
+  };
+
+  quiz.addEventListener('input', (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (target.matches('#qEventDate, #qEventLocation')) setError(3, false);
+    if (target.matches('#qContactName, #qContactPhone, #qConsentCheck')) setError(5, false);
+    if (target.matches('#qCustomService')) setError(2, false);
+  });
+
+  quiz.querySelectorAll('.qsvc').forEach((svc) => {
+    svc.addEventListener('click', () => setError(2, false));
+  });
+
+  const topButton = quiz.querySelector('.qbtn-home');
+  if (topButton) {
+    topButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      showStep(1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  window.qUpdateGuests(getField('qGuestSlider'));
+  window.qUpdateBudget(getField('qBudgetSlider'));
+  showStep(1);
+})();
