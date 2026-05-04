@@ -74,12 +74,18 @@ updateNavState();
 
   function updateBottomNavState() {
     const threshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
-    document.body.classList.toggle("bottom-nav-visible", window.scrollY >= threshold);
+    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
+    const openedPastFirstBlock = hashTarget && !firstBlock.contains(hashTarget) && hashTarget !== firstBlock;
+    document.body.classList.toggle("bottom-nav-visible", openedPastFirstBlock || window.scrollY >= threshold);
   }
 
   window.addEventListener("scroll", updateBottomNavState, { passive: true });
   window.addEventListener("resize", updateBottomNavState);
+  window.addEventListener("hashchange", updateBottomNavState);
+  window.addEventListener("load", updateBottomNavState);
   updateBottomNavState();
+  requestAnimationFrame(updateBottomNavState);
+  window.setTimeout(updateBottomNavState, 250);
 })();
 
 (function initServicesEditorial() {
