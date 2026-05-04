@@ -3786,3 +3786,304 @@ body.page-scrolled nav {
     font-size: 17px;
   }
 }
+
+/* Home page light theme aligned with Partnership */
+body.home-light {
+  --home-bg: #F2EFEA;
+  --home-bg2: #E6E1D8;
+  --home-card: #FAF7F2;
+  --home-text: #36332E;
+  --home-muted: #756F65;
+  --home-accent: #4A463F;
+  --home-border: #D8D2C9;
+  --black: #F2EFEA;
+  --surface: #E6E1D8;
+  --surface2: #FAF7F2;
+  --cream: #36332E;
+  --cream-dim: #756F65;
+  --border: rgba(54, 51, 46, 0.12);
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  cursor: auto !important;
+  font-family: "Plus Jakarta Sans", "Inter", Helvetica, sans-serif !important;
+}
+
+body.home-light *,
+body.home-light *::before,
+body.home-light *::after {
+  font-family: "Plus Jakarta Sans", "Inter", Helvetica, sans-serif !important;
+}
+
+body.home-light nav,
+body.home-light nav.scrolled,
+body.home-light.page-scrolled nav {
+  background: rgba(242, 239, 234, 0.96) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid var(--home-border) !important;
+  box-shadow: 0 1px 20px rgba(54, 51, 46, 0.05) !important;
+}
+
+body.home-light .nav-logo-top {
+  color: var(--home-accent) !important;
+  letter-spacing: 0.1em !important;
+}
+
+body.home-light .nav-logo-sub,
+body.home-light .nav-links a,
+body.home-light .nav-wa {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .nav-links a:hover,
+body.home-light .nav-call,
+body.home-light .nav-burger span {
+  color: var(--home-text) !important;
+}
+
+body.home-light .nav-call,
+body.home-light .nav-wa {
+  border-color: var(--home-border) !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+}
+
+body.home-light .nav-call:hover,
+body.home-light .nav-wa:hover {
+  background: var(--home-bg2) !important;
+  color: var(--home-accent) !important;
+  border-color: var(--home-accent) !important;
+}
+
+body.home-light .nav-burger span {
+  background: var(--home-text) !important;
+}
+
+body.home-light #hero {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light .hero-bg {
+  background: var(--home-bg) !important;
+}
+
+body.home-light .hero-bg-img {
+  opacity: 0.14;
+  filter: grayscale(1) sepia(0.08) brightness(1.08) contrast(0.88);
+}
+
+body.home-light .hero-bg::after {
+  background:
+    linear-gradient(180deg, rgba(242, 239, 234, 0.55), rgba(242, 239, 234, 0.92)),
+    radial-gradient(circle at 50% 10%, rgba(201, 169, 97, 0.09), transparent 54%) !important;
+}
+
+body.home-light .hero-glow {
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.12), transparent 64%) !important;
+}
+
+body.home-light .hero-title,
+body.home-light .hero-sub,
+body.home-light .hero-checks,
+body.home-light .hero-checks li,
+body.home-light .hero-microcopy {
+  color: var(--home-text) !important;
+}
+
+body.home-light .hero-label,
+body.home-light .hero-support,
+body.home-light .hero-outcome,
+body.home-light .hero-tailored,
+body.home-light .section-label,
+body.home-light .section-title em,
+body.home-light .hero-title-line.italic-line span {
+  color: #a68b6d !important;
+}
+
+body.home-light .hero-support,
+body.home-light .hero-sub,
+body.home-light .hero-microcopy,
+body.home-light .section-sub,
+body.home-light .about-text p,
+body.home-light .process-desc,
+body.home-light .cta-sub {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .btn-primary,
+body.home-light .ed-btn,
+body.home-light .mcta-btn {
+  background: var(--home-accent) !important;
+  border-color: var(--home-accent) !important;
+  color: var(--home-bg) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 14px 34px rgba(54, 51, 46, 0.12) !important;
+}
+
+body.home-light .btn-ghost-gold,
+body.home-light .btn-ghost {
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  background: rgba(250, 247, 242, 0.64) !important;
+  border-radius: 6px !important;
+}
+
+body.home-light #marquee-gusar {
+  --mq-bg: #E6E1D8;
+  --mq-green-dark: #E6E1D8;
+  --mq-text: #756F65;
+  --mq-muted: rgba(117, 111, 101, 0.58);
+  background: var(--home-bg2) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #marquee-gusar::before {
+  background: linear-gradient(to right, var(--home-bg2), rgba(230, 225, 216, 0.72), transparent) !important;
+}
+
+body.home-light #marquee-gusar::after {
+  background: linear-gradient(to left, var(--home-bg2), rgba(230, 225, 216, 0.72), transparent) !important;
+}
+
+body.home-light #services-editorial {
+  --ed-bg: #F2EFEA;
+  --ed-card-bg: #FAF7F2;
+  --ed-card-hover: #EDEAD5;
+  --ed-text: #36332E;
+  --ed-text-mut: #756F65;
+  --ed-border: rgba(216, 210, 201, 0.78);
+  --ed-tags: #a68b6d;
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light #services-editorial::before {
+  opacity: 0.02 !important;
+}
+
+body.home-light .ed-grid,
+body.home-light .ed-card,
+body.home-light .ed-cta-block {
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .ed-card {
+  box-shadow: none !important;
+}
+
+body.home-light .ed-bg {
+  opacity: 0.36 !important;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(201, 169, 97, 0.10), transparent 34%),
+    repeating-linear-gradient(135deg, rgba(54, 51, 46, 0.035) 0 1px, transparent 1px 28px) !important;
+}
+
+body.home-light .ed-bg:has(img)::after,
+body.home-light .portfolio-overlay,
+body.home-light .roster-card::after {
+  background: linear-gradient(180deg, transparent 24%, rgba(54, 51, 46, 0.18) 100%) !important;
+}
+
+body.home-light #testimonials,
+body.home-light #quiz-section,
+body.home-light #stats,
+body.home-light #about,
+body.home-light #roster,
+body.home-light #portfolio,
+body.home-light #process,
+body.home-light #cta,
+body.home-light .mcta {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light #testimonials::before,
+body.home-light #about::before,
+body.home-light #roster::before,
+body.home-light #portfolio::before,
+body.home-light #process::before {
+  background: var(--home-border) !important;
+}
+
+body.home-light .tss-card,
+body.home-light .roster-card,
+body.home-light .portfolio-item,
+body.home-light .process-step,
+body.home-light .quiz-card,
+body.home-light .qchoice,
+body.home-light .qsvc,
+body.home-light .qpill,
+body.home-light .qcmethod,
+body.home-light .qbudget-toggle {
+  background: rgba(250, 247, 242, 0.86) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: 0 18px 50px rgba(54, 51, 46, 0.07) !important;
+}
+
+body.home-light .tss-bar,
+body.home-light .tss-chat,
+body.home-light .tss-bubble--in {
+  background: #FAF7F2 !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light .tss-bubble--out {
+  background: rgba(37, 211, 102, 0.12) !important;
+  color: #2f4f45 !important;
+}
+
+body.home-light .tss-name,
+body.home-light .tss-bubble,
+body.home-light .portfolio-title,
+body.home-light .process-title,
+body.home-light .about-text p strong {
+  color: var(--home-text) !important;
+}
+
+body.home-light .tss-sub,
+body.home-light .tss-time,
+body.home-light .portfolio-cat,
+body.home-light .process-num {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .portfolio-bg,
+body.home-light .about-img-placeholder,
+body.home-light .roster-img {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(201, 169, 97, 0.12), transparent 36%),
+    repeating-linear-gradient(135deg, rgba(54, 51, 46, 0.04) 0 1px, transparent 1px 26px),
+    var(--home-bg2) !important;
+}
+
+body.home-light .process-steps {
+  background: var(--home-border) !important;
+}
+
+body.home-light .qfield-input,
+body.home-light .qfield-input:-webkit-autofill,
+body.home-light .qfield-input:-webkit-autofill:focus {
+  background: rgba(250, 247, 242, 0.92) !important;
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light footer,
+body.home-light .new-footer {
+  background: #fff !important;
+  color: var(--home-text) !important;
+  border-top: 1px solid var(--home-border) !important;
+}
+
+@media (max-width: 900px) {
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav {
+    background: rgba(242, 239, 234, 0.96) !important;
+    border-bottom: 1px solid var(--home-border) !important;
+    box-shadow: 0 1px 20px rgba(54, 51, 46, 0.05) !important;
+  }
+}
