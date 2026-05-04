@@ -11,7 +11,9 @@
     .partnership-page { background: #faf7f2; }
 
     /* ── NAV — LIGHT THEME ── */
-    .partnership-page nav {
+    .partnership-page nav,
+    .partnership-page nav.scrolled,
+    body.partnership-page.page-scrolled nav {
       background: rgba(250, 247, 242, 0.92) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
@@ -51,10 +53,77 @@
     }
     .partnership-page .nav-burger span { background: #3d3228 !important; }
     @media (max-width: 900px) {
-      .partnership-page nav {
+      .partnership-page nav,
+      .partnership-page nav.scrolled,
+      body.partnership-page.page-scrolled nav {
         padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 14px !important;
         justify-content: space-between !important;
         gap: 12px;
+      }
+      .partnership-page .nav-logo {
+        position: static !important;
+        transform: none !important;
+        align-items: flex-start !important;
+        margin-right: auto !important;
+      }
+      .partnership-page .nav-links-left,
+      .partnership-page .nav-links-right {
+        display: none !important;
+      }
+      .partnership-page .nav-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-left: auto !important;
+      }
+      .partnership-page .nav-actions {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+      }
+      .partnership-page .nav-call,
+      .partnership-page .nav-wa {
+        min-height: 38px !important;
+        padding: 0 11px !important;
+        font-size: 8px !important;
+        letter-spacing: 0.1em !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+      }
+      .partnership-page .nav-call svg,
+      .partnership-page .nav-wa svg {
+        width: 13px !important;
+        height: 13px !important;
+      }
+      .partnership-page .nav-burger {
+        display: flex !important;
+        margin-left: 0 !important;
+      }
+    }
+    @media (max-width: 430px) {
+      .partnership-page nav,
+      .partnership-page nav.scrolled,
+      body.partnership-page.page-scrolled nav {
+        padding: calc(env(safe-area-inset-top, 0px) + 12px) 14px 12px !important;
+        gap: 8px !important;
+      }
+      .partnership-page .nav-logo-top { font-size: 22px !important; }
+      .partnership-page .nav-logo-sub {
+        font-size: 6px !important;
+        letter-spacing: 0.28em !important;
+      }
+      .partnership-page .nav-actions { gap: 6px !important; }
+      .partnership-page .nav-call,
+      .partnership-page .nav-wa {
+        width: 38px !important;
+        min-height: 38px !important;
+        padding: 0 !important;
+        font-size: 0 !important;
+        justify-content: center !important;
+      }
+      .partnership-page .nav-burger {
+        width: 38px !important;
+        height: 38px !important;
       }
     }
 
@@ -67,11 +136,6 @@
     .pp-title em { font-style: normal; color: #a68b6d; }
     .pp-divider { width: 48px; height: 2px; background: linear-gradient(90deg, #C9A961, rgba(201,169,97,0.3)); margin: 0 auto 32px; border-radius: 2px; }
     .pp-subtitle { font-size: 17px; color: #8a725a; line-height: 1.75; max-width: 500px; margin: 0 auto 64px; }
-    .pp-stats { display: flex; align-items: center; justify-content: center; border-top: 1px solid rgba(209,193,177,0.35); padding-top: 48px; }
-    .pp-stat { flex: 1; text-align: center; padding: 0 32px; }
-    .pp-stat strong { display: block; font-size: 38px; font-weight: 800; color: #3d3228; letter-spacing: -0.04em; margin-bottom: 6px; line-height: 1; }
-    .pp-stat span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: #a68b6d; font-weight: 700; }
-    .pp-stat-sep { width: 1px; height: 44px; background: rgba(209,193,177,0.4); flex-shrink: 0; }
 
     /* ── HOW IT WORKS (keep existing but tweak bg) ── */
     .hiw-section { background: #faf7f2; padding-bottom: 0 !important; }
@@ -100,16 +164,12 @@
     /* ── MOBILE ── */
     @media (max-width: 900px) {
       .pp-hero { padding: 140px 24px 72px; }
-      .pp-stat { padding: 0 16px; }
-      .pp-stat strong { font-size: 30px; }
       .pp-cats { padding: 64px 24px 80px; }
       .pp-cards-grid { grid-template-columns: repeat(2, 1fr); border-radius: 16px; }
       .pp-card { padding: 36px 28px 32px; }
     }
     @media (max-width: 560px) {
       .pp-hero { padding: 120px 20px 56px; }
-      .pp-stats { flex-direction: column; gap: 28px; padding-top: 36px; }
-      .pp-stat-sep { width: 40px; height: 1px; }
       .pp-cats { padding: 48px 16px 64px; }
       .pp-cards-grid { grid-template-columns: 1fr; }
     }
@@ -187,22 +247,6 @@
         <h1 class="pp-title">Join the <em>GUSAR</em><br>Network</h1>
         <div class="pp-divider"></div>
         <p class="pp-subtitle">We are always looking for exceptional talent and reliable technical partners for our luxury events in Miami and beyond.</p>
-        <div class="pp-stats">
-          <div class="pp-stat">
-            <strong>500+</strong>
-            <span>Events Produced</span>
-          </div>
-          <div class="pp-stat-sep"></div>
-          <div class="pp-stat">
-            <strong>150+</strong>
-            <span>Active Partners</span>
-          </div>
-          <div class="pp-stat-sep"></div>
-          <div class="pp-stat">
-            <strong>10+</strong>
-            <span>Years in Business</span>
-          </div>
-        </div>
       </div>
     </section>
 
