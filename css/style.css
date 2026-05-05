@@ -189,6 +189,20 @@ body.page-scrolled nav {
     pointer-events: none;
     filter: brightness(0.62) contrast(1.06) saturate(1);
   }
+  .hero-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 100vw;
+    height: 56.25vw;
+    min-width: 177.78vh;
+    min-height: 100vh;
+    border: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    filter: brightness(0.68) contrast(1.08) saturate(1.02);
+  }
   /* Grain texture */
   .hero-bg::after {
     content: '';
@@ -3276,7 +3290,8 @@ body.page-scrolled nav {
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: transform, opacity;
     backface-visibility: hidden;
-    contain: layout paint;
+    contain: layout;
+    overflow: visible;
   }
 
   .bottom-nav::before {
@@ -4166,10 +4181,15 @@ body.home-light .hero-bg-img {
   filter: grayscale(1) sepia(0.08) brightness(1.08) contrast(0.88);
 }
 
+body.home-light .hero-bg-video {
+  opacity: 0.46;
+  filter: grayscale(1) sepia(0.08) brightness(1.02) contrast(0.9);
+}
+
 body.home-light .hero-bg::after {
   background:
-    linear-gradient(180deg, rgba(242, 239, 234, 0.55), rgba(242, 239, 234, 0.92)),
-    radial-gradient(circle at 50% 10%, rgba(201, 169, 97, 0.09), transparent 54%) !important;
+    linear-gradient(180deg, rgba(242, 239, 234, 0.32), rgba(242, 239, 234, 0.76)),
+    radial-gradient(circle at 50% 10%, rgba(201, 169, 97, 0.08), transparent 54%) !important;
 }
 
 body.home-light .hero-glow {
