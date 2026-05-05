@@ -448,6 +448,12 @@
       .pp-cats { padding: 56px 20px 72px; }
       .pp-cards-grid { grid-template-columns: 1fr; gap: 10px; }
     }
+    /* Footer on mobile: match body background so padding-bottom area is invisible */
+    @media (max-width: 900px) {
+      .partnership-page footer {
+        background: var(--pp-bg);
+      }
+    }
   </style>
 </head>
 <body class="partnership-page has-bottom-nav" data-cc-id="cc-partnership">
