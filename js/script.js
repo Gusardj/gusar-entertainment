@@ -389,6 +389,18 @@ updateNavState();
     el.classList.add('selected');
   };
 
+  window.qToggleContact = function qToggleContact(el) {
+    if (!el) return;
+    const group = document.getElementById('qContactMethods');
+    el.classList.toggle('selected');
+    if (group) {
+      group.dataset.selectedContact = Array.from(group.querySelectorAll('.qcmethod.selected'))
+        .map((method) => method.dataset.val || method.textContent.trim())
+        .filter(Boolean)
+        .join(', ');
+    }
+  };
+
   window.qNextStep = function qNextStep(step) {
     if (!validateStep(step)) return;
     showStep(step + 1);
@@ -455,51 +467,82 @@ updateNavState();
     const budget = budgetPersonal
       ? 'Discuss personally'
       : `$${formatMoney(getField('qBudgetSlider')?.value || 5000)}`;
+    const eventDate = getValue('qEventDate') || 'Not provided';
+    const heardFrom = selectedText('#qHeardPills .qpill.selected') || 'Not selected';
+    const notes = getValue('qContactNotes') || 'None';
+    const contactGroup = document.getElementById('qContactMethods');
+    const preferredContact = (contactGroup?.dataset.selectedContact || Array.from(quiz.querySelectorAll('#qContactMethods .qcmethod.selected'))
+      .map((el) => el.dataset.val || el.textContent.trim())
+      .filter(Boolean)
+      .join(', ')) || 'Not selected';
 
     const message = [
       'New event proposal request',
       `Event type: ${eventType}`,
       `Services: ${services.join(', ') || 'Not selected'}`,
-      `Date: ${getValue('qEventDate') || 'Not provided'}`,
+      `Date: ${eventDate}`,
       `Location: ${getValue('qEventLocation') || 'Not provided'}`,
       `Guests: ${formatGuests(getField('qGuestSlider')?.value || 10)}`,
       `Budget: ${budget}`,
       `Name: ${getValue('qContactName')}`,
       `Phone: ${getValue('qContactPhone')}`,
       `Email: ${getValue('qContactEmail') || 'Not provided'}`,
-      `Heard from: ${selectedText('#qHeardPills .qpill.selected') || 'Not selected'}`,
-      `Preferred contact: ${selectedList('.qcmethod.selected').join(', ') || 'Not selected'}`,
-      `Notes: ${getValue('qContactNotes') || 'None'}`
+      `Heard from: ${heardFrom}`,
+      `Preferred contact: ${preferredContact}`,
+      `Notes: ${notes}`
     ].join('\n');
 
     if (waLink) {
       waLink.href = `https://wa.me/19402793660?text=${encodeURIComponent(message)}`;
     }
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'EventProposal',
-          eventType,
-          services: services.join(', ') || 'Not selected',
-          date: getValue('qEventDate') || 'Not provided',
-          location: getValue('qEventLocation') || 'Not provided',
-          guests: formatGuests(getField('qGuestSlider')?.value || 10),
-          budget,
-          name: getValue('qContactName'),
-          phone: getValue('qContactPhone'),
-          email: getValue('qContactEmail') || 'Not provided',
-          heardFrom: selectedText('#qHeardPills .qpill.selected') || 'Not selected',
-          preferredContact: selectedList('.qcmethod.selected').join(', ') || 'Not selected',
-          notes: getValue('qContactNotes') || 'None'
-        })
-      });
-    } catch (e) {
+    const payload = {
+      type: 'EventProposal',
+      eventType,
+      services: services.join(', ') || 'Not selected',
+      date: eventDate,
+      eventDate,
+      event_date: eventDate,
+      Data: eventDate,
+      location: getValue('qEventLocation') || 'Not provided',
+      guests: formatGuests(getField('qGuestSlider')?.value || 10),
+      budget,
+      name: getValue('qContactName'),
+      phone: getValue('qContactPhone'),
+      email: getValue('qContactEmail') || 'Not provided',
+      heardFrom,
+      source: heardFrom,
+      preferredContact,
+      prefContact: preferredContact,
+      preferredContactMethod: preferredContact,
+      preferred_contact_method: preferredContact,
+      contactMethod: preferredContact,
+      contact_method: preferredContact,
+      contactVia: preferredContact,
+      contact_via: preferredContact,
+      contact: preferredContact,
+      contactPreference: preferredContact,
+      contact_preference: preferredContact,
+      preferred_contact: preferredContact,
+      ContactVia: preferredContact,
+      Contact: preferredContact,
+      'Contact via': preferredContact,
+      'Contact Via': preferredContact,
+      'Preferred contact': preferredContact,
+      debugContact: preferredContact,
+      notes,
+      vision: notes
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch((e) => {
       console.error('Webhook error:', e);
-    }
+    });
 
     window.setTimeout(() => {
       stepEls.forEach((el) => el.classList.remove('active'));
