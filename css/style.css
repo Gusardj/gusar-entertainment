@@ -21,6 +21,7 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
     overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -86,6 +87,8 @@ nav {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 nav.scrolled,
@@ -168,7 +171,7 @@ body.page-scrolled nav {
   /* ── HERO ── */
   #hero {
     position: relative;
-    height: 100vh; min-height: 700px;
+    height: 100vh; height: 100svh; min-height: 700px;
     display: flex; align-items: center;
     padding: 120px 52px 80px;
     overflow: hidden;

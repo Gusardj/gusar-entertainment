@@ -49,20 +49,24 @@
 const nav = document.querySelector("nav");
 const heroLabel = document.querySelector(".hero-label");
 
+let navRaf;
 function updateNavState() {
   if (!nav) return;
+  if (navRaf) return;
+  navRaf = requestAnimationFrame(() => {
+    navRaf = null;
+    const threshold = heroLabel
+      ? heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight
+      : 120;
 
-  const threshold = heroLabel
-    ? heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight
-    : 120;
-
-  if (window.scrollY >= threshold) {
-    nav.classList.add("scrolled");
-    document.body.classList.add("page-scrolled");
-  } else {
-    nav.classList.remove("scrolled");
-    document.body.classList.remove("page-scrolled");
-  }
+    if (window.scrollY >= threshold) {
+      nav.classList.add("scrolled");
+      document.body.classList.add("page-scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+      document.body.classList.remove("page-scrolled");
+    }
+  });
 }
 
 window.addEventListener("scroll", updateNavState, { passive: true });
@@ -151,7 +155,15 @@ updateNavState();
   }
 
   window.addEventListener("scroll", () => requestBottomNavUpdate(false), { passive: true });
-  window.addEventListener("wheel", (event) => handleDirectionalIntent(event.deltaY), { passive: true });
+  let wheelRaf;
+  window.addEventListener("wheel", (event) => {
+    const dy = event.deltaY;
+    if (wheelRaf) return;
+    wheelRaf = requestAnimationFrame(() => {
+      handleDirectionalIntent(dy);
+      wheelRaf = null;
+    });
+  }, { passive: true });
   window.addEventListener("keydown", (event) => {
     const upKeys = ["ArrowUp", "PageUp", "Home"];
     const downKeys = ["ArrowDown", "PageDown", "End", " "];
