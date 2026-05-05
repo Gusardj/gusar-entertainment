@@ -446,7 +446,7 @@ updateNavState();
     }, 20);
   };
 
-  const GAS_URL = 'https://script.google.com/macros/s/AKfycbyERCBhNWg5FZMPO96XJK_3Wo_9eslOugO8GNGDeYnRJHcblYYJU-bM28SwTblAQHhM/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPC0VDPbvB5WPCSHE9SFbiVrwrBhZ6XsqZwPDvrhpEE2wwjB4zmKKVK-kWCO47eJIn/exec';
 
   window.qSubmitQuiz = async function qSubmitQuiz() {
     if (!validateStep(5)) return;
@@ -486,7 +486,7 @@ updateNavState();
     }
 
     try {
-      await fetch(GAS_URL, {
+      await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
