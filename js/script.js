@@ -77,109 +77,87 @@ updateNavState();
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   if (!isCoarsePointer) return;
 
+  // Safari-only pinch gesture prevention (not needed for scroll)
   const preventZoomGesture = (event) => event.preventDefault();
-  let lastTouchEnd = 0;
-
   ["gesturestart", "gesturechange", "gestureend"].forEach((eventName) => {
     document.addEventListener(eventName, preventZoomGesture, { passive: false });
   });
-
-  document.addEventListener("touchend", (event) => {
-    const now = Date.now();
-
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-
-    lastTouchEnd = now;
-  }, { passive: false });
+  // Double-tap zoom is already disabled via viewport meta (user-scalable=no, maximum-scale=1.0)
+  // The old touchend preventDefault was blocking normal scroll re-touches within 300ms
 })();
 
 (function initBottomNavReveal() {
   const bottomNav = document.querySelector(".bottom-nav");
   const firstBlock = document.querySelector("#hero, .pp-hero");
   if (!bottomNav || !firstBlock) return;
+
   let lastScrollY = window.scrollY;
-  let lastUpIntentAt = 0;
   let ticking = false;
   const directionThreshold = 8;
+  // Cache threshold once — offsetTop/offsetHeight don't change after load
+  let navThreshold = -1;
 
-  function isPastBottomNavThreshold() {
-    const threshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
-    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
-    const openedPastFirstBlock = hashTarget && !firstBlock.contains(hashTarget) && hashTarget !== firstBlock;
-    return openedPastFirstBlock || window.scrollY >= threshold;
+  function getNavThreshold() {
+    if (navThreshold < 0) {
+      navThreshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
+    }
+    return navThreshold;
   }
 
-  function updateBottomNavState(forceShow) {
+  function isPastBottomNavThreshold() {
+    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
+    const openedPastFirstBlock = hashTarget && !firstBlock.contains(hashTarget) && hashTarget !== firstBlock;
+    return openedPastFirstBlock || window.scrollY >= getNavThreshold();
+  }
+
+  function updateBottomNavState() {
     const currentScrollY = window.scrollY;
     const pastThreshold = isPastBottomNavThreshold();
     const deltaY = currentScrollY - lastScrollY;
-    const scrollingDown = deltaY > directionThreshold;
-    const scrollingUp = deltaY < -directionThreshold;
-    const recentlyScrolledUp = Date.now() - lastUpIntentAt < 350;
+    lastScrollY = currentScrollY;
 
     if (document.body.classList.contains("mobile-menu-open") || !pastThreshold) {
-      document.body.classList.remove("bottom-nav-visible");
-    } else if (scrollingUp) {
-      lastUpIntentAt = Date.now();
-      document.body.classList.remove("bottom-nav-visible");
-    } else if (scrollingDown || (forceShow && !recentlyScrolledUp)) {
-      document.body.classList.add("bottom-nav-visible");
-    }
-
-    lastScrollY = currentScrollY;
-  }
-
-  function requestBottomNavUpdate(forceShow) {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      updateBottomNavState(forceShow);
-      ticking = false;
-    });
-  }
-
-  function handleDirectionalIntent(deltaY) {
-    if (Math.abs(deltaY) < directionThreshold) return;
-
-    if (deltaY < 0) {
-      lastUpIntentAt = Date.now();
       document.body.classList.remove("bottom-nav-visible");
       return;
     }
 
-    if (deltaY > 0 && isPastBottomNavThreshold()) {
+    if (deltaY < -directionThreshold) {
+      document.body.classList.remove("bottom-nav-visible");
+    } else if (deltaY > directionThreshold) {
       document.body.classList.add("bottom-nav-visible");
     }
   }
 
-  window.addEventListener("scroll", () => requestBottomNavUpdate(false), { passive: true });
-  let wheelRaf;
-  window.addEventListener("wheel", (event) => {
-    const dy = event.deltaY;
-    if (wheelRaf) return;
-    wheelRaf = requestAnimationFrame(() => {
-      handleDirectionalIntent(dy);
-      wheelRaf = null;
+  function requestBottomNavUpdate() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateBottomNavState();
+      ticking = false;
     });
-  }, { passive: true });
+  }
+
+  function forceShow() {
+    if (isPastBottomNavThreshold() && !document.body.classList.contains("mobile-menu-open")) {
+      document.body.classList.add("bottom-nav-visible");
+      lastScrollY = window.scrollY;
+    }
+  }
+
+  window.addEventListener("scroll", requestBottomNavUpdate, { passive: true });
   window.addEventListener("keydown", (event) => {
     const upKeys = ["ArrowUp", "PageUp", "Home"];
     const downKeys = ["ArrowDown", "PageDown", "End", " "];
-
     if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
-      handleDirectionalIntent(-10);
+      document.body.classList.remove("bottom-nav-visible");
     } else if (downKeys.includes(event.key) && !event.shiftKey) {
-      handleDirectionalIntent(10);
+      if (isPastBottomNavThreshold()) document.body.classList.add("bottom-nav-visible");
     }
   });
-  window.addEventListener("resize", () => requestBottomNavUpdate(false));
-  window.addEventListener("hashchange", () => updateBottomNavState(true));
-  window.addEventListener("load", () => updateBottomNavState(true));
-  updateBottomNavState(true);
-  requestAnimationFrame(() => updateBottomNavState(true));
-  window.setTimeout(() => updateBottomNavState(true), 250);
+  window.addEventListener("resize", () => { navThreshold = -1; requestBottomNavUpdate(); });
+  window.addEventListener("hashchange", forceShow);
+  window.addEventListener("load", forceShow);
+  forceShow();
 })();
 
 (function initServicesEditorial() {
