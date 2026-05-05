@@ -116,7 +116,7 @@ updateNavState();
     const deltaY = currentScrollY - lastScrollY;
     lastScrollY = currentScrollY;
 
-    if (document.body.classList.contains("mobile-menu-open") || !pastThreshold) {
+    if (document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open") || !pastThreshold) {
       document.body.classList.remove("bottom-nav-visible");
       return;
     }
@@ -138,7 +138,8 @@ updateNavState();
   }
 
   function forceShow() {
-    if (isPastBottomNavThreshold() && !document.body.classList.contains("mobile-menu-open")) {
+    const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
+    if (isPastBottomNavThreshold() && !blocked) {
       document.body.classList.add("bottom-nav-visible");
       lastScrollY = window.scrollY;
     }

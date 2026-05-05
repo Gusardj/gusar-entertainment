@@ -3320,7 +3320,8 @@ body.page-scrolled nav {
     transform: translate3d(0, 0, 0);
   }
 
-  body.mobile-menu-open .bottom-nav {
+  body.mobile-menu-open .bottom-nav,
+  body.collab-modal-open .bottom-nav {
     display: none !important;
     opacity: 0 !important;
     pointer-events: none !important;
