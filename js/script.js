@@ -11,6 +11,7 @@
     menu.removeAttribute('aria-hidden');
     burger.setAttribute('aria-expanded', 'true');
     document.body.classList.add('mobile-menu-open');
+    document.body.classList.remove('bottom-nav-visible', 'nav-hidden');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
@@ -118,13 +119,16 @@ updateNavState();
 
     if (document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open") || !pastThreshold) {
       document.body.classList.remove("bottom-nav-visible");
+      if (!pastThreshold) document.body.classList.remove("nav-hidden");
       return;
     }
 
     if (deltaY < -directionThreshold) {
       document.body.classList.remove("bottom-nav-visible");
+      document.body.classList.remove("nav-hidden");
     } else if (deltaY > directionThreshold) {
       document.body.classList.add("bottom-nav-visible");
+      document.body.classList.add("nav-hidden");
     }
   }
 
@@ -141,6 +145,7 @@ updateNavState();
     const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
     if (isPastBottomNavThreshold() && !blocked) {
       document.body.classList.add("bottom-nav-visible");
+      document.body.classList.add("nav-hidden");
       lastScrollY = window.scrollY;
     }
   }
@@ -151,7 +156,9 @@ updateNavState();
     const downKeys = ["ArrowDown", "PageDown", "End", " "];
     if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
       document.body.classList.remove("bottom-nav-visible");
+      document.body.classList.remove("nav-hidden");
     } else if (downKeys.includes(event.key) && !event.shiftKey) {
+      document.body.classList.add("nav-hidden");
       if (isPastBottomNavThreshold()) document.body.classList.add("bottom-nav-visible");
     }
   });

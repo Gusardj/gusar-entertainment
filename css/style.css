@@ -86,9 +86,18 @@ nav {
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+  transition: transform 0.32s ease, background 0.4s, padding 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
   will-change: transform;
   transform: translateZ(0);
+}
+
+body.nav-hidden nav {
+  transform: translate3d(0, -110%, 0) !important;
+}
+
+body.mobile-menu-open nav,
+body:not(.page-scrolled) nav {
+  transform: translate3d(0, 0, 0);
 }
 
 /* Home page dark theme aligned with Partnership */
@@ -3809,25 +3818,25 @@ body.page-scrolled nav {
 
   .bottom-nav {
     position: fixed;
-    left: 16px;
-    right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1000000;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
     min-height: 54px;
-    padding: 10px 16px 10px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
     color: rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
+    border-radius: 24px 24px 0 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     opacity: 0;
     pointer-events: none;
-    transform: translate3d(0, calc(100% + 80px), 0);
+    transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px)), 0);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: transform, opacity;
     backface-visibility: hidden;
@@ -3858,7 +3867,7 @@ body.page-scrolled nav {
     display: none !important;
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translate3d(0, calc(100% + 60px), 0) !important;
+    transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px)), 0) !important;
   }
 
   .bottom-nav-side {
@@ -4011,8 +4020,8 @@ body.page-scrolled nav {
 
 @media (max-width: 380px) {
   .bottom-nav {
-    left: 10px;
-    right: 10px;
+    left: 0;
+    right: 0;
     padding-left: 8px;
     padding-right: 8px;
   }
