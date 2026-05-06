@@ -5185,13 +5185,15 @@ body.home-light .nav-logo-top {
   color: var(--home-accent) !important;
   font-family: "Montserrat", sans-serif !important;
   letter-spacing: 0.15em !important;
+  display: block !important;
 }
 
 body.home-light .nav-logo-sub {
   color: var(--home-muted) !important;
-  letter-spacing: 0.58em !important;
-  width: 100% !important;
-  text-align: center !important;
+  display: block !important;
+  width: auto !important;
+  letter-spacing: 0.5em !important;
+  text-align: left !important;
 }
 
 body.home-light .nav-links a {
@@ -5576,6 +5578,126 @@ body.home-light .nf-wa:hover {
   color: var(--home-button-text) !important;
 }
 
+/* ── STATS alignment with Partnership ── */
+body.home-light .stat-num {
+  color: var(--home-text) !important;
+}
+body.home-light .stat-num span {
+  color: var(--home-accent) !important;
+}
+body.home-light .stat-label {
+  color: var(--home-muted) !important;
+  letter-spacing: 0.3em !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+body.home-light .stat-icon {
+  color: var(--home-accent) !important;
+  stroke: var(--home-accent) !important;
+}
+
+/* ── Section label letter-spacing alignment ── */
+body.home-light .section-label {
+  letter-spacing: 0.4em !important;
+  font-size: 10px !important;
+}
+
+/* ── hcb-tag border alignment ── */
+body.home-light .hcb-tag {
+  border-color: rgba(198, 182, 157, 0.35) !important;
+  color: var(--home-muted) !important;
+}
+body.home-light .hcb-tag:hover {
+  border-color: var(--home-accent) !important;
+  color: var(--home-accent) !important;
+  background: rgba(198, 182, 157, 0.06) !important;
+}
+
+/* ── Quiz WhatsApp CTA alignment ── */
+body.home-light .quiz-whatsapp-cta {
+  color: var(--home-muted) !important;
+}
+body.home-light .quiz-whatsapp-cta a {
+  border-color: var(--home-border) !important;
+  color: var(--home-accent) !important;
+  background: transparent !important;
+}
+body.home-light .quiz-whatsapp-cta a:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  transform: none !important;
+}
+
+/* ── About badge alignment ── */
+body.home-light .about-badge {
+  background: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+body.home-light .about-badge small {
+  color: rgba(30, 30, 30, 0.65) !important;
+}
+body.home-light .about-gold-frame {
+  border-color: rgba(198, 182, 157, 0.35) !important;
+}
+
+/* ── Process step number alignment ── */
+body.home-light .step-num {
+  color: rgba(198, 182, 157, 0.18) !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+body.home-light .step-title {
+  color: var(--home-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+body.home-light .step-desc {
+  color: var(--home-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.8 !important;
+}
+body.home-light .process-step::after {
+  background: var(--home-border) !important;
+  opacity: 0.35 !important;
+}
+
+/* ── Artist card font alignment ── */
+body.home-light .artist-name {
+  color: var(--home-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+}
+body.home-light .artist-genre {
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.2em !important;
+}
+body.home-light .artist-num {
+  color: var(--home-muted) !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+/* ── Portfolio info alignment ── */
+body.home-light .portfolio-cat {
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.2em !important;
+}
+body.home-light .portfolio-title {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: clamp(14px, 1.6vw, 18px) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ── Section title size alignment ── */
+body.home-light .section-title {
+  font-size: clamp(32px, 4.5vw, 60px) !important;
+}
+
 @media (max-width: 900px) {
   body.home-light nav,
   body.home-light nav.scrolled,
@@ -5584,10 +5706,121 @@ body.home-light .nf-wa:hover {
     border-bottom: 1px solid var(--home-border) !important;
     box-shadow: none !important;
   }
+
+  body.home-light .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+  }
+
+  body.home-light .nav-links-right {
+    display: none !important;
+  }
+
+  body.home-light .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  body.home-light .nav-call,
+  body.home-light .nav-wa {
+    min-height: 38px !important;
+    padding: 0 11px !important;
+    font-size: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-light .nav-burger {
+    margin-left: 0 !important;
+  }
 }
 
 @media (max-width: 430px) {
   body.home-light .nav-logo-sub {
-    letter-spacing: 1em !important;
+    letter-spacing: 0.5em !important;
+  }
+
+  body.home-light .nav-call,
+  body.home-light .nav-wa {
+    width: 38px !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    justify-content: center !important;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   BOTTOM NAV — Partnership dark theme alignment
+   ══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* Background: override ::before pseudo-element */
+  body.home-light .bottom-nav::before {
+    background: rgba(30, 30, 30, 0.97) !important;
+    border-color: var(--home-border) !important;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  /* Nav items — default state: muted, font Montserrat */
+  body.home-light .bottom-nav-item {
+    color: rgba(242, 242, 242, 0.45) !important;
+    font-family: "Montserrat", sans-serif !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  /* Nav items — active & hover: accent */
+  body.home-light .bottom-nav-item:hover,
+  body.home-light .bottom-nav-item.is-active {
+    color: var(--home-accent) !important;
+  }
+
+  /* Center CTA label */
+  body.home-light .bottom-nav-quote {
+    color: rgba(242, 242, 242, 0.45) !important;
+    font-family: "Montserrat", sans-serif !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  /* CTA ring — dark background with beige border */
+  body.home-light .bottom-nav-quote-ring {
+    background: rgba(30, 30, 30, 0.9) !important;
+    border: 1px solid var(--home-border) !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  /* CTA ring ripple pseudo-elements — beige tones */
+  body.home-light .bottom-nav-quote-ring::before,
+  body.home-light .bottom-nav-quote-ring::after {
+    background: rgba(198, 182, 157, 0.06) !important;
+    border-color: rgba(198, 182, 157, 0.22) !important;
+    animation: none !important;
+  }
+
+  /* CTA icon inner circle — beige fill, dark icon */
+  body.home-light .bottom-nav-quote-ring svg {
+    background: var(--home-button-bg) !important;
+    color: var(--home-button-text) !important;
+    box-shadow: none !important;
+  }
+
+  /* CTA ring hover */
+  body.home-light .bottom-nav-quote:hover .bottom-nav-quote-ring {
+    border-color: var(--home-button-bg) !important;
+  }
+  body.home-light .bottom-nav-quote:hover .bottom-nav-quote-ring svg {
+    background: rgba(198, 182, 157, 0.82) !important;
+  }
+
+  /* Tap ripple — beige */
+  body.home-light .bnav-ripple {
+    background: rgba(198, 182, 157, 0.18) !important;
+  }
+
+  /* Icon stroke weight aligned with Partnership thin-line style */
+  body.home-light .bottom-nav-item svg {
+    stroke-width: 1.5 !important;
   }
 }
