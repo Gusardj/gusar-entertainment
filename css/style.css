@@ -91,6 +91,496 @@ nav {
   transform: translateZ(0);
 }
 
+/* Home page dark theme aligned with Partnership */
+body.home-light {
+  --home-bg: #1E1E1E;
+  --home-bg2: #1E1E1E;
+  --home-card: #1E1E1E;
+  --home-text: #F2F2F2;
+  --home-muted: #F2F2F2;
+  --home-accent: #C6B69D;
+  --home-button-bg: #D3C3AA;
+  --home-button-text: #1E1E1E;
+  --home-border: #C6B69D;
+  --black: #1E1E1E;
+  --surface: #1E1E1E;
+  --surface2: #1E1E1E;
+  --cream: #F2F2F2;
+  --cream-dim: #F2F2F2;
+  --gold: #C6B69D;
+  --gold-dim: #C6B69D;
+  --border: #C6B69D;
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  font-family: "Jost", "Inter", sans-serif !important;
+}
+
+body.home-light *,
+body.home-light *::before,
+body.home-light *::after {
+  font-family: "Jost", "Inter", sans-serif !important;
+}
+
+body.home-light #cursor {
+  background: var(--home-button-bg) !important;
+}
+
+body.home-light nav,
+body.home-light nav.scrolled,
+body.home-light.page-scrolled nav {
+  background: rgba(30, 30, 30, 0.94) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .nav-logo-top {
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.15em !important;
+}
+
+body.home-light .nav-logo-sub {
+  color: var(--home-muted) !important;
+  font-family: "Jost", sans-serif !important;
+  letter-spacing: 0.58em !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+body.home-light .nav-links a {
+  color: var(--home-muted) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+}
+
+body.home-light .nav-links a:hover,
+body.home-light .nav-links a[href="partnership.html"] {
+  color: var(--home-accent) !important;
+}
+
+body.home-light .nav-call,
+body.home-light .nav-wa {
+  background: transparent !important;
+  border: 1px solid var(--home-border) !important;
+  border-radius: 30px !important;
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  box-shadow: none !important;
+}
+
+body.home-light .nav-call:hover,
+body.home-light .nav-wa:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+
+body.home-light .nav-burger span {
+  background: var(--home-text) !important;
+}
+
+body.home-light #mobile-menu {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light .mobile-menu-link {
+  color: var(--home-text) !important;
+  border-bottom-color: transparent !important;
+}
+
+body.home-light .mobile-menu-link:hover {
+  color: var(--home-text) !important;
+  padding-left: 0 !important;
+}
+
+body.home-light .mobile-menu-link::before {
+  color: var(--home-text) !important;
+}
+
+body.home-light .mobile-menu-link::after {
+  display: none !important;
+  content: none !important;
+}
+
+body.home-light .mobile-menu-close,
+body.home-light .mobile-menu-btn {
+  background: transparent !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-text) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .mobile-menu-close:hover,
+body.home-light .mobile-menu-btn:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  box-shadow: none !important;
+}
+
+body.home-light #hero,
+body.home-light #services-editorial,
+body.home-light #testimonials,
+body.home-light #quiz-section,
+body.home-light #about,
+body.home-light #stats,
+body.home-light #roster,
+body.home-light #portfolio,
+body.home-light #process,
+body.home-light #cta,
+body.home-light .mcta,
+body.home-light footer,
+body.home-light .new-footer {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #hero {
+  min-height: min(760px, 100svh) !important;
+}
+
+body.home-light .hero-bg {
+  background: var(--home-bg) !important;
+}
+
+body.home-light .hero-bg-img {
+  opacity: 0.42 !important;
+  filter: grayscale(0.2) brightness(0.58) contrast(1.08) saturate(0.9) !important;
+}
+
+body.home-light .hero-bg::after {
+  background:
+    linear-gradient(90deg, rgba(30, 30, 30, 0.78) 0%, rgba(30, 30, 30, 0.54) 45%, rgba(30, 30, 30, 0.78) 100%),
+    linear-gradient(180deg, rgba(30, 30, 30, 0.26) 0%, rgba(30, 30, 30, 0.18) 42%, rgba(30, 30, 30, 0.7) 100%),
+    radial-gradient(circle at 50% 18%, rgba(198, 182, 157, 0.08), transparent 56%) !important;
+}
+
+body.home-light .hero-glow {
+  background: radial-gradient(circle, rgba(198, 182, 157, 0.08), transparent 64%) !important;
+}
+
+body.home-light .hero-title,
+body.home-light .hero-title-line span,
+body.home-light .section-title,
+body.home-light .cta-title,
+body.home-light .mcta-headline,
+body.home-light .ed-card-title,
+body.home-light .tss-name,
+body.home-light .portfolio-title,
+body.home-light .process-title,
+body.home-light .about-text p strong,
+body.home-light .qtitle,
+body.home-light .qstep-title,
+body.home-light .qsvc-name {
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+body.home-light .hero-title,
+body.home-light .hero-title-line span,
+body.home-light .section-title,
+body.home-light .cta-title,
+body.home-light .mcta-headline {
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.04em !important;
+}
+
+body.home-light .section-title em,
+body.home-light .cta-title em,
+body.home-light .mcta-headline em,
+body.home-light .hero-title-line.italic-line span {
+  color: var(--home-accent) !important;
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic !important;
+  letter-spacing: 0 !important;
+}
+
+body.home-light .hero-label,
+body.home-light .section-label,
+body.home-light .ed-label,
+body.home-light .process-num,
+body.home-light .portfolio-cat,
+body.home-light .hero-support,
+body.home-light .hero-outcome,
+body.home-light .hero-tailored {
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+body.home-light .hero-sub,
+body.home-light .hero-checks,
+body.home-light .hero-checks li,
+body.home-light .hero-microcopy,
+body.home-light .section-sub,
+body.home-light .about-text p,
+body.home-light .process-desc,
+body.home-light .cta-sub,
+body.home-light .ed-card-desc,
+body.home-light .ed-tech-list li,
+body.home-light .ed-tech-description,
+body.home-light .tss-sub,
+body.home-light .tss-time,
+body.home-light .qsubtitle,
+body.home-light .qsvc-desc,
+body.home-light .qconsent-text {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .section-label::before,
+body.home-light .hero-line,
+body.home-light .hero-line-bottom,
+body.home-light #testimonials::before,
+body.home-light #about::before,
+body.home-light #roster::before,
+body.home-light #portfolio::before,
+body.home-light #process::before {
+  background: var(--home-border) !important;
+}
+
+body.home-light .btn-primary,
+body.home-light .ed-btn,
+body.home-light .mcta-btn,
+body.home-light .qbtn-next,
+body.home-light .qbtn-submit {
+  background: var(--home-button-bg) !important;
+  border: 1px solid var(--home-button-bg) !important;
+  border-radius: 30px !important;
+  color: var(--home-button-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+body.home-light .btn-primary:hover,
+body.home-light .ed-btn:hover,
+body.home-light .mcta-btn:hover,
+body.home-light .qbtn-next:hover,
+body.home-light .qbtn-submit:hover {
+  background: transparent !important;
+  color: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .btn-ghost,
+body.home-light .btn-ghost-gold,
+body.home-light .qbtn-back,
+body.home-light .qbtn-home {
+  background: transparent !important;
+  border: 1px solid var(--home-border) !important;
+  border-radius: 30px !important;
+  color: var(--home-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.18em !important;
+  box-shadow: none !important;
+}
+
+body.home-light .btn-ghost:hover,
+body.home-light .btn-ghost-gold:hover,
+body.home-light .qbtn-back:hover,
+body.home-light .qbtn-home:hover {
+  background: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  border-color: var(--home-button-bg) !important;
+}
+
+body.home-light #marquee-gusar {
+  --mq-bg: #1E1E1E;
+  --mq-green-dark: #1E1E1E;
+  --mq-text: #F2F2F2;
+  --mq-muted: #C6B69D;
+  background: var(--home-bg) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #marquee-gusar::before {
+  background: linear-gradient(to right, var(--home-bg), rgba(30, 30, 30, 0.72), transparent) !important;
+}
+
+body.home-light #marquee-gusar::after {
+  background: linear-gradient(to left, var(--home-bg), rgba(30, 30, 30, 0.72), transparent) !important;
+}
+
+body.home-light #services-editorial {
+  --ed-bg: #1E1E1E;
+  --ed-card-bg: #1E1E1E;
+  --ed-card-hover: #1E1E1E;
+  --ed-text: #F2F2F2;
+  --ed-text-mut: #F2F2F2;
+  --ed-border: #C6B69D;
+  --ed-gold: #C6B69D;
+  --ed-gold-hover: #D3C3AA;
+  --ed-tags: #C6B69D;
+}
+
+body.home-light .ed-grid,
+body.home-light .ed-card,
+body.home-light .ed-cta-block,
+body.home-light .tss-card,
+body.home-light .roster-card,
+body.home-light .portfolio-item,
+body.home-light .process-step,
+body.home-light .quiz-card,
+body.home-light .qchoice,
+body.home-light .qsvc,
+body.home-light .qpill,
+body.home-light .qcmethod,
+body.home-light .qbudget-toggle {
+  background: var(--home-card) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .ed-bg,
+body.home-light .portfolio-bg,
+body.home-light .about-img-placeholder,
+body.home-light .roster-img {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(198, 182, 157, 0.08), transparent 36%),
+    repeating-linear-gradient(135deg, rgba(198, 182, 157, 0.06) 0 1px, transparent 1px 26px),
+    var(--home-bg) !important;
+}
+
+body.home-light #services-editorial .ed-bg {
+  opacity: 0 !important;
+}
+
+body.home-light .ed-bg:has(img)::after,
+body.home-light .portfolio-overlay,
+body.home-light .roster-card::after {
+  background: linear-gradient(180deg, transparent 20%, rgba(30, 30, 30, 0.82) 100%) !important;
+}
+
+body.home-light .ed-card-technical,
+body.home-light .ed-card-technical .ed-tech-description,
+body.home-light .tss-bar,
+body.home-light .tss-chat,
+body.home-light .tss-bubble--in,
+body.home-light .tss-bubble--out,
+body.home-light .qfield-input,
+body.home-light .qfield-input:-webkit-autofill,
+body.home-light .qfield-input:-webkit-autofill:focus {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice,
+body.home-light #quiz-section #qEventTypeChoices .qchoice:hover,
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected,
+body.home-light #quiz-section .qservices .qsvc,
+body.home-light #quiz-section .qservices .qsvc:hover,
+body.home-light #quiz-section .qservices .qsvc.selected,
+body.home-light #quiz-section .qcmethod,
+body.home-light #quiz-section .qcmethod:hover,
+body.home-light #quiz-section .qcmethod.selected,
+body.home-light #quiz-section #qHeardPills .qpill,
+body.home-light #quiz-section #qHeardPills .qpill:hover,
+body.home-light #quiz-section #qHeardPills .qpill.selected {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected,
+body.home-light #quiz-section .qservices .qsvc.selected,
+body.home-light #quiz-section .qcmethod.selected,
+body.home-light #quiz-section #qHeardPills .qpill.selected {
+  color: var(--home-accent) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-icon-svg,
+body.home-light #quiz-section .qservices .qsvc-icon {
+  color: var(--home-accent) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-label,
+body.home-light #quiz-section .qservices .qsvc-name {
+  color: var(--home-text) !important;
+}
+
+body.home-light #quiz-section .qservices .qsvc-desc {
+  color: var(--home-muted) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-tick,
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-tick,
+body.home-light #quiz-section .qservices .qsvc::after,
+body.home-light #quiz-section .qservices .qsvc.selected::after {
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-tick::after,
+body.home-light #quiz-section .qservices .qsvc.selected::before {
+  background: var(--home-accent) !important;
+}
+
+body.home-light .bottom-nav {
+  background: rgba(30, 30, 30, 0.94) !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-text) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .bottom-nav-item,
+body.home-light .bottom-nav-quote {
+  color: var(--home-text) !important;
+}
+
+body.home-light .bottom-nav-quote-ring {
+  background: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  border-color: var(--home-button-bg) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .nf-logo-name,
+body.home-light .new-footer .nf-logo-name {
+  color: var(--home-accent) !important;
+}
+
+body.home-light .nf-list a,
+body.home-light .nf-contact-item,
+body.home-light .nf-wa,
+body.home-light .nf-copy,
+body.home-light .nf-social-link,
+body.home-light .nf-tiktok,
+body.home-light .nf-brand-desc {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .nf-wa {
+  background: transparent !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .nf-wa:hover {
+  background: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  border-color: var(--home-button-bg) !important;
+}
+
+@media (max-width: 430px) {
+  body.home-light .nav-logo-sub {
+    letter-spacing: 1em !important;
+  }
+}
+
 nav.scrolled,
 body.page-scrolled nav {
   background: rgba(8, 8, 8, 0.96) !important;
@@ -3176,25 +3666,48 @@ body.page-scrolled nav {
 }
 
 .partnership-page #mobile-menu {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(214, 162, 58, 0.10), transparent 38%),
-    linear-gradient(180deg, rgba(250, 247, 242, 0.98), rgba(242, 239, 234, 0.98)) !important;
-  color: #36332e !important;
+  background: #1E1E1E !important;
+  color: #F2F2F2 !important;
 }
 
 .partnership-page .mobile-menu-link {
-  color: #36332e !important;
-  border-bottom-color: rgba(209, 193, 177, 0.56) !important;
+  color: #F2F2F2 !important;
+  border-bottom-color: transparent !important;
 }
 
 .partnership-page .mobile-menu-link:hover {
-  color: #a68b6d !important;
+  color: #F2F2F2 !important;
+  padding-left: 0 !important;
+}
+
+.partnership-page .mobile-menu-link::before {
+  color: #F2F2F2 !important;
+}
+
+.partnership-page .mobile-menu-link::after {
+  display: none !important;
+  content: none !important;
+}
+
+.partnership-page .mobile-menu-close {
+  background: transparent !important;
+  border-color: #C6B69D !important;
+  color: #F2F2F2 !important;
+  box-shadow: none !important;
+}
+
+.partnership-page .mobile-menu-close:hover {
+  background: #D3C3AA !important;
+  border-color: #D3C3AA !important;
+  color: #1E1E1E !important;
 }
 
 .partnership-page .mobile-menu-btn {
-  background: rgba(250, 247, 242, 0.58) !important;
+  background: transparent !important;
+  border-color: #C6B69D !important;
   border-radius: 8px !important;
-  box-shadow: 0 12px 30px rgba(54, 51, 46, 0.06) !important;
+  box-shadow: none !important;
+  color: #F2F2F2 !important;
   font-size: 9px !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
@@ -3203,18 +3716,20 @@ body.page-scrolled nav {
 
 .partnership-page .mobile-menu-call,
 .partnership-page .mobile-menu-ig {
-  color: #7e674f !important;
-  border-color: rgba(166, 139, 109, 0.54) !important;
+  color: #F2F2F2 !important;
+  border-color: #C6B69D !important;
 }
 
 .partnership-page .mobile-menu-wa {
-  color: #2f7150 !important;
-  border-color: rgba(47, 113, 80, 0.36) !important;
+  color: #F2F2F2 !important;
+  border-color: #C6B69D !important;
 }
 
 .partnership-page .mobile-menu-btn:hover {
-  background: rgba(242, 239, 234, 0.94) !important;
-  box-shadow: 0 16px 38px rgba(54, 51, 46, 0.10) !important;
+  background: #D3C3AA !important;
+  color: #1E1E1E !important;
+  border-color: #D3C3AA !important;
+  box-shadow: none !important;
 }
 .mobile-menu-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
 .mobile-menu-btn:hover {
@@ -4621,5 +5136,458 @@ body.home-light .new-footer {
     display: flex !important;
     margin-left: auto !important;
     order: 3 !important;
+  }
+}
+
+/* Final home override: keep index visually matched to Partnership */
+body.home-light {
+  --home-bg: #1E1E1E;
+  --home-bg2: #1E1E1E;
+  --home-card: #1E1E1E;
+  --home-text: #F2F2F2;
+  --home-muted: #F2F2F2;
+  --home-accent: #C6B69D;
+  --home-button-bg: #D3C3AA;
+  --home-button-text: #1E1E1E;
+  --home-border: #C6B69D;
+  --black: #1E1E1E;
+  --surface: #1E1E1E;
+  --surface2: #1E1E1E;
+  --cream: #F2F2F2;
+  --cream-dim: #F2F2F2;
+  --gold: #C6B69D;
+  --gold-dim: #C6B69D;
+  --border: #C6B69D;
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  font-family: "Jost", "Inter", sans-serif !important;
+}
+
+body.home-light *,
+body.home-light *::before,
+body.home-light *::after {
+  font-family: "Jost", "Inter", sans-serif !important;
+}
+
+body.home-light #cursor { background: var(--home-button-bg) !important; }
+
+body.home-light nav,
+body.home-light nav.scrolled,
+body.home-light.page-scrolled nav {
+  background: rgba(30, 30, 30, 0.94) !important;
+  border-bottom: 1px solid var(--home-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+}
+
+body.home-light .nav-logo-top {
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.15em !important;
+}
+
+body.home-light .nav-logo-sub {
+  color: var(--home-muted) !important;
+  letter-spacing: 0.58em !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+body.home-light .nav-links a {
+  color: var(--home-muted) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.1em !important;
+}
+
+body.home-light .nav-links a:hover,
+body.home-light .nav-links a[href="partnership.html"] {
+  color: var(--home-accent) !important;
+}
+
+body.home-light .nav-call,
+body.home-light .nav-wa {
+  background: transparent !important;
+  border: 1px solid var(--home-border) !important;
+  border-radius: 30px !important;
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  box-shadow: none !important;
+}
+
+body.home-light .nav-call:hover,
+body.home-light .nav-wa:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+
+body.home-light .nav-burger span { background: var(--home-text) !important; }
+
+body.home-light #mobile-menu {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light .mobile-menu-link {
+  color: var(--home-text) !important;
+  border-bottom-color: transparent !important;
+}
+
+body.home-light .mobile-menu-link:hover { color: var(--home-text) !important; padding-left: 0 !important; }
+body.home-light .mobile-menu-link::before { color: var(--home-text) !important; }
+body.home-light .mobile-menu-link::after { display: none !important; content: none !important; }
+
+body.home-light .mobile-menu-close,
+body.home-light .mobile-menu-btn {
+  background: transparent !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-text) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .mobile-menu-close:hover,
+body.home-light .mobile-menu-btn:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+
+body.home-light #hero,
+body.home-light #services-editorial,
+body.home-light #testimonials,
+body.home-light #quiz-section,
+body.home-light #about,
+body.home-light #stats,
+body.home-light #roster,
+body.home-light #portfolio,
+body.home-light #process,
+body.home-light #cta,
+body.home-light .mcta,
+body.home-light footer,
+body.home-light .new-footer {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .hero-bg { background: var(--home-bg) !important; }
+body.home-light .hero-bg-img {
+  opacity: 0.42 !important;
+  filter: grayscale(0.2) brightness(0.58) contrast(1.08) saturate(0.9) !important;
+}
+body.home-light .hero-bg::after {
+  background:
+    linear-gradient(90deg, rgba(30, 30, 30, 0.78), rgba(30, 30, 30, 0.54), rgba(30, 30, 30, 0.78)),
+    linear-gradient(180deg, rgba(30, 30, 30, 0.26), rgba(30, 30, 30, 0.18), rgba(30, 30, 30, 0.7)),
+    radial-gradient(circle at 50% 18%, rgba(198, 182, 157, 0.08), transparent 56%) !important;
+}
+body.home-light .hero-glow { background: radial-gradient(circle, rgba(198, 182, 157, 0.08), transparent 64%) !important; }
+
+body.home-light .hero-title,
+body.home-light .hero-title-line span,
+body.home-light .section-title,
+body.home-light .cta-title,
+body.home-light .mcta-headline {
+  color: var(--home-text) !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.04em !important;
+  text-shadow: none !important;
+}
+
+body.home-light .section-title em,
+body.home-light .cta-title em,
+body.home-light .mcta-headline em,
+body.home-light .hero-title-line.italic-line span {
+  color: var(--home-accent) !important;
+  -webkit-text-fill-color: var(--home-accent) !important;
+  font-family: "Cormorant Garamond", serif !important;
+  font-style: italic !important;
+  letter-spacing: 0 !important;
+}
+
+body.home-light .hero-label,
+body.home-light .section-label,
+body.home-light .ed-label,
+body.home-light .process-num,
+body.home-light .portfolio-cat,
+body.home-light .hero-support,
+body.home-light .hero-outcome,
+body.home-light .hero-tailored {
+  color: var(--home-accent) !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+body.home-light .hero-sub,
+body.home-light .hero-checks,
+body.home-light .hero-checks li,
+body.home-light .hero-microcopy,
+body.home-light .section-sub,
+body.home-light .about-text p,
+body.home-light .process-desc,
+body.home-light .cta-sub,
+body.home-light .ed-card-desc,
+body.home-light .ed-tech-list li,
+body.home-light .ed-tech-description,
+body.home-light .tss-sub,
+body.home-light .tss-time,
+body.home-light .qsubtitle,
+body.home-light .qsvc-desc,
+body.home-light .qconsent-text {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .section-label::before,
+body.home-light .hero-line,
+body.home-light .hero-line-bottom,
+body.home-light #testimonials::before,
+body.home-light #about::before,
+body.home-light #roster::before,
+body.home-light #portfolio::before,
+body.home-light #process::before {
+  background: var(--home-border) !important;
+}
+
+body.home-light .btn-primary,
+body.home-light .ed-btn,
+body.home-light .mcta-btn,
+body.home-light .qbtn-next,
+body.home-light .qbtn-submit {
+  background: var(--home-button-bg) !important;
+  border: 1px solid var(--home-button-bg) !important;
+  border-radius: 30px !important;
+  color: var(--home-button-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+body.home-light .btn-primary:hover,
+body.home-light .ed-btn:hover,
+body.home-light .mcta-btn:hover,
+body.home-light .qbtn-next:hover,
+body.home-light .qbtn-submit:hover {
+  background: transparent !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-bg) !important;
+}
+
+body.home-light .btn-ghost,
+body.home-light .btn-ghost-gold,
+body.home-light .qbtn-back,
+body.home-light .qbtn-home {
+  background: transparent !important;
+  border: 1px solid var(--home-border) !important;
+  border-radius: 30px !important;
+  color: var(--home-text) !important;
+  font-family: "Montserrat", sans-serif !important;
+  letter-spacing: 0.18em !important;
+  box-shadow: none !important;
+}
+
+body.home-light .btn-ghost:hover,
+body.home-light .btn-ghost-gold:hover,
+body.home-light .qbtn-back:hover,
+body.home-light .qbtn-home:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+
+body.home-light #marquee-gusar {
+  --mq-bg: #1E1E1E;
+  --mq-green-dark: #1E1E1E;
+  --mq-text: #F2F2F2;
+  --mq-muted: #C6B69D;
+  background: var(--home-bg) !important;
+  border-color: var(--home-border) !important;
+}
+body.home-light #marquee-gusar::before { background: linear-gradient(to right, var(--home-bg), rgba(30, 30, 30, 0.72), transparent) !important; }
+body.home-light #marquee-gusar::after { background: linear-gradient(to left, var(--home-bg), rgba(30, 30, 30, 0.72), transparent) !important; }
+
+body.home-light #services-editorial {
+  --ed-bg: #1E1E1E;
+  --ed-card-bg: #1E1E1E;
+  --ed-card-hover: #1E1E1E;
+  --ed-text: #F2F2F2;
+  --ed-text-mut: #F2F2F2;
+  --ed-border: #C6B69D;
+  --ed-gold: #C6B69D;
+  --ed-gold-hover: #D3C3AA;
+  --ed-tags: #C6B69D;
+}
+
+body.home-light .ed-grid,
+body.home-light .ed-card,
+body.home-light .ed-cta-block,
+body.home-light .tss-card,
+body.home-light .roster-card,
+body.home-light .portfolio-item,
+body.home-light .process-step,
+body.home-light .quiz-card,
+body.home-light .qchoice,
+body.home-light .qsvc,
+body.home-light .qpill,
+body.home-light .qcmethod,
+body.home-light .qbudget-toggle {
+  background: var(--home-card) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .ed-card-title,
+body.home-light .tss-name,
+body.home-light .portfolio-title,
+body.home-light .process-title,
+body.home-light .about-text p strong,
+body.home-light .qtitle,
+body.home-light .qstep-title,
+body.home-light .qsvc-name {
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+}
+
+body.home-light .ed-bg,
+body.home-light .portfolio-bg,
+body.home-light .about-img-placeholder,
+body.home-light .roster-img {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(198, 182, 157, 0.08), transparent 36%),
+    repeating-linear-gradient(135deg, rgba(198, 182, 157, 0.06) 0 1px, transparent 1px 26px),
+    var(--home-bg) !important;
+}
+
+body.home-light .ed-bg:has(img)::after,
+body.home-light .portfolio-overlay,
+body.home-light .roster-card::after {
+  background: linear-gradient(180deg, transparent 20%, rgba(30, 30, 30, 0.82) 100%) !important;
+}
+
+body.home-light .ed-card-technical,
+body.home-light .ed-card-technical .ed-tech-description,
+body.home-light .tss-bar,
+body.home-light .tss-chat,
+body.home-light .tss-bubble--in,
+body.home-light .tss-bubble--out,
+body.home-light .qfield-input,
+body.home-light .qfield-input:-webkit-autofill,
+body.home-light .qfield-input:-webkit-autofill:focus {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice,
+body.home-light #quiz-section #qEventTypeChoices .qchoice:hover,
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected,
+body.home-light #quiz-section .qservices .qsvc,
+body.home-light #quiz-section .qservices .qsvc:hover,
+body.home-light #quiz-section .qservices .qsvc.selected,
+body.home-light #quiz-section .qcmethod,
+body.home-light #quiz-section .qcmethod:hover,
+body.home-light #quiz-section .qcmethod.selected,
+body.home-light #quiz-section #qHeardPills .qpill,
+body.home-light #quiz-section #qHeardPills .qpill:hover,
+body.home-light #quiz-section #qHeardPills .qpill.selected {
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+  box-shadow: none !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected,
+body.home-light #quiz-section .qservices .qsvc.selected,
+body.home-light #quiz-section .qcmethod.selected,
+body.home-light #quiz-section #qHeardPills .qpill.selected {
+  color: var(--home-accent) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-icon-svg,
+body.home-light #quiz-section .qservices .qsvc-icon {
+  color: var(--home-accent) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-label,
+body.home-light #quiz-section .qservices .qsvc-name {
+  color: var(--home-text) !important;
+}
+
+body.home-light #quiz-section .qservices .qsvc-desc {
+  color: var(--home-muted) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-tick,
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-tick,
+body.home-light #quiz-section .qservices .qsvc::after,
+body.home-light #quiz-section .qservices .qsvc.selected::after {
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-tick::after,
+body.home-light #quiz-section .qservices .qsvc.selected::before {
+  background: var(--home-accent) !important;
+}
+
+body.home-light .bottom-nav {
+  background: rgba(30, 30, 30, 0.94) !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-text) !important;
+  box-shadow: none !important;
+}
+body.home-light .bottom-nav-item,
+body.home-light .bottom-nav-quote { color: var(--home-text) !important; }
+body.home-light .bottom-nav-quote-ring {
+  background: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  border-color: var(--home-button-bg) !important;
+  box-shadow: none !important;
+}
+
+body.home-light .nf-logo-name,
+body.home-light .new-footer .nf-logo-name { color: var(--home-accent) !important; }
+body.home-light .nf-list a,
+body.home-light .nf-contact-item,
+body.home-light .nf-wa,
+body.home-light .nf-copy,
+body.home-light .nf-social-link,
+body.home-light .nf-tiktok,
+body.home-light .nf-brand-desc { color: var(--home-muted) !important; }
+body.home-light .nf-wa {
+  background: transparent !important;
+  border-color: var(--home-border) !important;
+}
+body.home-light .nf-wa:hover {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+}
+
+@media (max-width: 900px) {
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav {
+    background: rgba(30, 30, 30, 0.94) !important;
+    border-bottom: 1px solid var(--home-border) !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.home-light .nav-logo-sub {
+    letter-spacing: 1em !important;
   }
 }
