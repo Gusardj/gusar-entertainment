@@ -3986,6 +3986,24 @@ body.page-scrolled nav {
     transition: transform 0.2s ease;
   }
 
+  .bottom-nav-quote-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    transform: rotate(-45deg);
+    color: #1a1a1a;
+    font-family: var(--mono);
+    font-size: 8px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: normal;
+  }
+
   .bottom-nav-quote:hover .bottom-nav-quote-ring {
     transform: translateX(-50%) rotate(45deg) scale(1.05);
     box-shadow: 0 10px 28px rgba(227, 213, 186, 0.35);
@@ -5920,4 +5938,26 @@ body.home-light #marquee-gusar::before {
 
 body.home-light #marquee-gusar::after {
   background: linear-gradient(to left, #25221F, rgba(37, 34, 31, 0.72), transparent) !important;
+}
+
+/* Final liquid-glass navigation behavior */
+nav,
+nav.scrolled,
+body.page-scrolled nav,
+body.home-light nav,
+body.home-light nav.scrolled,
+body.home-light.page-scrolled nav {
+  background: rgba(255, 255, 255, 0.055) !important;
+  backdrop-filter: blur(28px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(145%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34) !important;
+}
+
+body.nav-hidden nav {
+  transform: translate3d(0, -110%, 0) !important;
+}
+
+body.mobile-menu-open nav {
+  transform: translate3d(0, 0, 0) !important;
 }
