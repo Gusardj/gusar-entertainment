@@ -5,7 +5,93 @@
 <title>GUSAR Entertainment — Miami's Premier Event Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@300;400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=mobile-menu-light">
+  <link rel="stylesheet" href="css/style.css?v=section-tone-rhythm">
+<style>
+@media (max-width: 900px) {
+  body.home-light #process {
+    padding: 64px 20px !important;
+    overflow: hidden !important;
+  }
+  body.home-light #process .process-header {
+    margin-bottom: 32px !important;
+  }
+  body.home-light #process .process-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 1px !important;
+    width: 100% !important;
+    border: 1px solid var(--home-border) !important;
+    background: var(--home-border) !important;
+  }
+  body.home-light #process .process-step {
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 22px 24px 24px !important;
+    background: var(--home-bg) !important;
+    overflow: hidden !important;
+  }
+  body.home-light #process .process-step::after {
+    display: none !important;
+  }
+  body.home-light #process .step-num {
+    top: 10px !important;
+    right: 16px !important;
+    font-size: 64px !important;
+    opacity: 0.22 !important;
+  }
+  body.home-light #process .step-title {
+    max-width: 76% !important;
+    margin: 0 0 10px !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+  }
+  body.home-light #process .step-desc {
+    max-width: 86% !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body.home-light #cta {
+    overflow: hidden !important;
+  }
+  body.home-light #cta .cta-actions {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+  body.home-light #cta .cta-actions .btn-primary,
+  body.home-light #cta .cta-actions .btn-ghost {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    padding: 0 6px !important;
+    box-sizing: border-box !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 7px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+}
+</style>
 </head>
 <body class="home-light has-bottom-nav" data-cc-id="cc-1" style="cursor: crosshair;">
 
@@ -17,6 +103,7 @@
 <!-- NAV -->
 <nav id="nav">
   <ul class="nav-links nav-links-left">
+    <li><a href="#hero">Home</a></li>
     <li><a href="#services-editorial">Services</a></li>
     <li><a href="#roster">Artists</a></li>
     <li><a href="#portfolio">Events</a></li>
@@ -29,6 +116,7 @@
     <ul class="nav-links nav-links-right">
       <li><a href="partnership.html">Partnership</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contacts">Contact</a></li>
     </ul>
   <div class="nav-actions">
     <a href="tel:+19402793660" class="nav-call">
@@ -54,11 +142,13 @@
     </svg>
   </button>
   <nav class="mobile-menu-nav">
+    <a href="#hero" class="mobile-menu-link">Home</a>
     <a href="#services-editorial" class="mobile-menu-link">Services</a>
     <a href="#roster" class="mobile-menu-link">Artists</a>
     <a href="#portfolio" class="mobile-menu-link">Events</a>
     <a href="partnership.html" class="mobile-menu-link">Partnership</a>
     <a href="#about" class="mobile-menu-link">About</a>
+    <a href="#contacts" class="mobile-menu-link">Contact</a>
   </nav>
   <div class="mobile-menu-contacts">
     <a href="tel:+19402793660" class="mobile-menu-btn mobile-menu-call">
@@ -1016,16 +1106,11 @@
   <div class="section-label cta-label reveal visible">Ready to Begin</div>
   <h2 class="cta-title reveal reveal-delay-1 visible">Let's Create<br><em>Something</em><br>Extraordinary.</h2>
   <p class="cta-sub reveal reveal-delay-2 visible">Based in Miami · Serving South Florida &amp; Beyond</p>
-  <div class="cta-actions reveal reveal-delay-3 visible">
-    <a href="tel:+19402793660" class="btn-primary">Call Now</a>
-    <a href="https://wa.me/19402793660" class="btn-ghost">WhatsApp Us</a>
-    <a href="mailto:info@gusarentertainment.com" class="btn-ghost">Send an Email</a>
-  </div>
 </section>
 
 <!-- FOOTER -->
 
-<footer>
+<footer id="contacts">
   <div class="nf-inner">
     <div class="nf-grid">
 
@@ -1078,10 +1163,20 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span>+1 (940) 279-3660</span>
           </a>
-          <a href="https://wa.me/19402793660" class="nf-wa" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-            WhatsApp
-          </a>
+          <div class="nf-actions" aria-label="Contact actions">
+            <a href="tel:+19402793660" class="nf-action nf-action-call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call
+            </a>
+            <a href="https://wa.me/19402793660" class="nf-action nf-wa" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              WhatsApp
+            </a>
+            <a href="mailto:info@gusarentertainment.com" class="nf-action nf-action-email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email
+            </a>
+          </div>
         </div>
       </div>
 

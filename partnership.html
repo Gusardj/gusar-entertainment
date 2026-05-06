@@ -7,15 +7,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=mobile-menu-light">
+  <link rel="stylesheet" href="css/style.css?v=partnership-hiw-light">
   <style>
     /* ═══════════════════════════════════════════
        LUXURY DARK WARM MINIMALISM — PARTNERSHIP
        ═══════════════════════════════════════════ */
     .partnership-page {
       --pp-bg:       #1E1E1E;
-      --pp-bg2:      #1E1E1E;
-      --pp-bg3:      #1E1E1E;
+      --pp-bg2:      #25221F;
+      --pp-bg3:      #213246;
+      --pp-bg4:      #1B1B1B;
+      --pp-light-bg: #F2F2F2;
+      --pp-light-card: #E8DED0;
+      --pp-light-text: #1E1E1E;
+      --pp-light-muted: #3A3630;
+      --pp-card-bg:  rgba(30, 30, 30, 0.72);
+      --pp-card-bg2: rgba(37, 34, 31, 0.86);
       --pp-text:     #F2F2F2;
       --pp-text2:    #F2F2F2;
       --pp-accent:   #C6B69D;
@@ -211,6 +218,18 @@
       color: var(--pp-accent);
       line-height: 1;
     }
+    .pp-hero-entertainment {
+      display: block;
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: clamp(12px, 1.55vw, 18px);
+      font-weight: 300;
+      letter-spacing: 0.56em;
+      text-transform: uppercase;
+      color: var(--pp-accent);
+      line-height: 1;
+      margin-top: 6px;
+      padding-left: 0.56em;
+    }
 
     .pp-divider-line {
       width: 60px;
@@ -287,21 +306,22 @@
        HOW IT WORKS
        ════════════════════════ */
     .hiw-section {
-      padding: 100px 52px;
-      background: var(--pp-bg2);
+      padding: 22px 52px 42px;
+      background: var(--pp-light-bg);
       border-top: 1px solid var(--pp-border);
+      border-bottom: 1px solid var(--pp-border);
     }
-    .hiw-inner { max-width: 1200px; margin: 0 auto; }
-    .hiw-header { text-align: center; margin-bottom: 72px; }
+    .hiw-inner { max-width: 1080px; margin: 0 auto; }
+    .hiw-header { text-align: center; margin-bottom: 24px; }
 
     .hiw-heading {
       font-family: 'Cormorant Garamond', serif !important;
-      font-size: clamp(32px, 4.5vw, 60px);
+      font-size: clamp(30px, 3.8vw, 48px);
       font-weight: 400;
       font-style: italic;
       color: var(--pp-accent);
       line-height: 1.1;
-      margin: 16px 0 6px;
+      margin: 6px 0 2px;
     }
     .hiw-heading-caps {
       display: block;
@@ -310,7 +330,7 @@
       font-weight: 700;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--pp-text);
+      color: var(--pp-light-text);
       font-style: normal;
     }
 
@@ -319,31 +339,36 @@
       grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--pp-border);
     }
+    @media (min-width: 901px) {
+      .hiw-grid { min-height: 0; }
+      .hiw-icon-wrap svg { width: 17px; height: 17px; }
+    }
     .hiw-step {
       position: relative;
-      padding: 56px 48px;
+      padding: 24px 32px 26px;
       overflow: hidden;
+      background: var(--pp-light-bg);
       transition: background 0.4s var(--pp-ease);
     }
-    .hiw-step:hover { background: var(--pp-bg3); }
+    .hiw-step:hover { background: var(--pp-light-card); }
     .hiw-step-border { border-right: 1px solid var(--pp-border); }
 
     .hiw-bg-num {
       position: absolute;
-      top: -10px;
-      right: 20px;
+      top: -6px;
+      right: 18px;
       font-family: 'Montserrat', sans-serif !important;
-      font-size: 120px;
+      font-size: 78px;
       font-weight: 800;
       color: var(--pp-accent);
-      opacity: 0.04;
+      opacity: 0.13;
       line-height: 1;
       user-select: none;
       pointer-events: none;
       letter-spacing: -0.05em;
       transition: opacity 0.4s;
     }
-    .hiw-step:hover .hiw-bg-num { opacity: 0.09; }
+    .hiw-step:hover .hiw-bg-num { opacity: 0.18; }
 
     .hiw-num {
       display: inline-block;
@@ -351,21 +376,21 @@
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.3em;
-      color: var(--pp-gold);
+      color: var(--pp-light-muted);
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 12px;
     }
 
     .hiw-icon-wrap {
-      width: 52px;
-      height: 52px;
+      width: 38px;
+      height: 38px;
       border: 1px solid var(--pp-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--pp-accent);
-      margin-bottom: 28px;
+      margin-bottom: 14px;
       transition: border-color 0.4s, background 0.4s;
     }
     .hiw-step:hover .hiw-icon-wrap {
@@ -377,17 +402,17 @@
       font-family: 'Montserrat', sans-serif !important;
       font-size: 12px;
       font-weight: 600;
-      color: var(--pp-text);
+      color: var(--pp-light-text);
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      margin: 0 0 14px;
-      line-height: 1.3;
+      margin: 0 0 8px;
+      line-height: 1.25;
     }
     .hiw-desc {
       font-size: 14px;
       font-weight: 300;
-      color: var(--pp-text2);
-      line-height: 1.8;
+      color: var(--pp-light-muted);
+      line-height: 1.45;
       margin: 0;
     }
     .hiw-deco-line {
@@ -405,7 +430,7 @@
        ════════════════════════ */
     .pp-cats {
       padding: 100px 52px 120px;
-      background: var(--pp-bg);
+      background: var(--pp-bg2);
       border-top: 1px solid var(--pp-border);
     }
     .pp-cats-inner { max-width: 1200px; margin: 0 auto; }
@@ -439,7 +464,7 @@
       border: 1px solid var(--pp-border);
     }
     .pp-card {
-      background: var(--pp-bg);
+      background: var(--pp-card-bg);
       padding: 48px 40px 44px;
       position: relative;
       overflow: hidden;
@@ -450,7 +475,7 @@
       cursor: pointer;
       transition: background 0.4s var(--pp-ease);
     }
-    .pp-card:hover { background: var(--pp-bg2); }
+    .pp-card:hover { background: var(--pp-card-bg2); }
     .pp-card-num {
       position: absolute;
       top: 20px;
@@ -522,7 +547,7 @@
        FOOTER OVERRIDES
        ════════════════════════ */
     .partnership-page footer {
-      background: var(--pp-bg2) !important;
+      background: var(--pp-bg4) !important;
       border-top: 1px solid var(--pp-border) !important;
     }
     .partnership-page footer .nf-logo-name { color: var(--pp-accent) !important; }
@@ -533,18 +558,22 @@
     .partnership-page footer .nf-chevron { color: var(--pp-text2) !important; }
     .partnership-page footer .nf-list a,
     .partnership-page footer .nf-contact-item,
+    .partnership-page footer .nf-action,
     .partnership-page footer .nf-wa,
     .partnership-page footer .nf-copy,
     .partnership-page footer .nf-social-link,
     .partnership-page footer .nf-tiktok { color: var(--pp-text2) !important; }
+    .partnership-page footer .nf-action,
     .partnership-page footer .nf-wa {
       background: transparent !important;
       border-color: var(--pp-border) !important;
     }
     .partnership-page footer .nf-list a:hover,
     .partnership-page footer .nf-contact-item:hover,
+    .partnership-page footer .nf-action:hover,
     .partnership-page footer .nf-wa:hover,
     .partnership-page footer .nf-social-link:hover { color: var(--pp-accent) !important; }
+    .partnership-page footer .nf-action:hover,
     .partnership-page footer .nf-wa:hover { background: var(--pp-button-bg) !important; color: var(--pp-button-text) !important; }
     .partnership-page footer .nf-bottom { border-top-color: var(--pp-border) !important; }
 
@@ -555,9 +584,9 @@
       .pp-hero { padding: 140px 28px 72px; min-height: auto; }
       .pp-stat { padding: 0 20px; }
       .pp-stat strong { font-size: 36px; }
-      .hiw-section { padding: 44px 28px 48px; }
-      .hiw-header { margin-bottom: 28px; }
-      .hiw-heading { font-size: 34px; margin: 10px 0 2px; }
+      .hiw-section { padding: 20px 28px 34px; }
+      .hiw-header { margin-bottom: 18px; }
+      .hiw-heading { font-size: 31px; margin: 6px 0 2px; }
       .hiw-heading-caps { font-size: 11px; letter-spacing: 0.22em; }
       .hiw-grid { grid-template-columns: 1fr; }
       .hiw-step {
@@ -565,13 +594,13 @@
         grid-template-columns: 34px 1fr;
         column-gap: 14px;
         align-items: start;
-        padding: 18px 18px;
+        padding: 14px 18px;
       }
       .hiw-step-border { border-right: none; border-bottom: 1px solid var(--pp-border); }
       .hiw-bg-num {
         top: 8px;
         right: 14px;
-        font-size: 58px;
+        font-size: 48px;
       }
       .hiw-num {
         grid-column: 1;
@@ -585,7 +614,7 @@
         grid-row: 2 / span 2;
         width: 32px;
         height: 32px;
-        margin: 18px 0 0;
+        margin: 14px 0 0;
       }
       .hiw-icon-wrap svg { width: 16px; height: 16px; }
       .hiw-text-wrap {
@@ -605,7 +634,7 @@
       .pp-cats { padding: 72px 28px 88px; }
       .pp-cards-grid { grid-template-columns: repeat(2, 1fr); }
       .pp-card { padding: 36px 28px 32px; }
-      .partnership-page footer { background: var(--pp-bg) !important; }
+      .partnership-page footer { background: var(--pp-bg4) !important; }
     }
     @media (max-width: 560px) {
       .pp-hero { padding: 120px 20px 56px; }
@@ -627,10 +656,10 @@
         width: 1px;
         height: 44px;
       }
-      .hiw-section { padding: 36px 20px 40px; }
-      .hiw-header { margin-bottom: 22px; }
-      .hiw-heading { font-size: 30px; }
-      .hiw-step { padding: 16px 14px; }
+      .hiw-section { padding: 18px 20px 30px; }
+      .hiw-header { margin-bottom: 14px; }
+      .hiw-heading { font-size: 28px; }
+      .hiw-step { padding: 13px 14px; }
       .pp-cats { padding: 56px 20px 72px; }
       .pp-cards-grid { grid-template-columns: 1fr; }
     }
@@ -640,6 +669,7 @@
   <div id="cursor"></div>
   <nav id="nav">
     <ul class="nav-links nav-links-left">
+      <li><a href="index.html#hero">Home</a></li>
       <li><a href="index.html#services-editorial">Services</a></li>
       <li><a href="index.html#roster">Artists</a></li>
       <li><a href="index.html#portfolio">Events</a></li>
@@ -652,6 +682,7 @@
       <ul class="nav-links nav-links-right">
         <li><a href="partnership.html">Partnership</a></li>
         <li><a href="index.html#about">About</a></li>
+        <li><a href="#contacts">Contact</a></li>
       </ul>
       <div class="nav-actions">
         <a href="tel:+19402793660" class="nav-call" aria-label="Call GUSAR Entertainment">
@@ -677,11 +708,13 @@
       </svg>
     </button>
     <nav class="mobile-menu-nav">
+      <a href="index.html#hero" class="mobile-menu-link">Home</a>
       <a href="index.html#services-editorial" class="mobile-menu-link">Services</a>
       <a href="index.html#roster" class="mobile-menu-link">Artists</a>
       <a href="index.html#portfolio" class="mobile-menu-link">Events</a>
       <a href="partnership.html" class="mobile-menu-link">Partnership</a>
       <a href="index.html#about" class="mobile-menu-link">About</a>
+      <a href="#contacts" class="mobile-menu-link">Contact</a>
     </nav>
     <div class="mobile-menu-contacts">
       <a href="tel:+19402793660" class="mobile-menu-btn mobile-menu-call">
@@ -708,7 +741,7 @@
         <h1 class="fade-up d1">
           <span class="pp-hero-join">Join the</span>
           <span class="pp-hero-name">GUSAR</span>
-          <span class="pp-hero-network">Network</span>
+          <span class="pp-hero-entertainment">Entertainment</span>
         </h1>
         <div class="pp-divider-line fade-up d2"></div>
         <p class="pp-subtitle fade-up d2">We are always looking for exceptional talent and reliable technical partners for our luxury events in Miami and beyond.</p>
@@ -1530,7 +1563,7 @@
     </script>
   </main>
 
-  <footer>
+  <footer id="contacts">
     <div class="nf-inner">
       <div class="nf-grid">
         <div class="nf-brand">
@@ -1579,10 +1612,20 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span>+1 (940) 279-3660</span>
             </a>
-            <a href="https://wa.me/19402793660" class="nf-wa" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-              WhatsApp
-            </a>
+            <div class="nf-actions" aria-label="Contact actions">
+              <a href="tel:+19402793660" class="nf-action nf-action-call">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call
+              </a>
+              <a href="https://wa.me/19402793660" class="nf-action nf-wa" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                WhatsApp
+              </a>
+              <a href="mailto:info@gusarentertainment.com" class="nf-action nf-action-email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Email
+              </a>
+            </div>
           </div>
         </div>
       </div>
