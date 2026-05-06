@@ -125,10 +125,10 @@ updateNavState();
 
     if (deltaY < -directionThreshold) {
       document.body.classList.remove("bottom-nav-visible");
-      document.body.classList.add("nav-hidden");
+      document.body.classList.remove("nav-hidden");
     } else if (deltaY > directionThreshold) {
       document.body.classList.add("bottom-nav-visible");
-      document.body.classList.remove("nav-hidden");
+      document.body.classList.add("nav-hidden");
     }
   }
 
@@ -145,7 +145,7 @@ updateNavState();
     const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
     if (isPastBottomNavThreshold() && !blocked) {
       document.body.classList.add("bottom-nav-visible");
-      document.body.classList.remove("nav-hidden");
+      document.body.classList.add("nav-hidden");
       lastScrollY = window.scrollY;
     }
   }
@@ -156,9 +156,9 @@ updateNavState();
     const downKeys = ["ArrowDown", "PageDown", "End", " "];
     if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
       document.body.classList.remove("bottom-nav-visible");
-      document.body.classList.add("nav-hidden");
-    } else if (downKeys.includes(event.key) && !event.shiftKey) {
       document.body.classList.remove("nav-hidden");
+    } else if (downKeys.includes(event.key) && !event.shiftKey) {
+      document.body.classList.add("nav-hidden");
       if (isPastBottomNavThreshold()) document.body.classList.add("bottom-nav-visible");
     }
   });
@@ -387,6 +387,10 @@ updateNavState();
     group.querySelectorAll('.qchoice').forEach((choice) => choice.classList.remove('selected'));
     el.classList.add('selected');
     setError(1, false);
+    if (groupId === 'qEventTypeChoices') {
+      const otherWrap = document.getElementById('qOtherEventWrap');
+      if (otherWrap) otherWrap.classList.toggle('visible', el.dataset.val === 'Something Else');
+    }
   };
 
   window.qSelectPill = function qSelectPill(el, groupId) {
@@ -466,7 +470,9 @@ updateNavState();
       submitBtn.textContent = 'Sending...';
     }
 
-    const eventType = selectedText('#qEventTypeChoices .qchoice.selected') || 'Not selected';
+    const eventTypeRaw = selectedText('#qEventTypeChoices .qchoice.selected') || 'Not selected';
+    const otherEventText = getValue('qOtherEventText');
+    const eventType = eventTypeRaw === 'Something Else' && otherEventText ? `Something Else: ${otherEventText}` : eventTypeRaw;
     const services = selectedList('.qsvc.selected');
     const customService = getValue('qCustomService');
     if (customService) services.push(customService);

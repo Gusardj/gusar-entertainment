@@ -576,6 +576,14 @@
     .partnership-page footer .nf-action:hover,
     .partnership-page footer .nf-wa:hover { background: var(--pp-button-bg) !important; color: var(--pp-button-text) !important; }
     .partnership-page footer .nf-bottom { border-top-color: var(--pp-border) !important; }
+    .partnership-page footer .nf-newsletter { border-top-color: var(--pp-border) !important; border-bottom-color: var(--pp-border) !important; }
+    .partnership-page footer .nf-newsletter-headline { color: var(--pp-text) !important; }
+    .partnership-page footer .nf-newsletter-sub,
+    .partnership-page footer .nf-newsletter-note { color: var(--pp-text2) !important; opacity: 0.7; }
+    .partnership-page footer .nf-newsletter-input { border-color: var(--pp-border) !important; color: var(--pp-text) !important; }
+    .partnership-page footer .nf-newsletter-input::placeholder { color: var(--pp-text2) !important; opacity: 0.5; }
+    .partnership-page footer .nf-newsletter-btn { background: var(--pp-button-bg) !important; color: var(--pp-button-text) !important; }
+    .partnership-page footer .nf-newsletter-btn:hover { background: var(--pp-accent-l) !important; }
 
     /* ════════════════════════
        MOBILE
@@ -708,13 +716,32 @@
       </svg>
     </button>
     <nav class="mobile-menu-nav">
-      <a href="index.html#hero" class="mobile-menu-link">Home</a>
-      <a href="index.html#services-editorial" class="mobile-menu-link">Services</a>
-      <a href="index.html#roster" class="mobile-menu-link">Artists</a>
-      <a href="index.html#portfolio" class="mobile-menu-link">Events</a>
-      <a href="partnership.html" class="mobile-menu-link">Partnership</a>
-      <a href="index.html#about" class="mobile-menu-link">About</a>
-      <a href="#contacts" class="mobile-menu-link">Contact</a>
+      <div class="mobile-menu-columns">
+        <div class="mobile-menu-col">
+          <span class="mobile-menu-col-label">Services</span>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Talent Booking</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Production &amp; Tech</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Design &amp; Concept</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link"><span class="mmcl-accent">Event</span> Management</a>
+        </div>
+        <div class="mobile-menu-col">
+          <span class="mobile-menu-col-label"><span class="mmcl-accent">Event</span> Types</span>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Weddings</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Corporate Events</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Brand Activations</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Galas &amp; Fundraisers</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link"><span class="mmcl-accent">Private</span> Parties</a>
+          <a href="index.html#services-editorial" class="mobile-menu-col-link">Yacht &amp; Villa Events</a>
+        </div>
+      </div>
+      <div class="mobile-menu-secondary">
+        <a href="index.html#hero" class="mobile-menu-sec-link">Home</a>
+        <a href="index.html#roster" class="mobile-menu-sec-link">Artists</a>
+        <a href="index.html#portfolio" class="mobile-menu-sec-link">Events</a>
+        <a href="partnership.html" class="mobile-menu-sec-link">Partnership</a>
+        <a href="index.html#about" class="mobile-menu-sec-link">About</a>
+        <a href="#contacts" class="mobile-menu-sec-link">Contact</a>
+      </div>
     </nav>
     <div class="mobile-menu-contacts">
       <a href="tel:+19402793660" class="mobile-menu-btn mobile-menu-call">
@@ -1579,10 +1606,24 @@
             <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
           </button>
           <ul class="nf-list" id="nf-services">
-            <li><a href="index.html#services-editorial">Luxury Weddings</a></li>
+            <li><a href="index.html#services-editorial">Talent Booking</a></li>
+            <li><a href="index.html#services-editorial">Production &amp; Tech</a></li>
+            <li><a href="index.html#services-editorial">Design &amp; Concept</a></li>
+            <li><a href="index.html#services-editorial">Event Management</a></li>
+          </ul>
+        </div>
+        <div class="nf-col">
+          <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="eventtypes">
+            <span class="nf-col-title"><span class="mmcl-accent">Event</span> Types</span>
+            <svg class="nf-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <ul class="nf-list" id="nf-eventtypes">
+            <li><a href="index.html#services-editorial">Weddings</a></li>
             <li><a href="index.html#services-editorial">Corporate Events</a></li>
-            <li><a href="index.html#services-editorial">Artist Booking</a></li>
-            <li><a href="index.html#services-editorial">AV Rentals</a></li>
+            <li><a href="index.html#services-editorial">Brand Activations</a></li>
+            <li><a href="index.html#services-editorial">Galas &amp; Fundraisers</a></li>
+            <li><a href="index.html#services-editorial"><span class="mmcl-accent">Private</span> Parties</a></li>
+            <li><a href="index.html#services-editorial">Yacht &amp; Villa Events</a></li>
           </ul>
         </div>
         <div class="nf-col">
@@ -1629,6 +1670,20 @@
           </div>
         </div>
       </div>
+      <div class="nf-newsletter">
+        <div class="nf-newsletter-text">
+          <p class="nf-newsletter-headline">Get inspired. Get planning.</p>
+          <p class="nf-newsletter-sub">Monthly insights from Miami's top event producers — trends, behind-the-scenes, and exclusive offers.</p>
+        </div>
+        <form class="nf-newsletter-form" onsubmit="return false;">
+          <div class="nf-newsletter-row">
+            <input class="nf-newsletter-input" type="email" placeholder="your@email.com" aria-label="Email address" required>
+            <button class="nf-newsletter-btn" type="submit">SUBSCRIBE →</button>
+          </div>
+          <p class="nf-newsletter-note">No spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
       <div class="nf-bottom">
         <p class="nf-copy">© 2026 GUSAR ENTERTAINMENT. ALL RIGHTS RESERVED.</p>
         <div class="nf-socials">
