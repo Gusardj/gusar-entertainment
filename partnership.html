@@ -10,28 +10,28 @@
   <link rel="stylesheet" href="css/style.css?v=partnership-hiw-light">
   <style>
     /* ═══════════════════════════════════════════
-       LUXURY DARK WARM MINIMALISM — PARTNERSHIP
+       LUXURY LIGHT MINIMALISM — PARTNERSHIP
        ═══════════════════════════════════════════ */
     .partnership-page {
-      --pp-bg:       #1E1E1E;
-      --pp-bg2:      #25221F;
-      --pp-bg3:      #213246;
-      --pp-bg4:      #1B1B1B;
-      --pp-light-bg: #F2F2F2;
-      --pp-light-card: #E8DED0;
-      --pp-light-text: #1E1E1E;
-      --pp-light-muted: #3A3630;
-      --pp-card-bg:  rgba(30, 30, 30, 0.72);
-      --pp-card-bg2: rgba(37, 34, 31, 0.86);
-      --pp-text:     #F2F2F2;
-      --pp-text2:    #F2F2F2;
-      --pp-accent:   #C6B69D;
-      --pp-accent-l: #D3C3AA;
-      --pp-gold:     #C6B69D;
-      --pp-border:   #C6B69D;
-      --pp-border-h: #C6B69D;
-      --pp-button-bg: #D3C3AA;
-      --pp-button-text: #1E1E1E;
+      --pp-bg:       #FFFFFF;
+      --pp-bg2:      #FFFFFF;
+      --pp-bg3:      #F8F6F1;
+      --pp-bg4:      #FFFFFF;
+      --pp-light-bg: #FFFFFF;
+      --pp-light-card: #F8F6F1;
+      --pp-light-text: #111111;
+      --pp-light-muted: #4A4A4A;
+      --pp-card-bg:  #FFFFFF;
+      --pp-card-bg2: #F8F6F1;
+      --pp-text:     #111111;
+      --pp-text2:    #4A4A4A;
+      --pp-accent:   #A67C2D;
+      --pp-accent-l: #C29A4A;
+      --pp-gold:     #A67C2D;
+      --pp-border:   rgba(17, 17, 17, 0.14);
+      --pp-border-h: rgba(166, 124, 45, 0.48);
+      --pp-button-bg: #111111;
+      --pp-button-text: #FFFFFF;
       --pp-ease:     cubic-bezier(0.4, 0, 0.2, 1);
       background: var(--pp-bg);
       color: var(--pp-text);
@@ -62,11 +62,11 @@
     .partnership-page nav,
     .partnership-page nav.scrolled,
     body.partnership-page.page-scrolled nav {
-      background: rgba(255, 255, 255, 0.055) !important;
+      background: rgba(255, 255, 255, 0.84) !important;
       backdrop-filter: blur(28px) saturate(145%) !important;
       -webkit-backdrop-filter: blur(28px) saturate(145%) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34) !important;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.1) !important;
+      box-shadow: 0 10px 34px rgba(17, 17, 17, 0.07) !important;
     }
     .partnership-page .nav-logo-top {
       color: var(--pp-accent) !important;
@@ -169,7 +169,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(198, 182, 157, 0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(166, 124, 45, 0.12) 0%, transparent 72%);
       pointer-events: none;
     }
     .pp-hero-inner { max-width: 820px; width: 100%; position: relative; }
@@ -269,7 +269,7 @@
     .pp-btn:hover {
       background: transparent;
       border-color: var(--pp-button-bg);
-      color: var(--pp-button-bg);
+      color: var(--pp-text);
     }
     .pp-btn svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.3s; }
     .pp-btn:hover svg { transform: translateX(4px); }
@@ -575,8 +575,16 @@
     .partnership-page footer .nf-social-link:hover { color: var(--pp-accent) !important; }
     .partnership-page footer .nf-action:hover,
     .partnership-page footer .nf-wa:hover { background: var(--pp-button-bg) !important; color: var(--pp-button-text) !important; }
-    .partnership-page footer .nf-bottom { border-top-color: var(--pp-border) !important; }
-    .partnership-page footer .nf-newsletter { border-top-color: var(--pp-border) !important; border-bottom-color: var(--pp-border) !important; }
+    .partnership-page footer .nf-bottom {
+      border-top: 0 !important;
+      padding-top: 10px !important;
+    }
+    .partnership-page footer .nf-newsletter {
+      border-top-color: var(--pp-border) !important;
+      border-bottom: 0 !important;
+      margin-bottom: 10px !important;
+      padding-bottom: 18px !important;
+    }
     .partnership-page footer .nf-newsletter-headline { color: var(--pp-text) !important; }
     .partnership-page footer .nf-newsletter-sub,
     .partnership-page footer .nf-newsletter-note { color: var(--pp-text2) !important; opacity: 0.7; }
@@ -671,6 +679,190 @@
       .pp-cats { padding: 56px 20px 72px; }
       .pp-cards-grid { grid-template-columns: 1fr; }
     }
+
+    /* Match the shared home navigation treatment */
+    .partnership-page nav,
+    .partnership-page nav.scrolled,
+    body.partnership-page.page-scrolled nav {
+      background: rgba(255, 255, 255, 0.055) !important;
+      backdrop-filter: blur(28px) saturate(145%) !important;
+      -webkit-backdrop-filter: blur(28px) saturate(145%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.34) !important;
+    }
+
+    .partnership-page .nav-logo-sub {
+      width: auto !important;
+      letter-spacing: 0.5em !important;
+      text-align: left !important;
+    }
+
+    .partnership-page .nav-cta {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 40px !important;
+      padding: 0 18px !important;
+      border-radius: 999px !important;
+      background: var(--pp-button-bg) !important;
+      border: 1px solid var(--pp-button-bg) !important;
+      color: var(--pp-button-text) !important;
+      font-family: "Montserrat", sans-serif !important;
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      gap: 8px !important;
+    }
+
+    .partnership-page .nav-cta:hover {
+      transform: translateY(-1px) !important;
+      background: var(--pp-accent) !important;
+      border-color: var(--pp-accent) !important;
+      color: #111111 !important;
+    }
+
+    .partnership-page .nav-arrow {
+      display: inline-block !important;
+      transition: transform 0.25s !important;
+    }
+
+    .partnership-page .nav-cta:hover .nav-arrow {
+      transform: translateX(3px) !important;
+    }
+
+    .partnership-page footer .nf-logo-wrap {
+      display: inline-block;
+      width: 156px;
+    }
+
+    .partnership-page footer .nf-logo-name {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      letter-spacing: 0 !important;
+      line-height: 1 !important;
+      white-space: nowrap;
+    }
+
+    .partnership-page footer .nf-logo-sub {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      letter-spacing: 0 !important;
+      line-height: 1 !important;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 901px) {
+      .partnership-page nav,
+      .partnership-page nav.scrolled,
+      body.partnership-page.page-scrolled nav {
+        justify-content: flex-start !important;
+        gap: clamp(16px, 1.7vw, 28px) !important;
+      }
+
+      .partnership-page .nav-logo {
+        position: static !important;
+        order: 1 !important;
+        flex: 0 0 auto !important;
+        align-items: flex-start !important;
+        margin: 0 clamp(8px, 1vw, 18px) 0 0 !important;
+        transform: none !important;
+      }
+
+      .partnership-page .nav-links-left {
+        order: 2 !important;
+      }
+
+      .partnership-page .nav-right {
+        order: 3 !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        justify-content: space-between !important;
+        gap: clamp(16px, 1.5vw, 26px) !important;
+      }
+
+      .partnership-page .nav-links {
+        gap: clamp(18px, 2vw, 34px) !important;
+        flex: 0 1 auto !important;
+      }
+
+      .partnership-page .nav-links-right {
+        margin-right: auto !important;
+      }
+
+      .partnership-page .nav-actions {
+        flex: 0 0 auto !important;
+        margin-left: auto !important;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1240px) {
+      .partnership-page nav,
+      .partnership-page nav.scrolled,
+      body.partnership-page.page-scrolled nav {
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+        gap: 14px !important;
+      }
+
+      .partnership-page .nav-links {
+        gap: 16px !important;
+      }
+
+      .partnership-page .nav-links a {
+        font-size: 10px !important;
+        letter-spacing: 0.08em !important;
+      }
+
+      .partnership-page .nav-logo-top {
+        font-size: 24px !important;
+      }
+
+      .partnership-page .nav-logo-sub {
+        font-size: 6px !important;
+        letter-spacing: 0.42em !important;
+      }
+
+      .partnership-page .nav-call,
+      .partnership-page .nav-wa,
+      .partnership-page .nav-cta {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        font-size: 9px !important;
+        letter-spacing: 0.08em !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .partnership-page .nav-cta {
+        min-height: 38px !important;
+        padding: 0 14px !important;
+        font-size: 9px !important;
+        letter-spacing: 0.1em !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .partnership-page .nav-call,
+      .partnership-page .nav-wa {
+        display: none !important;
+      }
+
+      .partnership-page .nav-cta {
+        min-height: 36px !important;
+        padding: 0 12px !important;
+        font-size: 8px !important;
+        letter-spacing: 0.08em !important;
+      }
+
+      .partnership-page .nav-cta .nav-arrow {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body class="partnership-page has-bottom-nav" data-cc-id="cc-partnership">
@@ -693,6 +885,7 @@
         <li><a href="#contacts">Contact</a></li>
       </ul>
       <div class="nav-actions">
+        <a href="index.html#quiz-section" class="nav-cta">Start planning <span class="nav-arrow" aria-hidden="true">&rarr;</span></a>
         <a href="tel:+19402793660" class="nav-call" aria-label="Call GUSAR Entertainment">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 16.92z"/></svg>
           Call
@@ -899,21 +1092,21 @@
     <section id="collab-section" class="collab-modal" role="dialog" aria-modal="true" aria-labelledby="collab-title" aria-hidden="true">
     <style>
       #collab-section {
-        --gq-bg:          #1E1E1E;
-        --gq-card:        #1E1E1E;
-        --gq-input-bg:    #1E1E1E;
-        --gq-border:      #C6B69D;
-        --gq-border-hover: #D3C3AA;
-        --gq-gold:        #C6B69D;
-        --gq-gold-hover:  #D3C3AA;
+        --gq-bg:          #FFFFFF;
+        --gq-card:        #FFFFFF;
+        --gq-input-bg:    #FFFFFF;
+        --gq-border:      rgba(17, 17, 17, 0.16);
+        --gq-border-hover: #A67C2D;
+        --gq-gold:        #A67C2D;
+        --gq-gold-hover:  #C29A4A;
         --gq-gold-mut:    transparent;
-        --gq-text:        #F2F2F2;
-        --gq-text-mut:    #F2F2F2;
-        --gq-text-dim:    #F2F2F2;
-        --gq-error:       #D3C3AA;
+        --gq-text:        #111111;
+        --gq-text-mut:    #4A4A4A;
+        --gq-text-dim:    #777777;
+        --gq-error:       #A67C2D;
         --ez: cubic-bezier(0.4, 0, 0.2, 1);
 
-        background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(198, 182, 157, 0.08), transparent 60%), #1E1E1E;
+        background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(166, 124, 45, 0.1), transparent 60%), rgba(255, 255, 255, 0.98);
         color: var(--gq-text);
         font-family: 'Jost', 'Inter', sans-serif !important;
         padding: 48px 24px;
@@ -943,7 +1136,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(30, 30, 30, 0.94);
+        background: rgba(255, 255, 255, 0.94);
         border: 1px solid var(--gq-border);
         border-radius: 50%;
         color: var(--gq-text);
@@ -1048,7 +1241,7 @@
         width: 20px; height: 20px;
         background: var(--gq-gold);
         border-radius: 50%;
-        color: #1E1E1E;
+        color: #111111;
         display: flex; align-items: center; justify-content: center;
         opacity: 0; transform: scale(0.5);
         transition: all 0.3s var(--ez);
@@ -1115,7 +1308,7 @@
       #collab-section .gq-cons-box { width: 18px; height: 18px; border: 1px solid var(--gq-border); background: var(--gq-input-bg); flex-shrink: 0; position: relative; transition: all 0.2s; }
       #collab-section .gq-cons-chk { display: none; }
       #collab-section .gq-cons-chk:checked + .gq-cons-box { background: var(--gq-gold); border-color: var(--gq-gold); }
-      #collab-section .gq-cons-chk:checked + .gq-cons-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid #1E1E1E; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+      #collab-section .gq-cons-chk:checked + .gq-cons-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid #111111; border-width: 0 2px 2px 0; transform: rotate(45deg); }
       #collab-section .gq-cons-txt { font-size: 13px; color: var(--gq-text-mut); line-height: 1.5; font-weight: 300; }
 
       #collab-section .gq-err { font-size: 12px; font-weight: 500; color: var(--gq-error); margin: 0 0 16px; display: none; font-family: 'Montserrat', sans-serif !important; letter-spacing: 0.05em; }
@@ -1138,7 +1331,7 @@
         cursor: pointer;
         transition: all 0.3s var(--ez);
       }
-      #collab-section .gq-btn-primary { background: #D3C3AA; color: #1E1E1E; border-color: #D3C3AA; margin-left: auto; }
+      #collab-section .gq-btn-primary { background: #111111; color: #FFFFFF; border-color: #111111; margin-left: auto; }
       #collab-section .gq-btn-primary:hover { background: var(--gq-gold-hover); border-color: var(--gq-gold-hover); }
       #collab-section .gq-btn-secondary { background: transparent; color: var(--gq-text-mut); border-color: var(--gq-border); }
       #collab-section .gq-btn-secondary:hover { color: var(--gq-text); border-color: var(--gq-border-hover); }
@@ -1574,13 +1767,17 @@
   <footer id="contacts">
     <div class="nf-inner">
       <div class="nf-grid">
-        <div class="nf-brand">
-          <div class="nf-logo-wrap">
-            <h2 class="nf-logo-name">GUSAR</h2>
-            <p class="nf-logo-sub">Entertainment</p>
+          <div class="nf-brand">
+            <div class="nf-logo-wrap">
+              <h2 class="nf-logo-name" aria-label="GUSAR">
+                <span>G</span><span>U</span><span>S</span><span>A</span><span>R</span>
+              </h2>
+              <p class="nf-logo-sub" aria-label="Entertainment">
+                <span>E</span><span>N</span><span>T</span><span>E</span><span>R</span><span>T</span><span>A</span><span>I</span><span>N</span><span>M</span><span>E</span><span>N</span><span>T</span>
+              </p>
+            </div>
+            <p class="nf-brand-desc">Miami's premier event production &amp; luxury wedding planning company.</p>
           </div>
-          <p class="nf-brand-desc">Miami's premier event production &amp; luxury wedding planning company.</p>
-        </div>
         <div class="nf-col">
           <button class="nf-acc-btn" aria-expanded="false" data-nf-acc="services">
             <span class="nf-col-title">Services</span>
@@ -1620,7 +1817,7 @@
           </ul>
         </div>
         <div class="nf-col">
-          <span class="nf-contact-title" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#F2F2F2;display:block;margin-bottom:16px;">Contact</span>
+          <span class="nf-contact-title" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#111111;display:block;margin-bottom:16px;">Contact</span>
           <div class="nf-contact-list">
             <a href="#" class="nf-contact-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>

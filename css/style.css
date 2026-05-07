@@ -3871,13 +3871,13 @@ body.page-scrolled nav {
 }
 .mobile-menu-sec-link:hover { color: #3d3228; }
 
-/* Partnership dark overrides */
-.partnership-page .mobile-menu-col-label { color: rgba(242, 242, 242, 0.45) !important; }
-.partnership-page .mobile-menu-col-link { color: #F2F2F2 !important; border-bottom-color: rgba(198, 182, 157, 0.15) !important; }
-.partnership-page .mobile-menu-col-link:hover { color: #C6B69D !important; }
-.partnership-page .mobile-menu-columns { border-bottom-color: rgba(198, 182, 157, 0.2) !important; }
-.partnership-page .mobile-menu-sec-link { color: rgba(242, 242, 242, 0.45) !important; }
-.partnership-page .mobile-menu-sec-link:hover { color: #F2F2F2 !important; }
+/* Partnership light overrides */
+.partnership-page .mobile-menu-col-label { color: rgba(17, 17, 17, 0.46) !important; }
+.partnership-page .mobile-menu-col-link { color: #111111 !important; border-bottom-color: rgba(166, 124, 45, 0.2) !important; }
+.partnership-page .mobile-menu-col-link:hover { color: #A67C2D !important; }
+.partnership-page .mobile-menu-columns { border-bottom-color: rgba(166, 124, 45, 0.24) !important; }
+.partnership-page .mobile-menu-sec-link { color: rgba(17, 17, 17, 0.52) !important; }
+.partnership-page .mobile-menu-sec-link:hover { color: #111111 !important; }
 
 .mobile-menu-contacts {
   position: fixed;
@@ -3924,22 +3924,22 @@ body.page-scrolled nav {
 }
 
 .partnership-page #mobile-menu {
-  background: #1E1E1E !important;
-  color: #F2F2F2 !important;
+  background: #FFFFFF !important;
+  color: #111111 !important;
 }
 
 .partnership-page .mobile-menu-link {
-  color: #F2F2F2 !important;
+  color: #111111 !important;
   border-bottom-color: transparent !important;
 }
 
 .partnership-page .mobile-menu-link:hover {
-  color: #F2F2F2 !important;
+  color: #A67C2D !important;
   padding-left: 0 !important;
 }
 
 .partnership-page .mobile-menu-link::before {
-  color: #F2F2F2 !important;
+  color: #A67C2D !important;
 }
 
 .partnership-page .mobile-menu-link::after {
@@ -3949,23 +3949,23 @@ body.page-scrolled nav {
 
 .partnership-page .mobile-menu-close {
   background: transparent !important;
-  border-color: #C6B69D !important;
-  color: #F2F2F2 !important;
+  border-color: #A67C2D !important;
+  color: #111111 !important;
   box-shadow: none !important;
 }
 
 .partnership-page .mobile-menu-close:hover {
-  background: #D3C3AA !important;
-  border-color: #D3C3AA !important;
-  color: #1E1E1E !important;
+  background: #111111 !important;
+  border-color: #111111 !important;
+  color: #FFFFFF !important;
 }
 
 .partnership-page .mobile-menu-btn {
   background: transparent !important;
-  border-color: #C6B69D !important;
+  border-color: #A67C2D !important;
   border-radius: 8px !important;
   box-shadow: none !important;
-  color: #F2F2F2 !important;
+  color: #111111 !important;
   font-size: 9px !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
@@ -3974,19 +3974,19 @@ body.page-scrolled nav {
 
 .partnership-page .mobile-menu-call,
 .partnership-page .mobile-menu-ig {
-  color: #F2F2F2 !important;
-  border-color: #C6B69D !important;
+  color: #111111 !important;
+  border-color: #A67C2D !important;
 }
 
 .partnership-page .mobile-menu-wa {
-  color: #F2F2F2 !important;
-  border-color: #C6B69D !important;
+  color: #111111 !important;
+  border-color: #A67C2D !important;
 }
 
 .partnership-page .mobile-menu-btn:hover {
-  background: #D3C3AA !important;
-  color: #1E1E1E !important;
-  border-color: #D3C3AA !important;
+  background: #111111 !important;
+  color: #FFFFFF !important;
+  border-color: #111111 !important;
   box-shadow: none !important;
 }
 .mobile-menu-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
@@ -4090,9 +4090,9 @@ body.page-scrolled nav {
     border: 1px solid rgba(198, 182, 157, 0.72);
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.34), 0 -1px 0 rgba(255, 255, 255, 0.08) inset;
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px) + 18px), 0);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: transform, opacity;
     backface-visibility: hidden;

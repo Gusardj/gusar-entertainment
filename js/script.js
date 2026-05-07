@@ -94,6 +94,8 @@ updateNavState();
 
   let lastScrollY = window.scrollY;
   let ticking = false;
+  let touchStartY = null;
+  let touchDirection = 0;
   const directionThreshold = 8;
   // Cache threshold once — offsetTop/offsetHeight don't change after load
   let navThreshold = -1;
@@ -140,7 +142,14 @@ updateNavState();
       return;
     }
 
-    document.body.classList.add("bottom-nav-visible");
+    const scrollDirection = deltaY > directionThreshold ? 1 : deltaY < -directionThreshold ? -1 : 0;
+    const revealDirection = touchDirection || scrollDirection;
+
+    if (revealDirection > 0) {
+      document.body.classList.add("bottom-nav-visible");
+    } else if (revealDirection < 0) {
+      document.body.classList.remove("bottom-nav-visible");
+    }
   }
 
   function requestBottomNavUpdate() {
@@ -155,18 +164,33 @@ updateNavState();
   function forceShow() {
     const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
     if (isPastBottomNavThreshold() && !blocked) {
-      document.body.classList.add("bottom-nav-visible");
       document.body.classList.remove("nav-hidden");
       lastScrollY = window.scrollY;
     }
   }
 
   window.addEventListener("scroll", requestBottomNavUpdate, { passive: true });
+  window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches && event.touches.length ? event.touches[0].clientY : null;
+    touchDirection = 0;
+  }, { passive: true });
+  window.addEventListener("touchmove", (event) => {
+    if (touchStartY === null || !event.touches || !event.touches.length) return;
+    const deltaTouchY = touchStartY - event.touches[0].clientY;
+    if (Math.abs(deltaTouchY) > directionThreshold) {
+      touchDirection = deltaTouchY > 0 ? 1 : -1;
+      requestBottomNavUpdate();
+    }
+  }, { passive: true });
+  window.addEventListener("touchend", () => {
+    touchStartY = null;
+    window.setTimeout(() => { touchDirection = 0; }, 120);
+  }, { passive: true });
   window.addEventListener("keydown", (event) => {
     const upKeys = ["ArrowUp", "PageUp", "Home"];
     const downKeys = ["ArrowDown", "PageDown", "End", " "];
     if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
-      document.body.classList.add("bottom-nav-visible");
+      document.body.classList.remove("bottom-nav-visible");
       document.body.classList.remove("nav-hidden");
     } else if (downKeys.includes(event.key) && !event.shiftKey) {
       document.body.classList.add("bottom-nav-visible");
