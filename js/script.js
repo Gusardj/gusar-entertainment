@@ -116,20 +116,31 @@ updateNavState();
     const pastThreshold = isPastBottomNavThreshold();
     const deltaY = currentScrollY - lastScrollY;
     lastScrollY = currentScrollY;
+    const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
+    const mobileNav = window.matchMedia("(max-width: 900px)").matches;
 
-    if (document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open") || !pastThreshold) {
+    if (blocked) {
       document.body.classList.remove("bottom-nav-visible");
-      if (!pastThreshold) document.body.classList.remove("nav-hidden");
+      document.body.classList.remove("nav-hidden");
       return;
     }
 
-    if (deltaY < -directionThreshold) {
-      document.body.classList.add("bottom-nav-visible");
+    if (mobileNav) {
+      if (currentScrollY <= 4 || deltaY < -directionThreshold) {
+        document.body.classList.remove("nav-hidden");
+      } else if (deltaY > directionThreshold) {
+        document.body.classList.add("nav-hidden");
+      }
+    } else {
       document.body.classList.remove("nav-hidden");
-    } else if (deltaY > directionThreshold) {
-      document.body.classList.add("bottom-nav-visible");
-      document.body.classList.add("nav-hidden");
     }
+
+    if (!pastThreshold) {
+      document.body.classList.remove("bottom-nav-visible");
+      return;
+    }
+
+    document.body.classList.add("bottom-nav-visible");
   }
 
   function requestBottomNavUpdate() {
