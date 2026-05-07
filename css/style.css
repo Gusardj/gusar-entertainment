@@ -18,6 +18,7 @@
   html {
     width: 100%;
     min-width: 320px;
+    background: #FFFFFF;
     overflow-x: hidden;
     scroll-behavior: smooth;
     overscroll-behavior-x: none;
@@ -101,7 +102,7 @@ body:not(.page-scrolled) nav {
 }
 
 /* Home page dark theme aligned with Partnership */
-body.home-light {
+  body.home-light {
   --home-bg: #1E1E1E;
   --home-bg2: #1E1E1E;
   --home-card: #1E1E1E;
@@ -122,6 +123,13 @@ body.home-light {
   background: var(--home-bg) !important;
   color: var(--home-text) !important;
   font-family: "Jost", "Inter", sans-serif !important;
+}
+
+html:has(body.home-light),
+html:has(body.partnership-page),
+body.home-light,
+body.partnership-page {
+  background-color: #FFFFFF !important;
 }
 
 body.home-light *,
@@ -7232,5 +7240,503 @@ body.home-light #stats .stat-item:hover .stat-icon {
     opacity: 0 !important;
     pointer-events: none !important;
     transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px) + 32px), 0) !important;
+  }
+}
+
+/* Final home palette: match Partnership light / black / gold system */
+body.home-light {
+  --home-bg: #FFFFFF;
+  --home-bg2: #F8F6F1;
+  --home-card: #FFFFFF;
+  --home-text: #111111;
+  --home-muted: #4A4A4A;
+  --home-accent: #A67C2D;
+  --home-accent-l: #C29A4A;
+  --home-button-bg: #111111;
+  --home-button-text: #FFFFFF;
+  --home-border: rgba(17, 17, 17, 0.14);
+  --black: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface2: #F8F6F1;
+  --cream: #111111;
+  --cream-dim: #4A4A4A;
+  --gold: #A67C2D;
+  --gold-dim: #A67C2D;
+  --border: rgba(17, 17, 17, 0.14);
+  background: var(--home-bg) !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light nav,
+body.home-light nav.scrolled,
+body.home-light.page-scrolled nav {
+  background: rgba(255, 255, 255, 0.84) !important;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1) !important;
+  box-shadow: 0 10px 34px rgba(17, 17, 17, 0.07) !important;
+  backdrop-filter: blur(28px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(145%) !important;
+}
+
+body.home-light .nav-logo-top,
+body.home-light .nf-logo-name,
+body.home-light .new-footer .nf-logo-name {
+  color: var(--home-accent) !important;
+}
+
+body.home-light .nav-logo-sub,
+body.home-light .nav-links a,
+body.home-light .nav-wa,
+body.home-light .nf-logo-sub,
+body.home-light .nf-brand-desc,
+body.home-light .nf-list a,
+body.home-light .nf-contact-item,
+body.home-light .nf-copy,
+body.home-light .nf-social-link,
+body.home-light .nf-tiktok {
+  color: var(--home-muted) !important;
+}
+
+body.home-light .nav-links a:hover,
+body.home-light .nav-links a[href="partnership.html"],
+body.home-light .nav-call,
+body.home-light .nav-burger span {
+  color: var(--home-accent) !important;
+}
+
+body.home-light .nav-call,
+body.home-light .nav-wa,
+body.home-light .nav-cta,
+body.home-light .nf-action,
+body.home-light .nf-wa {
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .nav-burger span {
+  background: var(--home-text) !important;
+}
+
+body.home-light #mobile-menu {
+  background: #FFFFFF !important;
+  color: var(--home-text) !important;
+}
+
+body.home-light .mobile-menu-link,
+body.home-light .mobile-menu-btn,
+body.home-light .mobile-menu-close,
+body.home-light .mobile-menu-col-link {
+  color: var(--home-text) !important;
+}
+
+body.home-light .mobile-menu-link:hover,
+body.home-light .mobile-menu-col-link:hover {
+  color: var(--home-accent) !important;
+}
+
+body.home-light #hero,
+body.home-light #stats,
+body.home-light #roster,
+body.home-light #portfolio,
+body.home-light #cta,
+body.home-light footer,
+body.home-light .new-footer {
+  background: #FFFFFF !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #services-editorial,
+body.home-light #testimonials,
+body.home-light #quiz-section,
+body.home-light #about,
+body.home-light #process,
+body.home-light .mcta {
+  background: #F8F6F1 !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .hero-bg,
+body.home-light .hero-bg-img {
+  background: #FFFFFF !important;
+}
+
+body.home-light .hero-bg-img {
+  opacity: 0.08 !important;
+  filter: grayscale(0.25) brightness(1.2) contrast(0.88) saturate(0.55) !important;
+}
+
+body.home-light .hero-bg::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.94) 52%, #FFFFFF 100%),
+    radial-gradient(circle at 50% 16%, rgba(166, 124, 45, 0.12), transparent 58%) !important;
+}
+
+body.home-light .hero-glow {
+  background: radial-gradient(circle, rgba(166, 124, 45, 0.12), transparent 64%) !important;
+}
+
+body.home-light .hero-title,
+body.home-light .hero-title-line span,
+body.home-light .section-title,
+body.home-light .cta-title,
+body.home-light .mcta-headline,
+body.home-light .ed-heading,
+body.home-light .ed-heading.ed-shimmer,
+body.home-light .ed-card-title,
+body.home-light .tss-name,
+body.home-light .portfolio-title,
+body.home-light .process-title,
+body.home-light .step-title,
+body.home-light .qtitle,
+body.home-light .qstep-title,
+body.home-light .qsvc-name,
+body.home-light .quiz-benefits-title,
+body.home-light .nf-newsletter-headline {
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  background: none !important;
+}
+
+body.home-light .section-title em,
+body.home-light .cta-title em,
+body.home-light .mcta-headline em,
+body.home-light .hero-title-line.italic-line span,
+body.home-light .hero-label,
+body.home-light .section-label,
+body.home-light .ed-label,
+body.home-light .process-num,
+body.home-light .step-num,
+body.home-light .portfolio-cat,
+body.home-light .hero-support,
+body.home-light .hero-outcome,
+body.home-light .hero-tailored,
+body.home-light .qstep-num,
+body.home-light .qdisplay-big {
+  color: var(--home-accent) !important;
+  -webkit-text-fill-color: var(--home-accent) !important;
+}
+
+body.home-light .hero-sub,
+body.home-light .hero-checks,
+body.home-light .hero-checks li,
+body.home-light .hero-microcopy,
+body.home-light .section-sub,
+body.home-light .about-text p,
+body.home-light .process-desc,
+body.home-light .step-desc,
+body.home-light .cta-sub,
+body.home-light .ed-card-desc,
+body.home-light .ed-card-copy,
+body.home-light .ed-tech-list li,
+body.home-light .ed-tech-description,
+body.home-light .tss-sub,
+body.home-light .tss-time,
+body.home-light .qsubtitle,
+body.home-light .qstep-sub,
+body.home-light .qsvc-desc,
+body.home-light .qchoice-label,
+body.home-light .qconsent-text,
+body.home-light .nf-newsletter-sub,
+body.home-light .nf-newsletter-note {
+  color: var(--home-muted) !important;
+  -webkit-text-fill-color: var(--home-muted) !important;
+}
+
+body.home-light .section-label::before,
+body.home-light .hero-line,
+body.home-light .hero-line-bottom,
+body.home-light #testimonials::before,
+body.home-light #about::before,
+body.home-light #roster::before,
+body.home-light #portfolio::before,
+body.home-light #process::before,
+body.home-light .ed-line,
+body.home-light .process-steps {
+  background: var(--home-border) !important;
+}
+
+body.home-light .ed-grid,
+body.home-light .ed-card,
+body.home-light .ed-card-technical,
+body.home-light .ed-cta-block,
+body.home-light .tss-card,
+body.home-light .roster-card,
+body.home-light .portfolio-item,
+body.home-light .portfolio-card,
+body.home-light .process-step,
+body.home-light .quiz-card,
+body.home-light .quiz-benefits,
+body.home-light .qchoice,
+body.home-light .qsvc,
+body.home-light .qpill,
+body.home-light .qcmethod,
+body.home-light .qbudget-toggle,
+body.home-light .tss-bar,
+body.home-light .tss-chat,
+body.home-light .tss-bubble--in,
+body.home-light .tss-bubble--out {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .qfield-input,
+body.home-light .qfield-input:-webkit-autofill,
+body.home-light .qfield-input:-webkit-autofill:focus,
+body.home-light .nf-newsletter-input {
+  background: #FFFFFF !important;
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light .qchoice:hover,
+body.home-light .qchoice.selected,
+body.home-light .qsvc:hover,
+body.home-light .qsvc.selected,
+body.home-light .qpill:hover,
+body.home-light .qpill.selected,
+body.home-light .qcmethod:hover,
+body.home-light .qcmethod.selected {
+  background: #F8F6F1 !important;
+  color: var(--home-accent) !important;
+  border-color: var(--home-accent) !important;
+}
+
+body.home-light .qchoice-icon-svg,
+body.home-light .qchoice-icon,
+body.home-light .qchoice-icon--plus,
+body.home-light .qsvc-icon,
+body.home-light .ed-num,
+body.home-light .ed-tech-list li::before,
+body.home-light .qchoice.selected .qchoice-tick::after,
+body.home-light .qsvc.selected::before,
+body.home-light .qconsent-checkbox:checked ~ .qconsent-box {
+  color: var(--home-accent) !important;
+  background: var(--home-accent) !important;
+  -webkit-text-fill-color: var(--home-accent) !important;
+}
+
+body.home-light .btn-primary,
+body.home-light .ed-btn,
+body.home-light .mcta-btn,
+body.home-light .qbtn-next,
+body.home-light .qbtn-submit,
+body.home-light .process-cta-btn,
+body.home-light .nf-newsletter-btn,
+body.home-light .nav-cta {
+  background: var(--home-button-bg) !important;
+  border-color: var(--home-button-bg) !important;
+  color: var(--home-button-text) !important;
+  -webkit-text-fill-color: var(--home-button-text) !important;
+}
+
+body.home-light .btn-primary:hover,
+body.home-light .ed-btn:hover,
+body.home-light .mcta-btn:hover,
+body.home-light .qbtn-next:hover,
+body.home-light .qbtn-submit:hover,
+body.home-light .process-cta-btn:hover,
+body.home-light .nf-newsletter-btn:hover,
+body.home-light .nav-cta:hover {
+  background: var(--home-accent) !important;
+  border-color: var(--home-accent) !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+body.home-light .btn-ghost,
+body.home-light .btn-ghost-gold,
+body.home-light .qbtn-back,
+body.home-light .qbtn-home,
+body.home-light .cta-quick-links a {
+  background: transparent !important;
+  border-color: var(--home-border) !important;
+  color: var(--home-text) !important;
+  -webkit-text-fill-color: var(--home-text) !important;
+}
+
+body.home-light .ed-bg,
+body.home-light .portfolio-bg,
+body.home-light .about-img-placeholder,
+body.home-light .roster-img {
+  background:
+    linear-gradient(135deg, rgba(166, 124, 45, 0.12), transparent 58%),
+    #F8F6F1 !important;
+}
+
+body.home-light .ed-bg:has(img)::after,
+body.home-light .portfolio-overlay,
+body.home-light .roster-card::after {
+  background: linear-gradient(180deg, transparent 20%, rgba(255, 255, 255, 0.92) 100%) !important;
+}
+
+body.home-light #marquee-gusar {
+  --mq-bg: #FFFFFF;
+  --mq-green-dark: #FFFFFF;
+  --mq-text: #111111;
+  --mq-muted: #A67C2D;
+  background: #FFFFFF !important;
+  border-color: var(--home-border) !important;
+}
+
+body.home-light #marquee-gusar::before {
+  background: linear-gradient(to right, #FFFFFF, rgba(255, 255, 255, 0.72), transparent) !important;
+}
+
+body.home-light #marquee-gusar::after {
+  background: linear-gradient(to left, #FFFFFF, rgba(255, 255, 255, 0.72), transparent) !important;
+}
+
+body.home-light .qchoice-icon-svg,
+body.home-light .qchoice-icon,
+body.home-light .qchoice-icon--plus,
+body.home-light .qsvc-icon,
+body.home-light .ed-num {
+  background: transparent !important;
+}
+
+body.home-light .qchoice.selected .qchoice-tick::after,
+body.home-light .qsvc.selected::before,
+body.home-light .qconsent-checkbox:checked ~ .qconsent-box {
+  background: var(--home-accent) !important;
+}
+
+/* Final readability QA pass after light palette migration */
+body.home-light #quiz-section #qEventTypeChoices .qchoice-label,
+body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-label,
+body.home-light #quiz-section .qservices .qsvc-name,
+body.home-light #quiz-section .qservices .qsvc-name small {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+body.home-light #quiz-section #qEventTypeChoices .qchoice-icon,
+body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus,
+body.home-light #quiz-section #qEventTypeChoices .qchoice-icon-svg,
+body.home-light #quiz-section .qservices .qsvc-icon,
+body.home-light #quiz-section .qdisplay-big {
+  color: #A67C2D !important;
+  -webkit-text-fill-color: #A67C2D !important;
+  background: transparent !important;
+}
+
+body.home-light #quiz-section .qservices .qsvc-desc,
+body.home-light #quiz-section .qstep-sub,
+body.home-light #quiz-section .qsubtitle,
+body.home-light #quiz-section .qp-label,
+body.home-light #quiz-section .qfield-label,
+body.home-light #quiz-section .qcustom-label,
+body.home-light #quiz-section .qslider-labels span,
+body.home-light #quiz-section .qdisplay-note,
+body.home-light #quiz-section .qdisplay-unit,
+body.home-light #quiz-section .qconsent-text,
+body.home-light #quiz-section .quiz-whatsapp-cta,
+body.home-light #quiz-section .qprivacy-note {
+  color: #4A4A4A !important;
+  -webkit-text-fill-color: #4A4A4A !important;
+}
+
+body.home-light #quiz-section .qchoice,
+body.home-light #quiz-section .qsvc,
+body.home-light #quiz-section .qpill,
+body.home-light #quiz-section .qcmethod,
+body.home-light #quiz-section .qbudget-toggle,
+body.home-light #quiz-section .qbtn-back,
+body.home-light #quiz-section .qbtn-home {
+  background: #FFFFFF !important;
+  color: #111111 !important;
+  border-color: rgba(17, 17, 17, 0.14) !important;
+}
+
+body.home-light #quiz-section .qchoice:hover,
+body.home-light #quiz-section .qchoice.selected,
+body.home-light #quiz-section .qsvc:hover,
+body.home-light #quiz-section .qsvc.selected,
+body.home-light #quiz-section .qpill:hover,
+body.home-light #quiz-section .qpill.selected,
+body.home-light #quiz-section .qcmethod:hover,
+body.home-light #quiz-section .qcmethod.selected {
+  background: #F8F6F1 !important;
+  color: #111111 !important;
+  border-color: #A67C2D !important;
+}
+
+body.home-light #cta .cta-title,
+body.home-light #cta .cta-title em,
+body.home-light #cta .cta-sub,
+body.home-light #cta .cta-quick-links,
+body.home-light #cta .cta-quick-links a,
+body.home-light #cta .cta-trust {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+body.home-light #cta .cta-title em,
+body.home-light #cta .cta-trust,
+body.home-light #cta .cta-quick-links a svg {
+  color: #A67C2D !important;
+  -webkit-text-fill-color: #A67C2D !important;
+}
+
+body.home-light #cta .cta-sub,
+body.home-light #cta .cta-quick-links {
+  color: #4A4A4A !important;
+  -webkit-text-fill-color: #4A4A4A !important;
+}
+
+body.home-light .artist-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(17, 17, 17, 0.14) !important;
+}
+
+body.home-light .artist-bg {
+  background:
+    radial-gradient(circle at 24% 18%, rgba(166, 124, 45, 0.14), transparent 36%),
+    repeating-linear-gradient(135deg, rgba(17, 17, 17, 0.045) 0 1px, transparent 1px 28px),
+    #F8F6F1 !important;
+}
+
+body.home-light .artist-overlay {
+  background: linear-gradient(180deg, transparent 32%, rgba(255, 255, 255, 0.94) 100%) !important;
+}
+
+body.home-light .artist-name,
+body.home-light .portfolio-title {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+body.home-light .artist-genre,
+body.home-light .artist-num,
+body.home-light .portfolio-cat,
+body.home-light .portfolio-placeholder {
+  color: #A67C2D !important;
+  -webkit-text-fill-color: #A67C2D !important;
+}
+
+body.home-light .portfolio-item {
+  border: 1px solid rgba(17, 17, 17, 0.14) !important;
+}
+
+body.home-light .portfolio-bg {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(166, 124, 45, 0.14), transparent 42%),
+    #F8F6F1 !important;
+}
+
+@media (max-width: 900px) {
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-label,
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon,
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus {
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon,
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus {
+    color: #A67C2D !important;
+    -webkit-text-fill-color: #A67C2D !important;
   }
 }
