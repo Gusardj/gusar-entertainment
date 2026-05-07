@@ -7123,3 +7123,48 @@ body.home-light .nav-cta:hover {
     display: none !important;
   }
 }
+
+/* Final iPhone quiz event-type layout override */
+@media (max-width: 900px) {
+  body.home-light #quiz-section #qEventTypeChoices.qchoices {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice {
+    min-height: 74px !important;
+    padding: 12px 8px 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-label {
+    width: 100% !important;
+    flex: 0 0 auto !important;
+    color: #F2F2F2 !important;
+    -webkit-text-fill-color: #F2F2F2 !important;
+    font-size: clamp(10px, 2.7vw, 12px) !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    text-align: center !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon,
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus {
+    color: #F2F2F2 !important;
+    -webkit-text-fill-color: #F2F2F2 !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-tick {
+    opacity: 0 !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice.selected .qchoice-tick {
+    opacity: 1 !important;
+  }
+}
