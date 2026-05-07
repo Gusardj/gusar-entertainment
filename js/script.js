@@ -3,8 +3,8 @@
   const burger  = document.querySelector('.nav-burger');
   const menu    = document.getElementById('mobile-menu');
   const close   = document.querySelector('.mobile-menu-close');
-  const links   = document.querySelectorAll('.mobile-menu-link');
   if (!burger || !menu) return;
+  const links   = menu.querySelectorAll('a');
 
   function openMenu() {
     menu.classList.add('is-open');

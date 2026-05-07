@@ -252,6 +252,11 @@ body.home-light .new-footer {
   border-color: var(--home-border) !important;
 }
 
+body.home-light .nf-newsletter-headline,
+body.home-light .nf-newsletter-sub {
+  color: #fff !important;
+}
+
 body.home-light #hero {
   min-height: min(760px, 100svh) !important;
 }
@@ -3610,7 +3615,7 @@ body.page-scrolled nav {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: calc(env(safe-area-inset-top, 0px) + 82px) clamp(22px, 6vw, 44px) calc(env(safe-area-inset-bottom, 0px) + 138px);
+  padding: calc(env(safe-area-inset-top, 0px) + 92px) clamp(22px, 6vw, 44px) calc(env(safe-area-inset-bottom, 0px) + 138px);
   opacity: 0;
   transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1);
   overflow-y: auto;
@@ -3924,7 +3929,7 @@ body.page-scrolled nav {
 
 @media (max-width: 520px) {
   #mobile-menu {
-    padding: calc(env(safe-area-inset-top, 0px) + 74px) 24px calc(env(safe-area-inset-bottom, 0px) + 126px);
+    padding: calc(env(safe-area-inset-top, 0px) + 86px) 24px calc(env(safe-area-inset-bottom, 0px) + 126px);
   }
 
   .mobile-menu-close {
@@ -3989,18 +3994,18 @@ body.page-scrolled nav {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
-    min-height: 54px;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-    color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.05);
+    min-height: 68px;
+    padding: 12px 16px calc(14px + env(safe-area-inset-bottom, 0px));
+    color: rgba(255, 255, 255, 0.84);
+    background: rgba(20, 19, 18, 0.96);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(198, 182, 157, 0.72);
     border-radius: 24px 24px 0 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    pointer-events: none;
-    transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px)), 0);
+    box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.34), 0 -1px 0 rgba(255, 255, 255, 0.08) inset;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: transform, opacity;
     backface-visibility: hidden;
@@ -4056,22 +4061,22 @@ body.page-scrolled nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 4px;
     width: 100%;
     min-width: 0;
-    min-height: 34px;
+    min-height: 48px;
     font-family: var(--mono);
-    font-size: 8px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
   .bottom-nav-item svg {
-    width: 22px;
-    height: 22px;
+    width: 23px;
+    height: 23px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.65;
@@ -4081,7 +4086,7 @@ body.page-scrolled nav {
 
   .bottom-nav-item:hover,
   .bottom-nav-item.is-active {
-    color: rgba(255, 255, 255, 1);
+    color: #ffffff;
   }
 
   .bottom-nav-item:active,
@@ -4096,17 +4101,17 @@ body.page-scrolled nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 4px;
     width: 100%;
     min-width: 0;
-    min-height: 34px;
+    min-height: 48px;
     font-family: var(--mono);
     font-size: 8px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
     transition: color 0.2s ease, transform 0.2s ease;
   }
 
@@ -4117,7 +4122,7 @@ body.page-scrolled nav {
   .bottom-nav-quote-ring {
     position: absolute;
     left: 50%;
-    bottom: 8px;
+    bottom: 14px;
     transform: translateX(-50%) rotate(45deg);
     display: flex;
     align-items: center;
@@ -4125,9 +4130,9 @@ body.page-scrolled nav {
     width: 60px;
     height: 60px;
     border-radius: 1.2rem;
-    background: linear-gradient(to top right, #c2b296, #e3d5ba);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 20px rgba(227, 213, 186, 0.2);
+    background: linear-gradient(to top right, #d3c3aa, #f2e7d2);
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38), 0 0 0 5px rgba(198, 182, 157, 0.12);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -4141,7 +4146,7 @@ body.page-scrolled nav {
     width: 28px;
     height: 28px;
     transform: rotate(-45deg);
-    color: #1a1a1a;
+    color: #141312;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
