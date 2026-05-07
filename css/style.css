@@ -18,7 +18,7 @@
   html {
     width: 100%;
     min-width: 320px;
-    background: #FFFFFF;
+    background: transparent;
     overflow-x: hidden;
     scroll-behavior: smooth;
     overscroll-behavior-x: none;
@@ -129,7 +129,7 @@ html:has(body.home-light),
 html:has(body.partnership-page),
 body.home-light,
 body.partnership-page {
-  background-color: #FFFFFF !important;
+  background-color: transparent !important;
 }
 
 body.home-light *,
@@ -7738,5 +7738,30 @@ body.home-light .portfolio-bg {
   body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus {
     color: #A67C2D !important;
     -webkit-text-fill-color: #A67C2D !important;
+  }
+}
+
+html,
+html:has(body.home-light),
+html:has(body.partnership-page),
+body.home-light,
+body.partnership-page {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+@media (max-width: 900px) {
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav,
+  body.partnership-page nav,
+  body.partnership-page nav.scrolled,
+  body.partnership-page.page-scrolled nav {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
