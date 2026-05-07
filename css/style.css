@@ -7168,3 +7168,36 @@ body.home-light .nav-cta:hover {
     opacity: 1 !important;
   }
 }
+
+/* Final home stats light treatment */
+body.home-light #stats {
+  background: #ffffff !important;
+  color: #171717 !important;
+  border-color: rgba(23, 23, 23, 0.08) !important;
+}
+
+body.home-light #stats .stat-item {
+  color: #171717 !important;
+}
+
+body.home-light #stats .stat-num {
+  color: #111111 !important;
+}
+
+body.home-light #stats .stat-num span {
+  color: #8b6f32 !important;
+}
+
+body.home-light #stats .stat-label {
+  color: #555555 !important;
+}
+
+body.home-light #stats .stat-icon {
+  color: #8b6f32 !important;
+  stroke: #8b6f32 !important;
+}
+
+body.home-light #stats .stat-item:hover .stat-icon {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
