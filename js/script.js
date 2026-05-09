@@ -332,6 +332,24 @@ updateNavState();
   const submitBtn = document.getElementById('qSubmitBtn');
   const waLink = document.getElementById('qWaLink');
 
+  function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function setSuccessMessage(firstName) {
+    const el = document.getElementById('qSuccessMessage');
+    if (!el) return;
+    const safeName = firstName || 'there';
+    el.replaceChildren(
+      'Thank you, ',
+      Object.assign(document.createElement('strong'), { textContent: safeName }),
+      ". Your request is in. We'll reach out within ",
+      Object.assign(document.createElement('strong'), { textContent: 'a few hours' }),
+      ' with a personalized proposal.'
+    );
+  }
+
   function selectedText(selector) {
     return quiz.querySelector(selector)?.dataset.val || '';
   }
@@ -390,13 +408,15 @@ updateNavState();
     }
 
     if (step === 3) {
-      const valid = getValue('qEventDate').length > 0 && getValue('qEventLocation').length > 0;
+      const hasDate = getValue('qEventDate').length > 0 || Boolean(quiz.querySelector('#qDateOptions .qdate-option.selected'));
+      const valid = hasDate && getValue('qEventLocation').length > 0;
       setError(3, !valid);
       return valid;
     }
 
     if (step === 5) {
-      const valid = getValue('qContactName').length > 0
+      const valid = getValue('qContactFirstName').length > 0
+        && getValue('qContactLastName').length > 0
         && getValue('qContactPhone').length > 0
         && Boolean(getField('qConsentCheck')?.checked);
       setError(5, !valid);
@@ -433,6 +453,16 @@ updateNavState();
     if (!group || !el) return;
     group.querySelectorAll('.qpill').forEach((pill) => pill.classList.remove('selected'));
     el.classList.add('selected');
+  };
+
+  window.qSelectDateOption = function qSelectDateOption(el) {
+    const group = document.getElementById('qDateOptions');
+    const dateInput = getField('qEventDate');
+    if (!group || !el) return;
+    group.querySelectorAll('.qdate-option').forEach((option) => option.classList.remove('selected'));
+    el.classList.add('selected');
+    if (dateInput) dateInput.value = '';
+    setError(3, false);
   };
 
   window.qToggleContact = function qToggleContact(el) {
@@ -515,9 +545,11 @@ updateNavState();
     const budget = budgetPersonal
       ? 'Discuss personally'
       : `$${formatMoney(getField('qBudgetSlider')?.value || 5000)}`;
-    const eventDate = getValue('qEventDate') || 'Not provided';
+    const eventDate = getValue('qEventDate') || selectedText('#qDateOptions .qdate-option.selected') || 'Not provided';
     const heardFrom = selectedText('#qHeardPills .qpill.selected') || 'Not selected';
     const notes = getValue('qContactNotes') || 'None';
+    const firstName = getValue('qContactFirstName');
+    const contactName = [firstName, getValue('qContactLastName')].filter(Boolean).join(' ');
     const contactGroup = document.getElementById('qContactMethods');
     const preferredContact = (contactGroup?.dataset.selectedContact || Array.from(quiz.querySelectorAll('#qContactMethods .qcmethod.selected'))
       .map((el) => el.dataset.val || el.textContent.trim())
@@ -532,9 +564,10 @@ updateNavState();
       `Location: ${getValue('qEventLocation') || 'Not provided'}`,
       `Guests: ${formatGuests(getField('qGuestSlider')?.value || 10)}`,
       `Budget: ${budget}`,
-      `Name: ${getValue('qContactName')}`,
+      `Name: ${contactName}`,
       `Phone: ${getValue('qContactPhone')}`,
       `Email: ${getValue('qContactEmail') || 'Not provided'}`,
+      `Company: ${getValue('qContactCompany') || 'Not provided'}`,
       `Heard from: ${heardFrom}`,
       `Preferred contact: ${preferredContact}`,
       `Notes: ${notes}`
@@ -555,9 +588,12 @@ updateNavState();
       location: getValue('qEventLocation') || 'Not provided',
       guests: formatGuests(getField('qGuestSlider')?.value || 10),
       budget,
-      name: getValue('qContactName'),
+      name: contactName,
+      firstName: getValue('qContactFirstName'),
+      lastName: getValue('qContactLastName'),
       phone: getValue('qContactPhone'),
       email: getValue('qContactEmail') || 'Not provided',
+      company: getValue('qContactCompany') || 'Not provided',
       heardFrom,
       source: heardFrom,
       preferredContact,
@@ -592,6 +628,14 @@ updateNavState();
       console.error('Webhook error:', e);
     });
 
+    setSuccessMessage(firstName);
+    setText('qSummaryEvent', eventType);
+    setText('qSummaryServices', services.join(', ') || 'Not selected');
+    setText('qSummaryDate', eventDate);
+    setText('qSummaryLocation', getValue('qEventLocation') || 'Not provided');
+    setText('qSummaryGuests', formatGuests(getField('qGuestSlider')?.value || 10));
+    setText('qSummaryBudget', budget);
+
     window.setTimeout(() => {
       stepEls.forEach((el) => el.classList.remove('active'));
       if (successScreen) successScreen.classList.add('active');
@@ -607,9 +651,18 @@ updateNavState();
   quiz.addEventListener('input', (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
-    if (target.matches('#qEventDate, #qEventLocation')) setError(3, false);
-    if (target.matches('#qContactName, #qContactPhone, #qConsentCheck')) setError(5, false);
+    if (target.matches('#qEventDate')) {
+      quiz.querySelectorAll('#qDateOptions .qdate-option').forEach((option) => option.classList.remove('selected'));
+      setError(3, false);
+    }
+    if (target.matches('#qEventLocation')) setError(3, false);
+    if (target.matches('#qContactFirstName, #qContactLastName, #qContactPhone, #qConsentCheck')) setError(5, false);
     if (target.matches('#qCustomService')) setError(2, false);
+  });
+
+  quiz.addEventListener('click', (event) => {
+    const pill = event.target.closest?.('#qHeardPills .qpill');
+    if (pill) window.qSelectPill(pill, 'qHeardPills');
   });
 
   quiz.querySelectorAll('.qsvc').forEach((svc) => {

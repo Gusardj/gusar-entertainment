@@ -2956,6 +2956,11 @@ body.page-scrolled nav {
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--gold); display: block; margin-bottom: 8px;
   }
+  .qfield-optional {
+    font-size: 0.86em;
+    letter-spacing: 0.12em;
+    opacity: 0.72;
+  }
   .qfield-input {
     width: 100%;
     background: var(--surface2);
@@ -2978,6 +2983,38 @@ body.page-scrolled nav {
     -webkit-box-shadow: 0 0 0 1000px var(--surface2) inset !important;
   }
   input[type="date"].qfield-input::-webkit-calendar-picker-indicator { filter: invert(0.8); cursor: pointer; }
+
+  .qdate-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .qdate-option {
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .qdate-option:hover,
+  .qdate-option.selected {
+    border-color: var(--gold);
+    background: oklch(0.75 0.11 74 / 0.08);
+    color: var(--gold);
+    transform: translateY(-1px);
+  }
 
   /* Slider */
   .qslider-section { margin-bottom: 36px; }
@@ -3017,6 +3054,9 @@ body.page-scrolled nav {
     color: var(--cream-dim);
     cursor: pointer; transition: all 0.2s;
     user-select: none;
+    font-family: var(--sans);
+    appearance: none;
+    -webkit-appearance: none;
   }
   .qpill:hover { border-color: oklch(0.75 0.11 74 / 0.4); color: var(--cream); }
   .qpill.selected { border-color: var(--gold); color: var(--gold); background: oklch(0.75 0.11 74 / 0.08); }
@@ -3135,9 +3175,54 @@ body.page-scrolled nav {
   }
   .qsuccess-sub {
     font-size: 15px; color: var(--cream-dim);
-    line-height: 1.8; max-width: 400px; margin: 0 auto 36px;
+    line-height: 1.8; max-width: 520px; margin: 0 auto 26px;
   }
   .qsuccess-sub strong { color: var(--gold); font-weight: 400; }
+  .qsuccess-summary {
+    max-width: 640px;
+    margin: 0 auto 28px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    text-align: left;
+  }
+  .qsuccess-summary-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .qsummary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    margin: 0;
+  }
+  .qsummary-grid div {
+    min-width: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(166, 124, 45, 0.16);
+  }
+  .qsummary-grid dt {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 5px;
+  }
+  .qsummary-grid dd {
+    margin: 0;
+    color: var(--cream);
+    font-size: 14px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
   .qsuccess-actions { display: flex; flex-direction: column; gap: 12px; max-width: 380px; margin: 0 auto; }
   .qbtn-wa {
     display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -3285,6 +3370,8 @@ body.page-scrolled nav {
     .qsvc-desc { font-size: 11px; }
     .qsvc::after { right: 16px; width: 24px; height: 24px; }
     .qsvc.selected::before { right: 22px; }
+    .qsuccess-summary { padding: 16px 14px; }
+    .qsummary-grid { grid-template-columns: 1fr; gap: 10px; }
     .quiz-whatsapp-cta {
       align-items: stretch;
       gap: 12px;
@@ -4081,14 +4168,15 @@ body.page-scrolled nav {
   }
 
   body.has-bottom-nav.bottom-nav-visible {
-    padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
   }
 
   .bottom-nav {
+    --bottom-nav-lift: 14px;
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: calc(var(--bottom-nav-lift) + env(safe-area-inset-bottom, 0px));
     z-index: 1000000;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -4127,7 +4215,7 @@ body.page-scrolled nav {
   body.bottom-nav-visible .bottom-nav {
     opacity: 1;
     pointer-events: auto;
-    transform: translate3d(0, 30%, 0);
+    transform: translate3d(0, 18%, 0);
   }
 
   body.mobile-menu-open .bottom-nav,
@@ -6556,6 +6644,7 @@ body.home-light #quiz-section .qchoice,
 body.home-light #quiz-section .qsvc,
 body.home-light #quiz-section .qpill,
 body.home-light #quiz-section .qcmethod,
+body.home-light #quiz-section .qdate-option,
 body.home-light #quiz-section .qbudget-toggle,
 body.home-light #quiz-section .qbtn-back,
 body.home-light #quiz-section .qbtn-home {
@@ -6939,17 +7028,16 @@ body.home-light #cta .cta-trust {
 
 /* Quiz step 2 involvement options */
 body.home-light #quiz-section .qservices {
-  grid-template-columns: 1fr !important;
-  gap: 12px !important;
-  width: min(100%, 760px) !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px 14px !important;
+  width: 100% !important;
   margin: 0 auto 28px !important;
 }
 
 body.home-light #quiz-section .qservices .qsvc {
-  min-height: 96px !important;
-  padding: 20px 64px 20px 24px !important;
+  min-height: 82px !important;
+  padding: 17px 58px 17px 20px !important;
   grid-template-columns: minmax(0, 1fr) !important;
-  column-gap: 0 !important;
   align-items: center !important;
   border-radius: 8px !important;
 }
@@ -6979,15 +7067,64 @@ body.home-light #quiz-section .qservices .qsvc-desc {
 }
 
 @media (max-width: 560px) {
-  body.home-light #quiz-section .qservices .qsvc {
-    min-height: 88px !important;
-    padding: 16px 50px 16px 16px !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    column-gap: 0 !important;
+  body.home-light #quiz-section .qservices {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    margin-bottom: 24px !important;
   }
 
-  body.home-light #quiz-section .qservices .qsvc-icon {
-    font-size: 24px !important;
+  body.home-light #quiz-section .qservices .qsvc {
+    min-height: 86px !important;
+    padding: 12px 8px 10px !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    justify-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    gap: 4px !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc-name {
+    font-size: clamp(9px, 2.45vw, 11px) !important;
+    font-weight: 800 !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc-name small {
+    display: block !important;
+    font-size: 0.78em !important;
+    line-height: 1.1 !important;
+    margin-top: 2px !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc-desc {
+    font-size: clamp(8px, 2.1vw, 10px) !important;
+    line-height: 1.15 !important;
+    margin-top: 0 !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc::after {
+    top: 7px !important;
+    right: 7px !important;
+    width: 13px !important;
+    height: 13px !important;
+    border-width: 1px !important;
+    opacity: 0 !important;
+    transform: none !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc.selected::after {
+    opacity: 1 !important;
+  }
+
+  body.home-light #quiz-section .qservices .qsvc.selected::before {
+    top: 11px !important;
+    right: 11px !important;
+    width: 5px !important;
+    height: 5px !important;
+    transform: none !important;
   }
 }
 
@@ -7657,10 +7794,81 @@ body.home-light #quiz-section .qsvc.selected,
 body.home-light #quiz-section .qpill:hover,
 body.home-light #quiz-section .qpill.selected,
 body.home-light #quiz-section .qcmethod:hover,
-body.home-light #quiz-section .qcmethod.selected {
+body.home-light #quiz-section .qcmethod.selected,
+body.home-light #quiz-section .qdate-option:hover,
+body.home-light #quiz-section .qdate-option.selected {
   background: #F8F6F1 !important;
   color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
   border-color: #A67C2D !important;
+}
+
+body.home-light #quiz-section #qHeardPills .qpill.selected {
+  box-shadow: 0 0 0 1px #A67C2D inset !important;
+}
+
+body.home-light #quiz-section .quiz-benefits {
+  width: min(100%, 760px) !important;
+  margin: 0 auto 22px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  color: #4A4A4A !important;
+}
+
+body.home-light #quiz-section .quiz-benefits-title {
+  margin-bottom: 12px !important;
+}
+
+body.home-light #quiz-section .quiz-benefits ul {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px 18px !important;
+  align-items: start !important;
+}
+
+body.home-light #quiz-section .quiz-benefits li {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  color: #4A4A4A !important;
+  font-size: clamp(12px, 0.9vw, 14px) !important;
+  line-height: 1.35 !important;
+  text-align: left !important;
+}
+
+body.home-light #quiz-section .quiz-benefits li::before {
+  flex: 0 0 auto !important;
+  margin-right: 0 !important;
+}
+
+@media (max-width: 700px) {
+  body.home-light #quiz-section .quiz-benefits {
+    width: min(100%, 430px) !important;
+    margin-bottom: 18px !important;
+  }
+
+  body.home-light #quiz-section .quiz-benefits ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px 12px !important;
+  }
+}
+
+body.home-light #quiz-section .qsuccess-summary {
+  background: #FFFFFF !important;
+  border-color: rgba(17, 17, 17, 0.14) !important;
+}
+
+body.home-light #quiz-section .qsuccess-summary-title,
+body.home-light #quiz-section .qsummary-grid dt {
+  color: #A67C2D !important;
+  -webkit-text-fill-color: #A67C2D !important;
+}
+
+body.home-light #quiz-section .qsummary-grid dd {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
 }
 
 body.home-light #cta .cta-title,
