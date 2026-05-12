@@ -8672,3 +8672,129 @@ body.home-light .nf-contact-item {
     min-height: 36px !important;
   }
 }
+
+/* Service card images */
+body.home-light #services-editorial .ed-card-talent,
+body.home-light #services-editorial .ed-card-production,
+body.home-light #services-editorial .ed-card-design,
+body.home-light #services-editorial .ed-card-management {
+  background: #17130f !important;
+  color: #ffffff !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-bg,
+body.home-light #services-editorial .ed-card-production .ed-bg,
+body.home-light #services-editorial .ed-card-design .ed-bg,
+body.home-light #services-editorial .ed-card-management .ed-bg,
+body.home-light #services-editorial .ed-card-talent .ed-bg img,
+body.home-light #services-editorial .ed-card-production .ed-bg img,
+body.home-light #services-editorial .ed-card-design .ed-bg img,
+body.home-light #services-editorial .ed-card-management .ed-bg img,
+body.home-light #services-editorial .ed-card-talent .ed-bg::after,
+body.home-light #services-editorial .ed-card-production .ed-bg::after,
+body.home-light #services-editorial .ed-card-design .ed-bg::after,
+body.home-light #services-editorial .ed-card-management .ed-bg::after {
+  display: block !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-bg,
+body.home-light #services-editorial .ed-card-production .ed-bg,
+body.home-light #services-editorial .ed-card-design .ed-bg,
+body.home-light #services-editorial .ed-card-management .ed-bg {
+  opacity: 1 !important;
+  background: none !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-bg img,
+body.home-light #services-editorial .ed-card-production .ed-bg img,
+body.home-light #services-editorial .ed-card-design .ed-bg img,
+body.home-light #services-editorial .ed-card-management .ed-bg img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: right center !important;
+  opacity: 1 !important;
+  filter: brightness(0.86) contrast(1.04) saturate(0.92) !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-bg::after,
+body.home-light #services-editorial .ed-card-production .ed-bg::after,
+body.home-light #services-editorial .ed-card-design .ed-bg::after,
+body.home-light #services-editorial .ed-card-management .ed-bg::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(16, 13, 10, 0.84) 0%, rgba(16, 13, 10, 0.56) 46%, rgba(16, 13, 10, 0.04) 100%),
+    linear-gradient(0deg, rgba(16, 13, 10, 0.26), rgba(16, 13, 10, 0.04)) !important;
+  pointer-events: none !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-card-title,
+body.home-light #services-editorial .ed-card-production .ed-card-title,
+body.home-light #services-editorial .ed-card-design .ed-card-title,
+body.home-light #services-editorial .ed-card-management .ed-card-title,
+body.home-light #services-editorial .ed-card-talent .ed-card-copy,
+body.home-light #services-editorial .ed-card-production .ed-card-copy,
+body.home-light #services-editorial .ed-card-design .ed-card-copy,
+body.home-light #services-editorial .ed-card-management .ed-card-copy,
+body.home-light #services-editorial .ed-card-talent .ed-tech-list li,
+body.home-light #services-editorial .ed-card-production .ed-tech-list li,
+body.home-light #services-editorial .ed-card-design .ed-tech-list li,
+body.home-light #services-editorial .ed-card-management .ed-tech-list li,
+body.home-light #services-editorial .ed-card-talent .ed-tech-list li:last-child,
+body.home-light #services-editorial .ed-card-production .ed-tech-list li:last-child,
+body.home-light #services-editorial .ed-card-design .ed-tech-list li:last-child,
+body.home-light #services-editorial .ed-card-management .ed-tech-list li:last-child {
+  color: rgba(255, 255, 255, 0.9) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-card-title,
+body.home-light #services-editorial .ed-card-production .ed-card-title,
+body.home-light #services-editorial .ed-card-design .ed-card-title,
+body.home-light #services-editorial .ed-card-management .ed-card-title {
+  color: #f4ead9 !important;
+  -webkit-text-fill-color: #f4ead9 !important;
+}
+
+body.home-light #services-editorial .ed-card-talent .ed-num,
+body.home-light #services-editorial .ed-card-talent .ed-line,
+body.home-light #services-editorial .ed-card-talent .ed-tech-list li::before,
+body.home-light #services-editorial .ed-card-production .ed-num,
+body.home-light #services-editorial .ed-card-production .ed-line,
+body.home-light #services-editorial .ed-card-production .ed-tech-list li::before,
+body.home-light #services-editorial .ed-card-design .ed-num,
+body.home-light #services-editorial .ed-card-design .ed-line,
+body.home-light #services-editorial .ed-card-design .ed-tech-list li::before,
+body.home-light #services-editorial .ed-card-management .ed-num,
+body.home-light #services-editorial .ed-card-management .ed-line,
+body.home-light #services-editorial .ed-card-management .ed-tech-list li::before {
+  color: #d4b374 !important;
+  background: #d4b374 !important;
+}
+
+@media (max-width: 700px) {
+  body.home-light #services-editorial .ed-card-talent,
+  body.home-light #services-editorial .ed-card-production,
+  body.home-light #services-editorial .ed-card-design,
+  body.home-light #services-editorial .ed-card-management {
+    min-height: 460px !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-bg img,
+  body.home-light #services-editorial .ed-card-production .ed-bg img,
+  body.home-light #services-editorial .ed-card-design .ed-bg img,
+  body.home-light #services-editorial .ed-card-management .ed-bg img {
+    object-position: right center !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-bg::after,
+  body.home-light #services-editorial .ed-card-production .ed-bg::after,
+  body.home-light #services-editorial .ed-card-design .ed-bg::after,
+  body.home-light #services-editorial .ed-card-management .ed-bg::after {
+    background:
+      linear-gradient(90deg, rgba(16, 13, 10, 0.88) 0%, rgba(16, 13, 10, 0.62) 48%, rgba(16, 13, 10, 0.08) 100%),
+      linear-gradient(0deg, rgba(16, 13, 10, 0.32), rgba(16, 13, 10, 0.06)) !important;
+  }
+}
