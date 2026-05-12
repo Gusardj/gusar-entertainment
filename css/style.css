@@ -8171,3 +8171,60 @@ body.partnership-page {
     min-height: 34px !important;
   }
 }
+
+/* Final corporate event hero background */
+body.home-light #hero {
+  background: #111111 !important;
+}
+
+body.home-light .hero-bg,
+body.home-light .hero-bg-img {
+  background: #111111 !important;
+}
+
+body.home-light .hero-bg-img {
+  opacity: 0.92 !important;
+  object-position: center center !important;
+  filter: saturate(0.92) contrast(1.04) brightness(0.72) !important;
+}
+
+body.home-light .hero-bg::after {
+  background:
+    linear-gradient(90deg, rgba(10, 10, 10, 0.84) 0%, rgba(10, 10, 10, 0.62) 44%, rgba(10, 10, 10, 0.38) 100%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.32) 0%, rgba(10, 10, 10, 0.22) 42%, rgba(10, 10, 10, 0.78) 100%),
+    radial-gradient(circle at 28% 34%, rgba(166, 124, 45, 0.22), transparent 54%) !important;
+}
+
+body.home-light #hero .botanical-layer {
+  opacity: 0.24 !important;
+}
+
+body.home-light #hero .hero-title,
+body.home-light #hero .hero-title-line span,
+body.home-light #hero .hero-support,
+body.home-light #hero .hero-checks,
+body.home-light #hero .hero-checks li,
+body.home-light #hero .hero-microcopy {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.38);
+}
+
+body.home-light #hero .hero-label,
+body.home-light #hero .hero-tailored {
+  color: #D3C3AA !important;
+  -webkit-text-fill-color: #D3C3AA !important;
+}
+
+@media (max-width: 700px) {
+  body.home-light .hero-bg-img {
+    object-position: 58% center !important;
+    filter: saturate(0.9) contrast(1.04) brightness(0.66) !important;
+  }
+
+  body.home-light .hero-bg::after {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.48) 42%, rgba(10, 10, 10, 0.86) 100%),
+      radial-gradient(circle at 50% 24%, rgba(166, 124, 45, 0.22), transparent 58%) !important;
+  }
+}
