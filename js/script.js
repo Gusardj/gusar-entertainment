@@ -196,8 +196,13 @@ updateNavState();
       const expanded = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!expanded));
       toggle.textContent = expanded ? "See details" : "Hide details";
-      details.hidden = expanded;
+      if (!expanded) details.hidden = false;
       toggle.closest(".ed-card")?.classList.toggle("is-details-open", !expanded);
+      if (expanded) {
+        window.setTimeout(() => {
+          if (toggle.getAttribute("aria-expanded") === "false") details.hidden = true;
+        }, 320);
+      }
     });
   });
 

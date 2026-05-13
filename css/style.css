@@ -9654,6 +9654,8 @@ body.home-light #quiz-section .qservices .qsvc.selected::after {
 @media (max-width: 900px) {
   .mobile-fab {
     --fab-gold: #b8a070;
+    --fab-blue: #2f80ed;
+    --fab-whatsapp: #25d366;
     --fab-ease: cubic-bezier(0.32, 0.72, 0, 1);
     position: fixed;
     right: 24px;
@@ -9700,27 +9702,33 @@ body.home-light #quiz-section .qservices .qsvc.selected::after {
   .mobile-fab-actions {
     display: grid;
     justify-items: end;
-    gap: 10px;
+    gap: 8px;
     pointer-events: none;
   }
 
   .mobile-fab-action {
-    grid-template-columns: auto 56px;
-    width: auto;
-    min-width: 56px;
-    padding-left: 16px;
-    gap: 12px;
-    background: #ffffff;
-    color: #8f714b;
-    border-color: rgba(143, 113, 75, 0.22);
+    display: inline-grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    width: 156px;
+    min-width: 0;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 14px;
+    gap: 10px;
+    border-radius: 999px;
+    background: var(--fab-gold);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.42);
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    line-height: 1.05;
     text-transform: uppercase;
     opacity: 0;
     transform: translateY(8px) scale(0.98);
+    box-shadow: 0 12px 28px rgba(36, 25, 13, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.24);
     transition:
       opacity 200ms ease,
       transform 200ms var(--fab-ease),
@@ -9729,6 +9737,9 @@ body.home-light #quiz-section .qservices .qsvc.selected::after {
   }
 
   .mobile-fab-action span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
@@ -9764,6 +9775,11 @@ body.home-light #quiz-section .qservices .qsvc.selected::after {
     stroke-linejoin: round;
   }
 
+  .mobile-fab-action svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .mobile-fab-icon {
     position: absolute;
     inset: 0;
@@ -9786,8 +9802,18 @@ body.home-light #quiz-section .qservices .qsvc.selected::after {
     transform: rotate(-90deg) scale(1);
   }
 
-  .mobile-fab-action-wa {
+  .mobile-fab-action-start {
     background: var(--fab-gold);
+    color: #ffffff;
+  }
+
+  .mobile-fab-action-call {
+    background: var(--fab-blue);
+    color: #ffffff;
+  }
+
+  .mobile-fab-action-wa {
+    background: var(--fab-whatsapp);
     color: #ffffff;
   }
 
@@ -10094,5 +10120,196 @@ body.home-light #services-editorial .ed-card-copy {
     border-color: #111111 !important;
     color: #FFFFFF !important;
     -webkit-text-fill-color: #FFFFFF !important;
+  }
+}
+
+/* Services cards: compact app-card treatment for mobile review pass. */
+@media (max-width: 700px) {
+  body.home-light #services-editorial {
+    background: #f9fafb !important;
+  }
+
+  body.home-light #services-editorial .ed-grid {
+    gap: 16px !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent,
+  body.home-light #services-editorial .ed-card-production,
+  body.home-light #services-editorial .ed-card-design,
+  body.home-light #services-editorial .ed-card-management {
+    overflow: hidden !important;
+    border: 1px solid #f3f4f6 !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transform: none !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    font-family: Inter, var(--sans) !important;
+  }
+
+  body.home-light #services-editorial .ed-card.is-details-open {
+    border-color: rgba(139, 115, 85, 0.2) !important;
+    box-shadow: 0 8px 18px rgba(17, 24, 39, 0.08) !important;
+    transform: scale(1.02) !important;
+    z-index: 2;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-bg,
+  body.home-light #services-editorial .ed-card-production .ed-bg,
+  body.home-light #services-editorial .ed-card-design .ed-bg,
+  body.home-light #services-editorial .ed-card-management .ed-bg {
+    order: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 192px !important;
+    min-height: 192px !important;
+    flex: 0 0 192px !important;
+    overflow: hidden !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-bg::after,
+  body.home-light #services-editorial .ed-card-production .ed-bg::after,
+  body.home-light #services-editorial .ed-card-design .ed-bg::after,
+  body.home-light #services-editorial .ed-card-management .ed-bg::after {
+    background:
+      linear-gradient(90deg, rgba(17, 24, 39, 0.34), rgba(17, 24, 39, 0.06) 48%, rgba(17, 24, 39, 0.18)),
+      linear-gradient(0deg, rgba(17, 24, 39, 0.18), transparent 42%) !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-bg img,
+  body.home-light #services-editorial .ed-card-production .ed-bg img,
+  body.home-light #services-editorial .ed-card-design .ed-bg img,
+  body.home-light #services-editorial .ed-card-management .ed-bg img {
+    object-position: center center !important;
+  }
+
+  body.home-light #services-editorial .ed-card-talent .ed-tech-content,
+  body.home-light #services-editorial .ed-card-production .ed-tech-content,
+  body.home-light #services-editorial .ed-card-design .ed-tech-content,
+  body.home-light #services-editorial .ed-card-management .ed-tech-content {
+    order: 2 !important;
+    padding: 24px !important;
+    background: #ffffff !important;
+  }
+
+  body.home-light #services-editorial .ed-card-top {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  body.home-light #services-editorial .ed-num {
+    color: #8b7355 !important;
+    -webkit-text-fill-color: #8b7355 !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  body.home-light #services-editorial .ed-line {
+    width: 32px !important;
+    height: 1px !important;
+    background: rgba(139, 115, 85, 0.3) !important;
+  }
+
+  body.home-light #services-editorial .ed-card-title {
+    margin: 0 0 12px !important;
+    color: #3d3129 !important;
+    -webkit-text-fill-color: #3d3129 !important;
+    font-family: Inter, var(--sans) !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+  }
+
+  body.home-light #services-editorial .ed-card-copy {
+    margin: 0 0 24px !important;
+    color: #4b5563 !important;
+    -webkit-text-fill-color: #4b5563 !important;
+    font-size: 14px !important;
+    line-height: 1.625 !important;
+  }
+
+  body.home-light #services-editorial .ed-details-toggle {
+    min-height: 40px !important;
+    padding: 10px 20px !important;
+    border: 0 !important;
+    border-radius: 9999px !important;
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  body.home-light #services-editorial .ed-details-toggle::after {
+    font-size: 16px !important;
+  }
+
+  body.home-light #services-editorial .ed-tech-list {
+    display: flex !important;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    gap: 10px !important;
+    margin: 0 !important;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease !important;
+  }
+
+  body.home-light #services-editorial .ed-tech-list[hidden] {
+    display: flex !important;
+  }
+
+  body.home-light #services-editorial .ed-card.is-details-open .ed-tech-list {
+    max-height: 260px;
+    opacity: 1;
+    margin-top: 20px !important;
+  }
+
+  body.home-light #services-editorial .ed-tech-list li,
+  body.home-light #services-editorial .ed-tech-list li:last-child {
+    align-items: flex-start !important;
+    gap: 12px !important;
+    color: #4b5563 !important;
+    -webkit-text-fill-color: #4b5563 !important;
+    font-family: Inter, var(--sans) !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+
+  body.home-light #services-editorial .ed-tech-list li::before {
+    width: 8px !important;
+    height: 8px !important;
+    flex: 0 0 8px !important;
+    margin-top: 0.45em !important;
+    border-radius: 50% !important;
+    background: #8b7355 !important;
+    box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.2) !important;
+  }
+
+  body.home-light #services-editorial .ed-mini-cta {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 0 !important;
+    padding: 28px 24px !important;
+    border-radius: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid #f3f4f6 !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  body.home-light #services-editorial .ed-mini-cta h3,
+  body.home-light #services-editorial .ed-mini-cta p {
+    text-align: center !important;
+  }
+
+  body.home-light #services-editorial .ed-mini-cta a {
+    margin-inline: auto !important;
   }
 }
