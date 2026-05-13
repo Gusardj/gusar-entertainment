@@ -22,7 +22,7 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
     overscroll-behavior-x: none;
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: auto;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -37,6 +37,7 @@
     font-weight: 300;
     overflow-x: hidden;
     overscroll-behavior-x: none;
+    overscroll-behavior-y: auto;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
     cursor: none;
@@ -10417,5 +10418,82 @@ body.home-light #services-editorial .ed-card-copy {
     line-height: 1.22 !important;
     letter-spacing: 0.14em !important;
     text-transform: uppercase !important;
+  }
+}
+
+/* Scroll/rendering performance fixes */
+img {
+  display: block;
+  height: auto;
+}
+
+.hero-bg-img {
+  will-change: auto !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ed-bg,
+.ed-card-technical .ed-bg {
+  will-change: auto !important;
+  contain: paint;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ed-bg img,
+.ed-card-technical .ed-bg img,
+body.home-light #services-editorial .ed-card-talent .ed-bg img,
+body.home-light #services-editorial .ed-card-production .ed-bg img,
+body.home-light #services-editorial .ed-card-design .ed-bg img,
+body.home-light #services-editorial .ed-card-management .ed-bg img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 1448 / 1086;
+  filter: none !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 900px) {
+  nav,
+  nav.scrolled,
+  body.page-scrolled nav,
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav,
+  body.partnership-page nav,
+  body.partnership-page nav.scrolled,
+  body.partnership-page.page-scrolled nav {
+    background: rgba(255, 255, 255, 0.94) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 6px 18px rgba(17, 17, 17, 0.08) !important;
+    transition: transform 0.24s ease, background-color 0.24s ease, border-color 0.24s ease !important;
+  }
+
+  .bottom-nav {
+    background: rgba(19, 24, 32, 0.92) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 14px 30px rgba(7, 10, 18, 0.22) !important;
+  }
+
+  .mobile-fab {
+    will-change: auto !important;
+  }
+
+  .mobile-fab-toggle,
+  .mobile-fab-action {
+    box-shadow: 0 10px 22px rgba(36, 25, 13, 0.18) !important;
+  }
+}
+
+@media (hover: none) {
+  .ed-card:hover .ed-bg,
+  .service-card:hover .service-card-img img {
+    transform: none !important;
   }
 }

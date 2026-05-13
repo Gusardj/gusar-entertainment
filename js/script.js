@@ -50,6 +50,7 @@ const nav = document.querySelector("nav");
 const heroLabel = document.querySelector(".hero-label");
 
 let navThreshold = 120;
+let navScrolled = null;
 function computeNavThreshold() {
   if (heroLabel && nav) {
     navThreshold = heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight;
@@ -62,13 +63,12 @@ function updateNavState() {
   if (navRaf) return;
   navRaf = requestAnimationFrame(() => {
     navRaf = null;
-    if (window.scrollY >= navThreshold) {
-      nav.classList.add("scrolled");
-      document.body.classList.add("page-scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-      document.body.classList.remove("page-scrolled");
-    }
+    const shouldBeScrolled = window.scrollY >= navThreshold;
+    if (shouldBeScrolled === navScrolled) return;
+
+    navScrolled = shouldBeScrolled;
+    nav.classList.toggle("scrolled", shouldBeScrolled);
+    document.body.classList.toggle("page-scrolled", shouldBeScrolled);
   });
 }
 
@@ -101,14 +101,27 @@ updateNavState();
   let lastScrollY = window.scrollY;
   let ticking = false;
   let scrollStopTimer = 0;
+  let fabOpen = false;
+  let fabHidden = false;
+  let navHidden = document.body.classList.contains("nav-hidden");
+
+  function setBodyNavHidden(hidden) {
+    if (navHidden === hidden) return;
+    navHidden = hidden;
+    document.body.classList.toggle("nav-hidden", hidden);
+  }
 
   function setOpen(open) {
+    if (fabOpen === open) return;
+    fabOpen = open;
     fab.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close quick contact actions" : "Open quick contact actions");
   }
 
   function setHidden(hidden) {
+    if (fabHidden === hidden) return;
+    fabHidden = hidden;
     fab.classList.toggle("is-hidden", hidden);
     if (hidden) setOpen(false);
   }
@@ -131,19 +144,19 @@ updateNavState();
 
     if (!mobileQuery.matches || isBlocked()) {
       setHidden(isBlocked());
-      document.body.classList.remove("nav-hidden");
+      setBodyNavHidden(false);
       return;
     }
 
     if (currentScrollY <= 4 || deltaY < -directionThreshold) {
       setHidden(false);
-      document.body.classList.remove("nav-hidden");
+      setBodyNavHidden(false);
       return;
     }
 
     if (deltaY > directionThreshold) {
       setHidden(true);
-      document.body.classList.add("nav-hidden");
+      setBodyNavHidden(true);
     }
 
     showAfterScrollStops();
@@ -180,6 +193,7 @@ updateNavState();
   window.addEventListener("resize", () => {
     setOpen(false);
     setHidden(false);
+    setBodyNavHidden(false);
     lastScrollY = window.scrollY;
   });
   window.addEventListener("load", () => setHidden(false));
