@@ -10626,6 +10626,39 @@ body.page-scrolled nav {
   -webkit-backdrop-filter: blur(16px) saturate(1.08) !important;
 }
 
+@media (max-width: 900px) {
+  nav,
+  nav.scrolled,
+  body.page-scrolled nav,
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav,
+  body.partnership-page nav,
+  body.partnership-page nav.scrolled,
+  body.partnership-page.page-scrolled nav {
+    background: rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(1.08) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.08) !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body.home-light .nav-wa,
+  body.partnership-page .nav-wa {
+    background: rgba(255, 255, 255, 0.32) !important;
+    background-color: rgba(255, 255, 255, 0.32) !important;
+    border-color: rgba(255, 255, 255, 0.42) !important;
+    box-shadow: none !important;
+    color: #8f6f3c !important;
+  }
+
+  body.home-light .nav-wa svg,
+  body.partnership-page .nav-wa svg {
+    color: #8f6f3c !important;
+  }
+}
+
 body.home-light #hero {
   background: #0b0b0b !important;
 }
@@ -10771,5 +10804,23 @@ body.home-light #services-editorial .ed-card-management .ed-bg img {
   .ed-card:hover .ed-bg,
   .service-card:hover .service-card-img img {
     transform: none !important;
+  }
+}
+
+/* Final mobile nav transparency */
+@media (max-width: 900px) {
+  nav,
+  nav.scrolled,
+  body.page-scrolled nav,
+  body.home-light nav,
+  body.home-light nav.scrolled,
+  body.home-light.page-scrolled nav,
+  body.partnership-page nav,
+  body.partnership-page nav.scrolled,
+  body.partnership-page.page-scrolled nav {
+    background: rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(16px) saturate(1.08) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.08) !important;
   }
 }
