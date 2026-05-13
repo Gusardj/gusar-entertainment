@@ -838,3 +838,95 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// ==========================================================================
+// MOBILE INSTAGRAM FEED ROTATION
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('#portfolio .masonry-grid');
+  if (!grid) return;
+
+  const links = Array.from(grid.querySelectorAll('.masonry-item[data-lightbox]'));
+  if (links.length <= 4) return;
+
+  const photos = links.map((link) => {
+    const image = link.querySelector('img');
+    return {
+      href: link.getAttribute('href'),
+      src: image?.getAttribute('src') || link.getAttribute('href'),
+      alt: image?.getAttribute('alt') || 'GUSAR event photo'
+    };
+  });
+
+  const visibleLinks = links.slice(0, 4);
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  let rotationTimer = null;
+  let rotationStep = 0;
+
+  const setPhoto = (link, photo) => {
+    const image = link.querySelector('img');
+    link.setAttribute('href', photo.href);
+    if (image) {
+      image.setAttribute('src', photo.src);
+      image.setAttribute('alt', photo.alt);
+    }
+  };
+
+  const resetPhotos = () => {
+    photos.forEach((photo, index) => {
+      if (links[index]) setPhoto(links[index], photo);
+    });
+  };
+
+  const stopRotation = () => {
+    if (rotationTimer) {
+      window.clearInterval(rotationTimer);
+      rotationTimer = null;
+    }
+    grid.classList.remove('is-mobile-rotating');
+    visibleLinks.forEach((link) => link.classList.remove('is-swapping'));
+    resetPhotos();
+    rotationStep = 0;
+  };
+
+  const startRotation = () => {
+    if (rotationTimer) return;
+
+    grid.classList.add('is-mobile-rotating');
+    visibleLinks.forEach((link, index) => setPhoto(link, photos[index]));
+
+    rotationTimer = window.setInterval(() => {
+      const slotIndex = rotationStep % visibleLinks.length;
+      const photoIndex = (rotationStep + visibleLinks.length) % photos.length;
+      const slot = visibleLinks[slotIndex];
+
+      slot.classList.add('is-swapping');
+      window.setTimeout(() => {
+        setPhoto(slot, photos[photoIndex]);
+        window.requestAnimationFrame(() => {
+          window.setTimeout(() => {
+            slot.classList.remove('is-swapping');
+          }, 40);
+        });
+      }, 420);
+
+      rotationStep = (rotationStep + 1) % photos.length;
+    }, 1000);
+  };
+
+  const syncRotation = () => {
+    if (mobileQuery.matches) {
+      startRotation();
+    } else {
+      stopRotation();
+    }
+  };
+
+  syncRotation();
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', syncRotation);
+  } else if (typeof mobileQuery.addListener === 'function') {
+    mobileQuery.addListener(syncRotation);
+  }
+});
