@@ -38,8 +38,7 @@
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX; my = e.clientY;
     if (!raf) raf = requestAnimationFrame(() => {
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
+      cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
       raf = null;
     });
   });
@@ -50,17 +49,20 @@
 const nav = document.querySelector("nav");
 const heroLabel = document.querySelector(".hero-label");
 
+let navThreshold = 120;
+function computeNavThreshold() {
+  if (heroLabel && nav) {
+    navThreshold = heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight;
+  }
+}
+
 let navRaf;
 function updateNavState() {
   if (!nav) return;
   if (navRaf) return;
   navRaf = requestAnimationFrame(() => {
     navRaf = null;
-    const threshold = heroLabel
-      ? heroLabel.getBoundingClientRect().top + window.scrollY - nav.offsetHeight
-      : 120;
-
-    if (window.scrollY >= threshold) {
+    if (window.scrollY >= navThreshold) {
       nav.classList.add("scrolled");
       document.body.classList.add("page-scrolled");
     } else {
@@ -71,7 +73,8 @@ function updateNavState() {
 }
 
 window.addEventListener("scroll", updateNavState, { passive: true });
-window.addEventListener("resize", updateNavState);
+window.addEventListener("resize", () => { computeNavThreshold(); updateNavState(); });
+computeNavThreshold();
 updateNavState();
 
 (function initMobileViewportLock() {
