@@ -651,6 +651,7 @@ updateNavState();
       .map((el) => el.dataset.val || el.textContent.trim())
       .filter(Boolean)
       .join(', ')) || 'Not selected';
+    const heardFrom = getValue('qHeardSource') || 'Not provided';
 
     const message = [
       'New event proposal request',
@@ -664,6 +665,7 @@ updateNavState();
       `Phone: ${getValue('qContactPhone')}`,
       `Email: ${getValue('qContactEmail') || 'Not provided'}`,
       `Company: ${getValue('qContactCompany') || 'Not provided'}`,
+      `Heard from: ${heardFrom}`,
       `Preferred contact: ${preferredContact}`,
       `Notes: ${notes}`
     ].join('\n');
@@ -672,7 +674,6 @@ updateNavState();
       waLink.href = `https://wa.me/19402793660?text=${encodeURIComponent(message)}`;
     }
 
-    const heardFrom = 'Not provided';
     const payload = {
       type: 'EventProposal',
       eventType,
@@ -794,3 +795,46 @@ updateNavState();
   window.qUpdateBudget(getField('qBudgetSlider'));
   showStep(1);
 })();
+
+// ==========================================================================
+// MASONRY LIGHTBOX LOGIC
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const lightboxLinks = document.querySelectorAll('.masonry-item[data-lightbox]');
+  const lightboxModal = document.getElementById('custom-lightbox');
+
+  if (!lightboxModal || lightboxLinks.length === 0) return;
+
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCloseBtn = document.querySelector('.lightbox-close');
+  const lightboxOverlay = document.querySelector('.lightbox-overlay');
+
+  const openLightbox = (e) => {
+    e.preventDefault();
+    const largeImageUrl = e.currentTarget.getAttribute('href');
+    lightboxImage.setAttribute('src', largeImageUrl);
+    lightboxModal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    lightboxModal.classList.remove('is-active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      lightboxImage.setAttribute('src', '');
+    }, 400);
+  };
+
+  lightboxLinks.forEach(link => {
+    link.addEventListener('click', openLightbox);
+  });
+
+  lightboxCloseBtn.addEventListener('click', closeLightbox);
+  lightboxOverlay.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal.classList.contains('is-active')) {
+      closeLightbox();
+    }
+  });
+});
