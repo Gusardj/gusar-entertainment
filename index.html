@@ -9,7 +9,7 @@
 <title>GUSAR Entertainment — Miami's Premier Event Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@300;400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=services-card-images-1">
+  <link rel="stylesheet" href="css/style.css?v=services-compact-accordion-1">
 <style>
 @media (max-width: 900px) {
   body.home-light #process {
@@ -97,7 +97,7 @@
 }
 </style>
 </head>
-<body class="home-light has-bottom-nav" data-cc-id="cc-1" style="cursor: crosshair;">
+<body class="home-light has-mobile-fab" data-cc-id="cc-1" style="cursor: crosshair;">
 
 <!-- Custom cursor -->
 <div id="cursor"></div>
@@ -122,7 +122,7 @@
   <div class="nav-actions">
     <a href="#quiz" class="nav-cta">Start planning <span class="nav-arrow" aria-hidden="true">&rarr;</span></a>
     <a href="tel:+19402793660" class="nav-call">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 16.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.35 1.88.68 2.77a2 2 0 0 1-.45 2.11L8.09 9.85a16 16 0 0 0 6.06 6.06l1.25-1.25a2 2 0 0 1 2.11-.45c.89.33 1.82.55 2.77.68A2 2 0 0 1 22 16.92Z"/></svg>
       Call
     </a>
     <a href="https://wa.me/19402793660" class="nav-wa" target="_blank" rel="noopener">
@@ -154,7 +154,7 @@
       Plan my event
     </a>
     <a href="tel:+19402793660" class="mobile-menu-btn mobile-menu-call">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 16.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.35 1.88.68 2.77a2 2 0 0 1-.45 2.11L8.09 9.85a16 16 0 0 0 6.06 6.06l1.25-1.25a2 2 0 0 1 2.11-.45c.89.33 1.82.55 2.77.68A2 2 0 0 1 22 16.92Z"/></svg>
       Call
     </a>
     <a href="https://wa.me/19402793660" class="mobile-menu-btn mobile-menu-wa" target="_blank" rel="noopener">
@@ -317,7 +317,7 @@
   <div class="ed-header">
     <div class="ed-header-left">
       <span class="ed-label">Services</span>
-      <h2 class="ed-heading" id="services-editorial-title">Everything your event needs.<br>Under one roof.</h2>
+      <h2 class="ed-heading" id="services-editorial-title"><span class="ed-heading-line">Everything your event needs.</span><br><span class="ed-heading-line">Under one roof.</span></h2>
       <p class="ed-event-types">Weddings · Corporate Events · Brand Activations · Galas &amp; Fundraisers · Private Parties · Yacht &amp; Villa Events</p>
     </div>
   </div>
@@ -335,7 +335,8 @@
         </div>
         <h3 class="ed-card-title">Talent Booking</h3>
         <p class="ed-card-copy">We match the event with the right entertainment and book directly through our vetted network.</p>
-        <ul class="ed-tech-list" aria-label="Talent and artist booking services">
+        <button class="ed-details-toggle" type="button" aria-expanded="false" aria-controls="ed-details-talent">See details</button>
+        <ul class="ed-tech-list" id="ed-details-talent" aria-label="Talent and artist booking services" hidden>
           <li>200+ DJs from house to hip-hop</li>
           <li>Live bands &amp; performers for any vibe</li>
           <li>Saxophonists &amp; violinists for elegant moments</li>
@@ -356,7 +357,8 @@
         </div>
         <h3 class="ed-card-title">Production &amp; Tech</h3>
         <p class="ed-card-copy">Sound, lighting, staging, AV, and crew are scoped together so the show works in the real venue.</p>
-        <ul class="ed-tech-list" aria-label="Technical production services">
+        <button class="ed-details-toggle" type="button" aria-expanded="false" aria-controls="ed-details-production">See details</button>
+        <ul class="ed-tech-list" id="ed-details-production" aria-label="Technical production services" hidden>
           <li>Pro sound systems for 50 to 5,000 guests</li>
           <li>Lighting design that transforms any space</li>
           <li>Staging &amp; AV rentals — we own it, we run it</li>
@@ -364,6 +366,12 @@
         </ul>
       </div>
     </article>
+
+    <div class="ed-mini-cta">
+      <h3>Tell us about your event</h3>
+      <p>Get a tailored concept and budget within 24 hours.</p>
+      <a href="#quiz-section">Plan my event <span aria-hidden="true">&rarr;</span></a>
+    </div>
 
     <article class="ed-card ed-card-technical ed-card-design">
       <div class="ed-corner" aria-hidden="true"></div>
@@ -377,7 +385,8 @@
         </div>
         <h3 class="ed-card-title">Design &amp; Concept</h3>
         <p class="ed-card-copy">Concept, decor, florals, lighting, and guest flow are built around one clear event direction.</p>
-        <ul class="ed-tech-list" aria-label="Event design and decor services">
+        <button class="ed-details-toggle" type="button" aria-expanded="false" aria-controls="ed-details-design">See details</button>
+        <ul class="ed-tech-list" id="ed-details-design" aria-label="Event design and decor services" hidden>
           <li>Concept &amp; scenography</li>
           <li>Florals &amp; table design</li>
           <li>Custom builds &amp; installations</li>
@@ -398,7 +407,8 @@
         </div>
         <h3 class="ed-card-title">Event Management</h3>
         <p class="ed-card-copy">One producer manages vendors, timeline, logistics, and day-of coordination from start to finish.</p>
-        <ul class="ed-tech-list" aria-label="Event management and planning services">
+        <button class="ed-details-toggle" type="button" aria-expanded="false" aria-controls="ed-details-management">See details</button>
+        <ul class="ed-tech-list" id="ed-details-management" aria-label="Event management and planning services" hidden>
           <li>End-to-end planning — timeline, vendors, logistics</li>
           <li>On-site coordination day-of</li>
           <li>Venue sourcing across Miami</li>
@@ -1080,32 +1090,25 @@
   </script>
 </footer>
 
-<div class="bottom-nav" role="navigation" aria-label="Quick mobile navigation">
-  <div class="bottom-nav-side">
-    <a href="#hero" class="bottom-nav-item is-active" aria-label="Go to top">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg>
-      <span>Home</span>
+<div class="mobile-fab" role="navigation" aria-label="Quick contact actions">
+  <div class="mobile-fab-actions" id="mobile-fab-actions">
+    <a href="#quiz-section" class="mobile-fab-action mobile-fab-action-start" aria-label="Start planning">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+      <span>Start</span>
     </a>
-    <a href="#services-editorial" class="bottom-nav-item" aria-label="Go to services">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/><path d="m19 14 .7 2.1L22 17l-2.3.9L19 20l-.7-2.1L16 17l2.3-.9Z"/></svg>
-      <span>Services</span>
-    </a>
-  </div>
-  <a href="#quiz-section" class="bottom-nav-quote" aria-label="Go to application quiz">
-    <span class="bottom-nav-quote-ring">
-      <span class="bottom-nav-quote-text">Start</span>
-    </span>
-  </a>
-  <div class="bottom-nav-side">
-    <a href="tel:+19402793660" class="bottom-nav-item" aria-label="Call GUSAR Entertainment">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.62 2.6a2 2 0 0 1-.45 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.27-1.27a2 2 0 0 1 2.1-.45c.83.3 1.7.5 2.6.62A2 2 0 0 1 22 16.92Z"/></svg>
+    <a href="tel:+19402793660" class="mobile-fab-action mobile-fab-action-call" aria-label="Call GUSAR Entertainment">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.35 1.88.68 2.77a2 2 0 0 1-.45 2.11L8.09 9.85a16 16 0 0 0 6.06 6.06l1.25-1.25a2 2 0 0 1 2.11-.45c.89.33 1.82.55 2.77.68A2 2 0 0 1 22 16.92Z"/></svg>
       <span>Call</span>
     </a>
-    <a href="https://wa.me/19402793660" class="bottom-nav-item" target="_blank" rel="noopener" aria-label="Message GUSAR Entertainment on WhatsApp">
+    <a href="https://wa.me/19402793660" class="mobile-fab-action mobile-fab-action-wa" target="_blank" rel="noopener" aria-label="Message GUSAR Entertainment on WhatsApp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8.8 9.2c.2 3.2 2.8 5.8 6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/></svg>
       <span>WhatsApp</span>
     </a>
   </div>
+  <button class="mobile-fab-toggle" type="button" aria-label="Open quick contact actions" aria-expanded="false" aria-controls="mobile-fab-actions">
+    <svg class="mobile-fab-icon mobile-fab-icon-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8.8 9.2c.2 3.2 2.8 5.8 6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/></svg>
+    <svg class="mobile-fab-icon mobile-fab-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
 </div>
 
 <!-- TWEAKS PANEL -->

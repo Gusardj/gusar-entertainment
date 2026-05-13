@@ -87,120 +87,99 @@ updateNavState();
   // The old touchend preventDefault was blocking normal scroll re-touches within 300ms
 })();
 
-(function initBottomNavReveal() {
-  const bottomNav = document.querySelector(".bottom-nav");
-  const firstBlock = document.querySelector("#hero, .pp-hero");
-  if (!bottomNav || !firstBlock) return;
+(function initMobileFab() {
+  const fab = document.querySelector(".mobile-fab");
+  const toggle = document.querySelector(".mobile-fab-toggle");
+  if (!fab || !toggle) return;
 
+  const actions = fab.querySelectorAll(".mobile-fab-action");
+  const mobileQuery = window.matchMedia("(max-width: 900px)");
+  const directionThreshold = 8;
   let lastScrollY = window.scrollY;
   let ticking = false;
-  let touchStartY = null;
-  let touchDirection = 0;
-  const directionThreshold = 8;
-  // Cache threshold once — offsetTop/offsetHeight don't change after load
-  let navThreshold = -1;
+  let scrollStopTimer = 0;
 
-  function getNavThreshold() {
-    if (navThreshold < 0) {
-      navThreshold = firstBlock.offsetTop + firstBlock.offsetHeight * 0.1;
-    }
-    return navThreshold;
+  function setOpen(open) {
+    fab.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close quick contact actions" : "Open quick contact actions");
   }
 
-  function isPastBottomNavThreshold() {
-    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
-    const openedPastFirstBlock = hashTarget && !firstBlock.contains(hashTarget) && hashTarget !== firstBlock;
-    return openedPastFirstBlock || window.scrollY >= getNavThreshold();
+  function setHidden(hidden) {
+    fab.classList.toggle("is-hidden", hidden);
+    if (hidden) setOpen(false);
   }
 
-  function updateBottomNavState() {
+  function isBlocked() {
+    return document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
+  }
+
+  function showAfterScrollStops() {
+    window.clearTimeout(scrollStopTimer);
+    scrollStopTimer = window.setTimeout(() => {
+      if (mobileQuery.matches && !isBlocked()) setHidden(false);
+    }, 180);
+  }
+
+  function updateFabOnScroll() {
     const currentScrollY = window.scrollY;
-    const pastThreshold = isPastBottomNavThreshold();
     const deltaY = currentScrollY - lastScrollY;
     lastScrollY = currentScrollY;
-    const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
-    const mobileNav = window.matchMedia("(max-width: 900px)").matches;
 
-    if (blocked) {
-      document.body.classList.remove("bottom-nav-visible");
+    if (!mobileQuery.matches || isBlocked()) {
+      setHidden(isBlocked());
       document.body.classList.remove("nav-hidden");
       return;
     }
 
-    if (mobileNav) {
-      if (currentScrollY <= 4 || deltaY < -directionThreshold) {
-        document.body.classList.remove("nav-hidden");
-      } else if (deltaY > directionThreshold) {
-        document.body.classList.add("nav-hidden");
-      }
-    } else {
+    if (currentScrollY <= 4 || deltaY < -directionThreshold) {
+      setHidden(false);
       document.body.classList.remove("nav-hidden");
-    }
-
-    if (!pastThreshold) {
-      document.body.classList.remove("bottom-nav-visible");
       return;
     }
 
-    const scrollDirection = deltaY > directionThreshold ? 1 : deltaY < -directionThreshold ? -1 : 0;
-    const revealDirection = touchDirection || scrollDirection;
-
-    if (revealDirection > 0) {
-      document.body.classList.add("bottom-nav-visible");
-    } else if (revealDirection < 0) {
-      document.body.classList.remove("bottom-nav-visible");
+    if (deltaY > directionThreshold) {
+      setHidden(true);
+      document.body.classList.add("nav-hidden");
     }
+
+    showAfterScrollStops();
   }
 
-  function requestBottomNavUpdate() {
+  function requestFabUpdate() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      updateBottomNavState();
+      updateFabOnScroll();
       ticking = false;
     });
   }
 
-  function forceShow() {
-    const blocked = document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
-    if (isPastBottomNavThreshold() && !blocked) {
-      document.body.classList.remove("nav-hidden");
-      lastScrollY = window.scrollY;
-    }
-  }
-
-  window.addEventListener("scroll", requestBottomNavUpdate, { passive: true });
-  window.addEventListener("touchstart", (event) => {
-    touchStartY = event.touches && event.touches.length ? event.touches[0].clientY : null;
-    touchDirection = 0;
-  }, { passive: true });
-  window.addEventListener("touchmove", (event) => {
-    if (touchStartY === null || !event.touches || !event.touches.length) return;
-    const deltaTouchY = touchStartY - event.touches[0].clientY;
-    if (Math.abs(deltaTouchY) > directionThreshold) {
-      touchDirection = deltaTouchY > 0 ? 1 : -1;
-      requestBottomNavUpdate();
-    }
-  }, { passive: true });
-  window.addEventListener("touchend", () => {
-    touchStartY = null;
-    window.setTimeout(() => { touchDirection = 0; }, 120);
-  }, { passive: true });
-  window.addEventListener("keydown", (event) => {
-    const upKeys = ["ArrowUp", "PageUp", "Home"];
-    const downKeys = ["ArrowDown", "PageDown", "End", " "];
-    if (upKeys.includes(event.key) || (event.key === " " && event.shiftKey)) {
-      document.body.classList.remove("bottom-nav-visible");
-      document.body.classList.remove("nav-hidden");
-    } else if (downKeys.includes(event.key) && !event.shiftKey) {
-      document.body.classList.add("bottom-nav-visible");
-      document.body.classList.add("nav-hidden");
-    }
+  toggle.addEventListener("click", () => {
+    if (!mobileQuery.matches) return;
+    setHidden(false);
+    setOpen(!fab.classList.contains("is-open"));
   });
-  window.addEventListener("resize", () => { navThreshold = -1; requestBottomNavUpdate(); });
-  window.addEventListener("hashchange", forceShow);
-  window.addEventListener("load", forceShow);
-  forceShow();
+
+  actions.forEach((action) => {
+    action.addEventListener("click", () => setOpen(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!fab.contains(event.target)) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+
+  window.addEventListener("scroll", requestFabUpdate, { passive: true });
+  window.addEventListener("resize", () => {
+    setOpen(false);
+    setHidden(false);
+    lastScrollY = window.scrollY;
+  });
+  window.addEventListener("load", () => setHidden(false));
 })();
 
 (function initServicesEditorial() {
@@ -208,6 +187,19 @@ updateNavState();
   if (!section) return;
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  section.querySelectorAll(".ed-details-toggle").forEach((toggle) => {
+    const details = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!details) return;
+
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      toggle.textContent = expanded ? "See details" : "Hide details";
+      details.hidden = expanded;
+      toggle.closest(".ed-card")?.classList.toggle("is-details-open", !expanded);
+    });
+  });
 
   function startCountUp(el) {
     const finalNum = Number.parseInt(el.getAttribute("data-target"), 10);
@@ -229,7 +221,7 @@ updateNavState();
     }, 42);
   }
 
-  const revealTargets = section.querySelectorAll(".ed-header, .ed-card, .ed-cta-block");
+  const revealTargets = section.querySelectorAll(".ed-header, .ed-card, .ed-mini-cta, .ed-cta-block");
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
