@@ -312,9 +312,11 @@ updateNavState();
   const quiz = document.getElementById('quiz-section');
   if (!quiz) return;
 
-  const totalSteps = 5;
+  const totalSteps = 4;
   let currentStep = 1;
   let budgetPersonal = false;
+  let stepTransitionTimer = 0;
+  let lastSubmissionPayload = null;
 
   const stepEls = Array.from(quiz.querySelectorAll('.qstep'));
   const progressLabel = document.getElementById('qProgressLabel');
@@ -323,22 +325,27 @@ updateNavState();
   const successScreen = document.getElementById('qSuccessScreen');
   const submitBtn = document.getElementById('qSubmitBtn');
   const waLink = document.getElementById('qWaLink');
+  const benefitsBlock = document.getElementById('qBenefits');
+  const badgeCompact = document.getElementById('qBadgeCompact');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function setText(id, value) {
     const el = document.getElementById(id);
     if (el) el.textContent = value;
   }
 
-  function setSuccessMessage(firstName) {
+  function setSuccessMessage(firstName, contactMethod) {
     const el = document.getElementById('qSuccessMessage');
     if (!el) return;
     const safeName = firstName || 'there';
+    const via = contactMethod && contactMethod !== 'Not selected' ? ` via ${contactMethod}` : '';
     el.replaceChildren(
       'Thank you, ',
       Object.assign(document.createElement('strong'), { textContent: safeName }),
-      ". Your request is in. We'll reach out within ",
-      Object.assign(document.createElement('strong'), { textContent: 'a few hours' }),
-      ' with a personalized proposal.'
+      `. Your proposal is on the way! We'll reach out`,
+      Object.assign(document.createElement('strong'), { textContent: via }),
+      Object.assign(document.createElement('strong'), { textContent: ' within 24 hours' }),
+      '.'
     );
   }
 
@@ -370,17 +377,68 @@ updateNavState();
     if (progressFill) progressFill.style.width = `${(currentStep / totalSteps) * 100}%`;
   }
 
-  function showStep(step, direction = 'next') {
-    currentStep = Math.max(1, Math.min(totalSteps, step));
-    stepEls.forEach((el) => {
-      el.classList.remove('active', 'back');
-      if (el.id === `qstep${currentStep}`) {
-        el.classList.add('active');
-        if (direction === 'back') el.classList.add('back');
-      }
-    });
-    if (successScreen) successScreen.classList.remove('active');
+  function updateBenefitsVisibility() {
+    if (benefitsBlock) benefitsBlock.hidden = currentStep !== 1;
+    if (badgeCompact) badgeCompact.hidden = currentStep === 1;
+  }
+
+  function updateStep1ButtonText() {
+    const btn = document.getElementById('qNextBtn1');
+    if (!btn) return;
+    const sel = quiz.querySelector('#qEventTypeChoices .qchoice.selected');
+    if (!sel) { btn.textContent = 'Continue →'; return; }
+    const val = sel.dataset.val || '';
+    const label = val === 'Something Else' ? 'Continue →' : `Continue with ${val} →`;
+    btn.textContent = label;
+  }
+
+  function syncStepUi() {
     updateProgress();
+    updateBenefitsVisibility();
+
+    const companyWrap = document.getElementById('qCompanyWrap');
+    if (companyWrap && currentStep === 4) {
+      const eventType = selectedText('#qEventTypeChoices .qchoice.selected');
+      companyWrap.style.display = ['Corporate', 'Brand Launch'].includes(eventType) ? '' : 'none';
+    }
+  }
+
+  function showStep(step, direction = 'next') {
+    const nextStep = Math.max(1, Math.min(totalSteps, step));
+    const currentEl = stepEls.find((el) => el.classList.contains('active'));
+    const nextEl = document.getElementById(`qstep${nextStep}`);
+    const isBack = direction === 'back';
+    const shouldAnimate = currentEl && nextEl && currentEl !== nextEl && !reducedMotion.matches;
+
+    window.clearTimeout(stepTransitionTimer);
+    currentStep = nextStep;
+    if (successScreen) successScreen.classList.remove('active');
+    syncStepUi();
+
+    stepEls.forEach((el) => {
+      el.classList.remove('step-exit', 'step-exit-back', 'step-enter', 'step-enter-back', 'step-enter-active', 'back');
+    });
+
+    if (!nextEl) return;
+
+    if (!shouldAnimate) {
+      stepEls.forEach((el) => el.classList.toggle('active', el === nextEl));
+      return;
+    }
+
+    currentEl.classList.add('step-exit');
+    if (isBack) currentEl.classList.add('step-exit-back');
+
+    stepTransitionTimer = window.setTimeout(() => {
+      stepEls.forEach((el) => el.classList.remove('active', 'step-exit', 'step-exit-back'));
+      nextEl.classList.add('active', 'step-enter');
+      if (isBack) nextEl.classList.add('step-enter-back');
+
+      window.requestAnimationFrame(() => {
+        nextEl.classList.add('step-enter-active');
+        nextEl.classList.remove('step-enter', 'step-enter-back');
+      });
+    }, 200);
   }
 
   function validateStep(step) {
@@ -394,9 +452,8 @@ updateNavState();
 
     if (step === 2) {
       const hasServices = quiz.querySelectorAll('.qsvc.selected').length > 0;
-      const hasCustom = getValue('qCustomService').length > 0;
-      setError(2, !hasServices && !hasCustom);
-      return hasServices || hasCustom;
+      setError(2, !hasServices);
+      return hasServices;
     }
 
     if (step === 3) {
@@ -406,12 +463,11 @@ updateNavState();
       return valid;
     }
 
-    if (step === 5) {
+    if (step === 4) {
       const valid = getValue('qContactFirstName').length > 0
-        && getValue('qContactLastName').length > 0
         && getValue('qContactPhone').length > 0
         && Boolean(getField('qConsentCheck')?.checked);
-      setError(5, !valid);
+      setError(4, !valid);
       return valid;
     }
 
@@ -437,7 +493,15 @@ updateNavState();
     if (groupId === 'qEventTypeChoices') {
       const otherWrap = document.getElementById('qOtherEventWrap');
       if (otherWrap) otherWrap.classList.toggle('visible', el.dataset.val === 'Something Else');
+      updateStep1ButtonText();
     }
+  };
+
+  window.qSelectService = function qSelectService(el) {
+    if (!el) return;
+    quiz.querySelectorAll('.qsvc').forEach((svc) => svc.classList.remove('selected'));
+    el.classList.add('selected');
+    setError(2, false);
   };
 
   window.qSelectPill = function qSelectPill(el, groupId) {
@@ -460,13 +524,28 @@ updateNavState();
   window.qToggleContact = function qToggleContact(el) {
     if (!el) return;
     const group = document.getElementById('qContactMethods');
-    el.classList.toggle('selected');
+    quiz.querySelectorAll('#qContactMethods .qcmethod').forEach((m) => m.classList.remove('selected'));
+    el.classList.add('selected');
     if (group) {
-      group.dataset.selectedContact = Array.from(group.querySelectorAll('.qcmethod.selected'))
-        .map((method) => method.dataset.val || method.textContent.trim())
-        .filter(Boolean)
-        .join(', ');
+      group.dataset.selectedContact = el.dataset.val || el.textContent.trim();
     }
+  };
+
+  window.qToggleBudgetPersonal = function qToggleBudgetPersonal() {
+    budgetPersonal = !budgetPersonal;
+    const sliderBlock = document.getElementById('qBudgetSliderBlock');
+    const personalBlock = document.getElementById('qBudgetPersonalBlock');
+    if (sliderBlock) sliderBlock.style.display = budgetPersonal ? 'none' : '';
+    if (personalBlock) personalBlock.classList.toggle('active', budgetPersonal);
+  };
+
+  window.qToggleNotes = function qToggleNotes() {
+    const wrap = document.getElementById('qNotesWrap');
+    const btn = document.getElementById('qNotesToggle');
+    if (!wrap || !btn) return;
+    const open = wrap.style.display === 'none' || wrap.style.display === '';
+    wrap.style.display = open ? 'block' : 'none';
+    btn.textContent = open ? '− Hide notes' : '+ Add notes or special requests';
   };
 
   window.qNextStep = function qNextStep(step) {
@@ -492,21 +571,6 @@ updateNavState();
     output.textContent = formatMoney(input.value);
   };
 
-  window.qToggleBudgetPersonal = function qToggleBudgetPersonal() {
-    budgetPersonal = !budgetPersonal;
-    const sliderBlock = document.getElementById('qBudgetSliderBlock');
-    const personalBlock = document.getElementById('qBudgetPersonalBlock');
-    const toggleBtn = document.getElementById('qBudgetToggleBtn');
-
-    if (sliderBlock) sliderBlock.style.display = budgetPersonal ? 'none' : '';
-    if (personalBlock) personalBlock.classList.toggle('active', budgetPersonal);
-    if (toggleBtn) {
-      toggleBtn.textContent = budgetPersonal
-        ? '←  Show budget slider'
-        : "💬  I'd prefer to discuss the budget personally";
-    }
-  };
-
   window.qPreselectTag = function qPreselectTag(value) {
     const target = Array.from(document.querySelectorAll('#qEventTypeChoices .qchoice'))
       .find((el) => el.dataset.val === value);
@@ -520,7 +584,7 @@ updateNavState();
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPC0VDPbvB5WPCSHE9SFbiVrwrBhZ6XsqZwPDvrhpEE2wwjB4zmKKVK-kWCO47eJIn/exec';
 
   window.qSubmitQuiz = async function qSubmitQuiz() {
-    if (!validateStep(5)) return;
+    if (!validateStep(4)) return;
 
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -531,14 +595,11 @@ updateNavState();
     const otherEventText = getValue('qOtherEventText');
     const eventType = eventTypeRaw === 'Something Else' && otherEventText ? `Something Else: ${otherEventText}` : eventTypeRaw;
     const services = selectedList('.qsvc.selected');
-    const customService = getValue('qCustomService');
-    if (customService) services.push(customService);
 
     const budget = budgetPersonal
       ? 'Discuss personally'
       : `$${formatMoney(getField('qBudgetSlider')?.value || 5000)}`;
     const eventDate = getValue('qEventDate') || selectedText('#qDateOptions .qdate-option.selected') || 'Not provided';
-    const heardFrom = selectedText('#qHeardPills .qpill.selected') || 'Not selected';
     const notes = getValue('qContactNotes') || 'None';
     const firstName = getValue('qContactFirstName');
     const contactName = [firstName, getValue('qContactLastName')].filter(Boolean).join(' ');
@@ -560,7 +621,6 @@ updateNavState();
       `Phone: ${getValue('qContactPhone')}`,
       `Email: ${getValue('qContactEmail') || 'Not provided'}`,
       `Company: ${getValue('qContactCompany') || 'Not provided'}`,
-      `Heard from: ${heardFrom}`,
       `Preferred contact: ${preferredContact}`,
       `Notes: ${notes}`
     ].join('\n');
@@ -569,6 +629,7 @@ updateNavState();
       waLink.href = `https://wa.me/19402793660?text=${encodeURIComponent(message)}`;
     }
 
+    const heardFrom = 'Not provided';
     const payload = {
       type: 'EventProposal',
       eventType,
@@ -609,6 +670,7 @@ updateNavState();
       notes,
       vision: notes
     };
+    lastSubmissionPayload = payload;
 
     fetch(SCRIPT_URL, {
       method: 'POST',
@@ -620,7 +682,7 @@ updateNavState();
       console.error('Webhook error:', e);
     });
 
-    setSuccessMessage(firstName);
+    setSuccessMessage(firstName, preferredContact);
     setText('qSummaryEvent', eventType);
     setText('qSummaryServices', services.join(', ') || 'Not selected');
     setText('qSummaryDate', eventDate);
@@ -633,6 +695,8 @@ updateNavState();
       if (successScreen) successScreen.classList.add('active');
       if (progressLabel) progressLabel.textContent = 'Request received';
       if (progressFill) progressFill.style.width = '100%';
+      if (benefitsBlock) benefitsBlock.hidden = true;
+      if (badgeCompact) badgeCompact.hidden = true;
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Get My Proposal →';
@@ -648,18 +712,31 @@ updateNavState();
       setError(3, false);
     }
     if (target.matches('#qEventLocation')) setError(3, false);
-    if (target.matches('#qContactFirstName, #qContactLastName, #qContactPhone, #qConsentCheck')) setError(5, false);
-    if (target.matches('#qCustomService')) setError(2, false);
+    if (target.matches('#qContactFirstName, #qContactPhone, #qConsentCheck')) setError(4, false);
   });
 
-  quiz.addEventListener('click', (event) => {
-    const pill = event.target.closest?.('#qHeardPills .qpill');
-    if (pill) window.qSelectPill(pill, 'qHeardPills');
-  });
-
-  quiz.querySelectorAll('.qsvc').forEach((svc) => {
-    svc.addEventListener('click', () => setError(2, false));
-  });
+  const heardSelect = document.getElementById('qHeardSelect');
+  if (heardSelect) {
+    heardSelect.addEventListener('change', () => {
+      if (!heardSelect.value) return;
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'EventProposalAttribution',
+          heardFrom: heardSelect.value,
+          source: heardSelect.value,
+          name: lastSubmissionPayload?.name || '',
+          phone: lastSubmissionPayload?.phone || '',
+          email: lastSubmissionPayload?.email || ''
+        })
+      }).catch((e) => {
+        console.error('Attribution webhook error:', e);
+      });
+    }, { once: true });
+  }
 
   const topButton = quiz.querySelector('.qbtn-home');
   if (topButton) {
