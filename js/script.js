@@ -127,7 +127,9 @@ updateNavState();
   }
 
   function isBlocked() {
-    return document.body.classList.contains("mobile-menu-open") || document.body.classList.contains("collab-modal-open");
+    return document.body.classList.contains("mobile-menu-open")
+      || document.body.classList.contains("collab-modal-open")
+      || document.body.classList.contains("quiz-in-view");
   }
 
   function showAfterScrollStops() {
@@ -192,11 +194,21 @@ updateNavState();
   window.addEventListener("scroll", requestFabUpdate, { passive: true });
   window.addEventListener("resize", () => {
     setOpen(false);
-    setHidden(false);
+    setHidden(isBlocked());
     setBodyNavHidden(false);
     lastScrollY = window.scrollY;
   });
-  window.addEventListener("load", () => setHidden(false));
+  window.addEventListener("load", () => setHidden(isBlocked()));
+
+  const quizSection = document.getElementById("quiz-section");
+  if (quizSection && "IntersectionObserver" in window) {
+    const quizObserver = new IntersectionObserver((entries) => {
+      const inView = entries.some((entry) => entry.isIntersecting);
+      document.body.classList.toggle("quiz-in-view", inView);
+      setHidden(inView);
+    }, { threshold: 0.08, rootMargin: "0px 0px -12% 0px" });
+    quizObserver.observe(quizSection);
+  }
 })();
 
 (function initServicesEditorial() {
@@ -521,8 +533,17 @@ updateNavState();
 
   window.qSelectService = function qSelectService(el) {
     if (!el) return;
-    quiz.querySelectorAll('.qsvc').forEach((svc) => svc.classList.remove('selected'));
-    el.classList.add('selected');
+    const isEscape = el.classList.contains('qsvc--escape');
+    const wasSelected = el.classList.contains('selected');
+
+    if (isEscape) {
+      quiz.querySelectorAll('.qsvc').forEach((svc) => svc.classList.remove('selected'));
+      el.classList.toggle('selected', !wasSelected);
+    } else {
+      quiz.querySelectorAll('.qsvc--escape').forEach((svc) => svc.classList.remove('selected'));
+      el.classList.toggle('selected');
+    }
+
     setError(2, false);
   };
 
