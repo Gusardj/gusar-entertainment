@@ -908,10 +908,10 @@ document.addEventListener('DOMContentLoaded', () => {
             slot.classList.remove('is-swapping');
           }, 40);
         });
-      }, 420);
+      }, 780);
 
       rotationStep = (rotationStep + 1) % photos.length;
-    }, 1000);
+    }, 1600);
   };
 
   const syncRotation = () => {
