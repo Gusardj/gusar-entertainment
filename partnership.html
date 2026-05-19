@@ -928,6 +928,580 @@
         display: none !important;
       }
     }
+
+    /* ═══════════════════════════════════════════
+       EDITORIAL MINIMAL REFRESH
+       ═══════════════════════════════════════════ */
+    .partnership-page {
+      --pp-bg: #fbfaf6;
+      --pp-bg2: #f4f1ea;
+      --pp-bg3: #ebe6dc;
+      --pp-ink: #2a2924;
+      --pp-soft: #777267;
+      --pp-line: rgba(42, 41, 36, 0.24);
+      --pp-line-soft: rgba(42, 41, 36, 0.13);
+      --pp-accent: #7c7669;
+      --pp-accent-l: #a09a8d;
+      --pp-button-bg: #2a2924;
+      --pp-button-text: #fbfaf6;
+      background: var(--pp-bg) !important;
+      color: var(--pp-ink) !important;
+    }
+
+    .partnership-page,
+    .partnership-page * {
+      letter-spacing: 0;
+    }
+
+    .partnership-page nav,
+    .partnership-page nav.scrolled,
+    body.partnership-page.page-scrolled nav {
+      background: rgba(251, 250, 246, 0.88) !important;
+      border-bottom: 1px solid var(--pp-line-soft) !important;
+      box-shadow: none !important;
+    }
+
+    .partnership-page .nav-logo-top,
+    .partnership-page .nav-logo-sub,
+    .partnership-page .nav-links a,
+    .partnership-page .nav-call,
+    .partnership-page .nav-wa {
+      color: var(--pp-ink) !important;
+    }
+
+    .partnership-page .nav-cta {
+      background: transparent !important;
+      border-color: var(--pp-line) !important;
+      color: var(--pp-ink) !important;
+    }
+
+    .partnership-page .nav-cta:hover {
+      background: var(--pp-ink) !important;
+      border-color: var(--pp-ink) !important;
+      color: var(--pp-bg) !important;
+    }
+
+    .pp-hero {
+      min-height: 100svh;
+      padding: 118px 0 0;
+      align-items: stretch;
+      background: var(--pp-bg) !important;
+      border-bottom: 1px solid var(--pp-line);
+    }
+
+    .pp-hero::before {
+      display: none;
+    }
+
+    .pp-hero-inner {
+      max-width: none;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.72fr);
+      min-height: calc(100svh - 118px);
+      border-top: 1px solid var(--pp-line);
+    }
+
+    .pp-hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      padding: clamp(52px, 7vw, 108px);
+      border-right: 1px solid var(--pp-line);
+    }
+
+    .pp-hero-art {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      background: #ded9cf;
+    }
+
+    .pp-hero-art img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      filter: saturate(0.72) contrast(0.92) brightness(1.06);
+    }
+
+    .pp-hero-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(251,250,246,0.08), rgba(42,41,36,0.10));
+      pointer-events: none;
+    }
+
+    .pp-art-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 24px;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(251,250,246,0.9);
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .pp-section-label,
+    .hiw-num,
+    .pp-card-cta,
+    .pp-card-title,
+    .hiw-title {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.18em !important;
+      color: var(--pp-soft) !important;
+    }
+
+    .pp-hero .pp-section-label {
+      margin: 0 0 34px;
+      color: var(--pp-soft) !important;
+    }
+
+    .pp-hero h1 {
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .pp-hero-join,
+    .pp-hero-name,
+    .pp-hero-entertainment,
+    .hiw-heading,
+    .pp-cats-title-d {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-weight: 400 !important;
+      font-style: normal !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      color: var(--pp-ink) !important;
+    }
+
+    .pp-hero-join,
+    .pp-hero-name {
+      display: inline;
+      font-size: clamp(56px, 8vw, 132px);
+      line-height: 0.88;
+    }
+
+    .pp-hero-entertainment {
+      display: block;
+      margin-top: 8px;
+      padding-left: 0;
+      font-size: clamp(48px, 6.5vw, 112px);
+      line-height: 0.9;
+      color: var(--pp-accent) !important;
+    }
+
+    .pp-divider-line {
+      width: 100%;
+      max-width: 470px;
+      margin: 38px 0;
+      background: var(--pp-line);
+    }
+
+    .pp-subtitle {
+      max-width: 500px;
+      margin: 0 0 44px;
+      color: var(--pp-soft);
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(22px, 2.1vw, 34px);
+      font-style: italic;
+      line-height: 1.18;
+    }
+
+    .pp-btn {
+      margin: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--pp-ink);
+      border-color: var(--pp-line);
+      padding: 16px 30px;
+    }
+
+    .pp-btn:hover {
+      background: var(--pp-ink);
+      color: var(--pp-bg);
+      border-color: var(--pp-ink);
+    }
+
+    .pp-stats {
+      justify-content: stretch;
+      width: 100%;
+      margin-top: auto;
+      padding-top: 64px;
+      border-top: 0;
+    }
+
+    .pp-stat {
+      padding: 22px 26px;
+      border-top: 1px solid var(--pp-line);
+      text-align: left;
+    }
+
+    .pp-stat strong {
+      color: var(--pp-ink);
+      font-size: clamp(38px, 4.4vw, 70px);
+    }
+
+    .pp-stat span {
+      color: var(--pp-soft);
+      letter-spacing: 0.16em;
+    }
+
+    .pp-stat-sep {
+      height: auto;
+      align-self: stretch;
+      background: var(--pp-line);
+    }
+
+    .pp-brand-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--pp-line);
+      background: var(--pp-bg);
+    }
+
+    .pp-brand-strip span {
+      min-height: 76px;
+      display: grid;
+      place-items: center;
+      border-right: 1px solid var(--pp-line);
+      color: var(--pp-soft);
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .pp-brand-strip span:last-child {
+      border-right: 0;
+    }
+
+    .hiw-section {
+      padding: 0;
+      background: var(--pp-bg);
+      border: 0;
+    }
+
+    .hiw-inner {
+      max-width: none;
+      display: grid;
+      grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1fr);
+      border-bottom: 1px solid var(--pp-line);
+    }
+
+    .hiw-media {
+      min-height: 700px;
+      border-right: 1px solid var(--pp-line);
+      overflow: hidden;
+      background: #ded9cf;
+    }
+
+    .hiw-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.65) contrast(0.9) brightness(1.08);
+    }
+
+    .hiw-content {
+      padding: clamp(54px, 7vw, 118px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hiw-header {
+      text-align: left;
+      margin: 0 0 46px;
+    }
+
+    .hiw-heading,
+    .pp-cats-title-d {
+      font-size: clamp(42px, 5.5vw, 86px);
+      line-height: 0.96;
+    }
+
+    .hiw-heading-caps,
+    .pp-cats-title-caps {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: 0 !important;
+      text-transform: none;
+      color: var(--pp-accent);
+    }
+
+    .hiw-grid {
+      display: block;
+      border: 0;
+    }
+
+    .hiw-step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 22px;
+      padding: 25px 0;
+      background: transparent;
+      border-top: 1px solid var(--pp-line);
+    }
+
+    .hiw-step:hover {
+      background: transparent;
+    }
+
+    .hiw-step-border {
+      border-right: 0;
+    }
+
+    .hiw-bg-num,
+    .hiw-icon-wrap,
+    .hiw-deco-line {
+      display: none;
+    }
+
+    .hiw-num {
+      margin: 0;
+      color: var(--pp-ink) !important;
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+
+    .hiw-desc,
+    .pp-card-desc {
+      color: var(--pp-soft);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .hiw-title,
+    .hiw-desc {
+      grid-column: 2;
+      min-width: 0;
+    }
+
+    .hiw-title {
+      grid-row: 1;
+    }
+
+    .hiw-desc {
+      grid-row: 2;
+    }
+
+    .pp-cats {
+      padding: 0;
+      background: var(--pp-bg);
+      border: 0;
+    }
+
+    .pp-cats-inner {
+      max-width: none;
+    }
+
+    .pp-cats-header {
+      width: 100%;
+      margin: 0;
+      padding: clamp(54px, 7vw, 104px);
+      text-align: left;
+      border-bottom: 1px solid var(--pp-line);
+      background: var(--pp-bg2);
+    }
+
+    .pp-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .pp-card {
+      min-height: 360px;
+      padding: 38px;
+      background: var(--pp-bg);
+      border-right: 1px solid var(--pp-line);
+      border-bottom: 1px solid var(--pp-line);
+    }
+
+    .pp-card:nth-child(3n) {
+      border-right: 0;
+    }
+
+    .pp-card:hover {
+      background: #f1eee6;
+    }
+
+    .pp-card-num {
+      position: static;
+      margin-bottom: 72px;
+      color: var(--pp-soft);
+      opacity: 1;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+    }
+
+    .pp-card-icon {
+      display: none;
+    }
+
+    .pp-card-title {
+      margin-bottom: 24px;
+      color: var(--pp-ink) !important;
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(28px, 2.6vw, 42px) !important;
+      font-weight: 400 !important;
+      letter-spacing: 0 !important;
+      text-transform: none;
+      line-height: 1;
+    }
+
+    .pp-card-cta {
+      color: var(--pp-ink) !important;
+      margin-top: auto;
+    }
+
+    @media (max-width: 900px) {
+      .pp-hero {
+        padding-top: 82px;
+      }
+
+      .pp-hero-inner,
+      .hiw-inner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .pp-hero-copy,
+      .hiw-content,
+      .pp-cats-header {
+        padding: 44px 24px;
+      }
+
+      .pp-hero-art,
+      .hiw-media {
+        min-height: 460px;
+        border-right: 0;
+        border-top: 1px solid var(--pp-line);
+      }
+
+      .pp-brand-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pp-brand-strip span:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .pp-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pp-card:nth-child(3n) {
+        border-right: 1px solid var(--pp-line);
+      }
+
+      .pp-card:nth-child(2n) {
+        border-right: 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .pp-hero {
+        min-height: auto;
+        padding-top: 72px;
+      }
+
+      .pp-hero-copy {
+        padding: 34px 18px 28px;
+      }
+
+      .pp-hero-join,
+      .pp-hero-name {
+        font-size: clamp(50px, 19vw, 82px);
+      }
+
+      .pp-hero-entertainment {
+        font-size: clamp(42px, 15vw, 68px);
+      }
+
+      .pp-subtitle {
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+
+      .pp-stats {
+        padding-top: 36px;
+      }
+
+      .pp-stat {
+        padding: 16px 10px;
+      }
+
+      .pp-stat strong {
+        font-size: 31px;
+      }
+
+      .pp-stat span {
+        font-size: 7px;
+        letter-spacing: 0.12em;
+      }
+
+      .pp-hero-art,
+      .hiw-media {
+        min-height: 390px;
+      }
+
+      .hiw-content,
+      .pp-cats-header {
+        padding: 42px 18px;
+      }
+
+      .hiw-heading,
+      .pp-cats-title-d {
+        font-size: 45px;
+      }
+
+      .hiw-step {
+        grid-template-columns: 36px 1fr;
+        gap: 18px;
+        padding: 22px 0;
+      }
+
+      .hiw-desc {
+        max-width: 28ch;
+      }
+
+      .pp-brand-strip span {
+        min-height: 58px;
+        font-size: 8px;
+      }
+
+      .pp-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pp-card,
+      .pp-card:nth-child(2n),
+      .pp-card:nth-child(3n) {
+        min-height: 280px;
+        padding: 30px 18px;
+        border-right: 0;
+      }
+
+      .pp-card-num {
+        margin-bottom: 52px;
+      }
+    }
   </style>
 </head>
 <body class="partnership-page has-bottom-nav" data-cc-id="cc-partnership">
@@ -997,45 +1571,62 @@
     <!-- ── HERO ── -->
     <section class="pp-hero">
       <div class="pp-hero-inner">
-        <span class="pp-section-label fade-up">( B2B Partnership )</span>
-        <h1 class="fade-up d1">
-          <span class="pp-hero-join">Join the</span>
-          <span class="pp-hero-name">GUSAR</span>
-          <span class="pp-hero-entertainment">Entertainment</span>
-        </h1>
-        <div class="pp-divider-line fade-up d2"></div>
-        <p class="pp-subtitle fade-up d2">We are always looking for exceptional talent and reliable technical partners for our luxury events in Miami and beyond.</p>
-        <a href="#pp-categories" class="pp-btn fade-up d3" data-open-collab>
-          Become a Partner
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg>
-        </a>
-        <div class="pp-stats fade-up d4">
-          <div class="pp-stat">
-            <strong>500+</strong>
-            <span>Events</span>
-          </div>
-          <div class="pp-stat-sep"></div>
-          <div class="pp-stat">
-            <strong>12+</strong>
-            <span>Years</span>
-          </div>
-          <div class="pp-stat-sep"></div>
-          <div class="pp-stat">
-            <strong>3+</strong>
-            <span>Cities</span>
+        <div class="pp-hero-copy">
+          <span class="pp-section-label fade-up">( B2B Partnership )</span>
+          <h1 class="fade-up d1">
+            <span class="pp-hero-join">Join the</span>
+            <span class="pp-hero-name"> GUSAR</span>
+            <span class="pp-hero-entertainment">Entertainment</span>
+          </h1>
+          <div class="pp-divider-line fade-up d2"></div>
+          <p class="pp-subtitle fade-up d2">A curated roster for artists, technical crews, event makers, and creative partners shaping elevated celebrations in Miami and beyond.</p>
+          <a href="#pp-categories" class="pp-btn fade-up d3" data-open-collab>
+            Become a Partner
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg>
+          </a>
+          <div class="pp-stats fade-up d4">
+            <div class="pp-stat">
+              <strong>500+</strong>
+              <span>Events</span>
+            </div>
+            <div class="pp-stat-sep"></div>
+            <div class="pp-stat">
+              <strong>12+</strong>
+              <span>Years</span>
+            </div>
+            <div class="pp-stat-sep"></div>
+            <div class="pp-stat">
+              <strong>3+</strong>
+              <span>Cities</span>
+            </div>
           </div>
         </div>
+        <figure class="pp-hero-art fade-up d2">
+          <img src="assets/Instagram feed IMG/luxury-wedding-saxophonist-miami-live-entertainment-gusar-entertainment.webp" alt="Luxury wedding saxophonist performing at a GUSAR Entertainment event">
+          <figcaption class="pp-art-caption"><span>Miami</span><span>Curated talent network</span></figcaption>
+        </figure>
       </div>
     </section>
+
+    <div class="pp-brand-strip" aria-label="Partnership categories">
+      <span>Artists</span>
+      <span>Production</span>
+      <span>Scenography</span>
+      <span>Hospitality</span>
+    </div>
 
     <!-- ── HOW IT WORKS ── -->
     <section class="hiw-section">
       <div class="hiw-inner">
-        <div class="hiw-header fade-up">
-          <span class="pp-section-label">( How It Works )</span>
-          <p class="hiw-heading">Three steps to<span class="hiw-heading-caps">Partnership</span></p>
-        </div>
-        <div class="hiw-grid">
+        <figure class="hiw-media fade-up">
+          <img src="assets/miami-event-design-decor-florals-concept.webp" alt="Refined event design and decor by GUSAR Entertainment">
+        </figure>
+        <div class="hiw-content">
+          <div class="hiw-header fade-up">
+            <span class="pp-section-label">( How It Works )</span>
+            <p class="hiw-heading">Three steps to<span class="hiw-heading-caps"> Partnership</span></p>
+          </div>
+          <div class="hiw-grid">
 
           <div class="hiw-step hiw-step-border fade-up d1">
             <div class="hiw-bg-num" aria-hidden="true">01</div>
@@ -1070,6 +1661,7 @@
             <div class="hiw-deco-line"></div>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
