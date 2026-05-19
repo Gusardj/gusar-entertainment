@@ -1502,6 +1502,39 @@
         margin-bottom: 52px;
       }
     }
+
+    .partnership-page nav,
+    .partnership-page nav.scrolled,
+    body.partnership-page.page-scrolled nav {
+      justify-content: space-between !important;
+    }
+
+    .partnership-page .nav-logo {
+      position: static !important;
+      order: 1 !important;
+      transform: none !important;
+      margin: 0 !important;
+      align-items: flex-start !important;
+    }
+
+    .partnership-page .nav-links,
+    .partnership-page .nav-right,
+    .partnership-page .nav-actions {
+      display: none !important;
+    }
+
+    .partnership-page .nav-burger {
+      display: flex !important;
+      order: 2 !important;
+      margin-left: auto !important;
+    }
+
+    .partnership-page,
+    .partnership-page *,
+    .partnership-page *::before,
+    .partnership-page *::after {
+      font-family: "Montserrat", Arial, sans-serif !important;
+    }
   </style>
 </head>
 <body class="partnership-page has-bottom-nav" data-cc-id="cc-partnership">
@@ -2038,6 +2071,13 @@
         #collab-section .gq-btn { width: 100%; justify-content: center; }
         #collab-section .gq-btn-primary { margin-left: 0; margin-bottom: 12px; }
         #collab-section .gq-row { flex-direction: column-reverse; gap: 0; }
+      }
+
+      #collab-section,
+      #collab-section *,
+      #collab-section *::before,
+      #collab-section *::after {
+        font-family: "Montserrat", Arial, sans-serif !important;
       }
     </style>
 
