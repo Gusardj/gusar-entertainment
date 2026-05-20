@@ -217,23 +217,86 @@ updateNavState();
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  section.querySelectorAll(".ed-details-toggle").forEach((toggle) => {
-    const details = document.getElementById(toggle.getAttribute("aria-controls"));
-    if (!details) return;
+  // ── Service card modal ──────────────────────────────────────
+  const modalOverlay = document.createElement("div");
+  modalOverlay.className = "svc-modal-overlay";
+  modalOverlay.setAttribute("role", "dialog");
+  modalOverlay.setAttribute("aria-modal", "true");
+  modalOverlay.setAttribute("aria-labelledby", "svc-modal-title");
+  modalOverlay.hidden = true;
+  modalOverlay.innerHTML = [
+    '<div class="svc-modal-box">',
+    '  <button class="svc-modal-close" type="button" aria-label="Close">×</button>',
+    '  <span class="svc-modal-num"></span>',
+    '  <h3 class="svc-modal-title" id="svc-modal-title"></h3>',
+    '  <p class="svc-modal-copy"></p>',
+    '  <div class="svc-modal-divider"></div>',
+    '  <ul class="svc-modal-list"></ul>',
+    "</div>",
+  ].join("");
+  document.body.appendChild(modalOverlay);
 
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      toggle.textContent = expanded ? "See details" : "Hide details";
-      if (!expanded) details.hidden = false;
-      toggle.closest(".ed-card")?.classList.toggle("is-details-open", !expanded);
-      if (expanded) {
-        window.setTimeout(() => {
-          if (toggle.getAttribute("aria-expanded") === "false") details.hidden = true;
-        }, 320);
-      }
+  const modalBox     = modalOverlay.querySelector(".svc-modal-box");
+  const modalNum     = modalOverlay.querySelector(".svc-modal-num");
+  const modalTitle   = modalOverlay.querySelector(".svc-modal-title");
+  const modalCopy    = modalOverlay.querySelector(".svc-modal-copy");
+  const modalList    = modalOverlay.querySelector(".svc-modal-list");
+  const modalClose   = modalOverlay.querySelector(".svc-modal-close");
+
+  function openSvcModal(num, title, copy, items) {
+    modalNum.textContent   = num;
+    modalTitle.textContent = title;
+    modalCopy.textContent  = copy;
+    modalList.innerHTML    = items.map((t) => "<li>" + t + "</li>").join("");
+    modalOverlay.hidden    = false;
+    document.body.style.overflow = "hidden";
+    // Double rAF so the hidden→visible transition fires
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        modalOverlay.classList.add("is-visible");
+      });
+    });
+    modalClose.focus();
+  }
+
+  function closeSvcModal() {
+    modalOverlay.classList.remove("is-visible");
+    document.body.style.overflow = "";
+    modalOverlay.addEventListener("transitionend", function handler() {
+      modalOverlay.hidden = true;
+      modalOverlay.removeEventListener("transitionend", handler);
+    });
+  }
+
+  modalClose.addEventListener("click", closeSvcModal);
+  modalOverlay.addEventListener("click", function (e) {
+    if (e.target === modalOverlay) closeSvcModal();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modalOverlay.hidden) closeSvcModal();
+  });
+
+  section.querySelectorAll(".ed-details-toggle").forEach(function (toggle) {
+    const card = toggle.closest(".ed-card");
+    if (!card) return;
+    const detailsId  = toggle.getAttribute("aria-controls");
+    const detailsEl  = document.getElementById(detailsId);
+    const titleEl    = card.querySelector(".ed-card-title");
+    const copyEl     = card.querySelector(".ed-card-copy");
+    const numEl      = card.querySelector(".ed-num");
+
+    const num   = numEl   ? numEl.textContent.trim()   : "";
+    const title = titleEl ? titleEl.textContent.trim() : "";
+    const copy  = copyEl  ? copyEl.textContent.trim()  : "";
+    const items = detailsEl
+      ? Array.from(detailsEl.querySelectorAll("li")).map(function (li) { return li.innerHTML.trim(); })
+      : [];
+
+    toggle.addEventListener("click", function () {
+      openSvcModal(num, title, copy, items);
     });
   });
+  // ────────────────────────────────────────────────────────────
 
   function startCountUp(el) {
     const finalNum = Number.parseInt(el.getAttribute("data-target"), 10);
