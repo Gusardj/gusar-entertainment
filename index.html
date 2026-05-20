@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="dns-prefetch" href="//images.unsplash.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@300;400;500;600;700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=hero-youtube-video-1">
+  <link rel="stylesheet" href="css/style.css?v=quiz-unified-style-1">
 <style>
 @media (max-width: 900px) {
   body.home-light #process {
@@ -1179,8 +1179,7 @@ body.home-light #process .process-cta.process-cta-bridge .process-trust {
     grid-template-columns: minmax(330px, 0.48fr) minmax(0, 0.82fr) !important;
     grid-template-areas:
       "intro card"
-      "benefits card"
-      "progress card" !important;
+      "benefits card" !important;
     align-items: stretch !important;
     border-top: 1px solid var(--home-line) !important;
     border-bottom: 1px solid var(--home-line) !important;
@@ -1271,11 +1270,11 @@ body.home-light #process .process-cta.process-cta-bridge .process-trust {
   }
 
   body.home-light #quiz-section .qp-wrap {
-    grid-area: progress !important;
-    margin: 0 !important;
-    padding: 24px clamp(28px, 4vw, 58px) clamp(34px, 4vw, 54px) !important;
-    border-top: 1px solid var(--home-line) !important;
-    border-right: 1px solid var(--home-line) !important;
+    grid-area: auto !important;
+    width: 100% !important;
+    margin: 0 0 30px !important;
+    padding: 0 !important;
+    border: 0 !important;
     background: transparent !important;
   }
 
@@ -1347,6 +1346,10 @@ body.home-light #process .process-cta.process-cta-bridge .process-trust {
 }
 
 @media (max-width: 560px) {
+  body.home-light #stats {
+    padding: 0 18px !important;
+  }
+
   body.home-light #process .process-cta.process-cta-bridge {
     padding: 24px 18px !important;
   }
@@ -1360,24 +1363,52 @@ body.home-light #process .process-cta.process-cta-bridge .process-trust {
   }
 
   body.home-light #stats .stats-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 
   body.home-light #stats .stat-item,
   body.home-light #stats .stat-item:nth-child(2n),
   body.home-light #stats .stat-item:nth-child(-n+2) {
-    min-height: 104px !important;
-    padding: 20px 18px !important;
-    border-right: 0 !important;
-    border-bottom: 1px solid var(--home-line) !important;
+    min-height: 78px !important;
+    padding: 12px 5px !important;
+    border-right: 1px solid var(--home-line) !important;
+    border-bottom: 0 !important;
+    justify-items: center !important;
+    text-align: center !important;
   }
 
   body.home-light #stats .stat-item:last-child {
-    border-bottom: 0 !important;
+    border-right: 0 !important;
+  }
+
+  body.home-light #stats .stat-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    width: 100% !important;
   }
 
   body.home-light #stats .stat-num {
-    font-size: 54px !important;
+    justify-content: center !important;
+    font-size: clamp(24px, 8vw, 31px) !important;
+    line-height: 0.95 !important;
+    white-space: nowrap !important;
+  }
+
+  body.home-light #stats .stat-num span,
+  body.home-light #stats .stat-num .stat-unit {
+    font-size: 0.58em !important;
+    margin-left: 1px !important;
+  }
+
+  body.home-light #stats .stat-label {
+    margin: 0 !important;
+    font-size: clamp(6px, 1.85vw, 8px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.12em !important;
+    text-align: center !important;
   }
 }
 /* Final quiz layout stability */
@@ -1392,10 +1423,8 @@ body.home-light *::after {
   body.home-light #quiz-section .quiz-inner {
     grid-template-areas:
       "intro card"
-      "benefits card"
-      "progress card"
-      "whatsapp card" !important;
-    grid-template-rows: auto auto auto 1fr !important;
+      "benefits card" !important;
+    grid-template-rows: auto 1fr !important;
   }
 
   body.home-light #quiz-section .quiz-card {
@@ -1446,7 +1475,9 @@ body.home-light *::after {
   /* "Something Else" spans both columns */
   body.home-light #quiz-section #qEventTypeChoices .qchoice:last-child {
     grid-column: 1 / -1 !important;
-    border-right: 0 !important;
+    border-right: 1px solid var(--home-line) !important;
+    border-left: 0 !important;
+    border-bottom: 1px solid var(--home-line) !important;
   }
 
   body.home-light #quiz-section #qEventTypeChoices .qchoice-label {
@@ -1537,12 +1568,125 @@ body.home-light *::after {
     letter-spacing: 0.06em !important;
   }
 
-  body.home-light #quiz-section .quiz-whatsapp-cta {
-    grid-area: whatsapp !important;
+  /* ── Step nav bar ─────────────────────────────────── */
+  body.home-light #quiz-section .quiz-steps-nav {
+    display: flex !important;
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    width: 100% !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    margin: 0 0 36px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid var(--home-line) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  body.home-light #quiz-section .qsn-step {
+    flex: 1 1 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding: 0 0 14px !important;
+    border-bottom: 2px solid transparent !important;
+    margin-bottom: -1px !important;
+    opacity: 0.38 !important;
+    transition: opacity 0.2s !important;
+  }
+
+  body.home-light #quiz-section .qsn-step.active {
+    opacity: 1 !important;
+    border-bottom-color: var(--home-ink) !important;
+  }
+
+  body.home-light #quiz-section .qsn-step.done {
+    opacity: 0.65 !important;
+    border-bottom-color: var(--home-line) !important;
+  }
+
+  body.home-light #quiz-section .qsn-num {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2em !important;
+    color: var(--home-soft) !important;
+    -webkit-text-fill-color: var(--home-soft) !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+  }
+
+  body.home-light #quiz-section .qsn-label {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--home-ink) !important;
+    -webkit-text-fill-color: var(--home-ink) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Hide the old inline qstep-num on desktop since nav bar replaces it */
+  body.home-light #quiz-section .qstep-num {
+    display: none !important;
+  }
+
+  /* ── Quiz card padding / spacing ──────────────────── */
+  body.home-light #quiz-section .quiz-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: clamp(36px, 4vw, 56px) clamp(36px, 5vw, 72px) !important;
+    min-height: 0 !important;
+  }
+
+  body.home-light #quiz-section .qstep.active {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    flex: 1 1 auto !important;
+  }
+
+  body.home-light #quiz-section .qchoices {
+    margin-top: 24px !important;
+  }
+
+  /* ── Fix left panel list items ────────────────────── */
+  body.home-light #quiz-section .quiz-benefits ul {
+    padding: 0 !important;
+  }
+
+  body.home-light #quiz-section .quiz-benefits li {
+    padding: 0 !important;
     margin: 0 !important;
-    padding: 24px clamp(28px, 4vw, 58px) !important;
+    list-style: none !important;
+  }
+
+  body.home-light #quiz-section .quiz-benefits li::before {
+    content: "—" !important;
+    flex-shrink: 0 !important;
+    color: var(--home-accent) !important;
+    -webkit-text-fill-color: var(--home-accent) !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 11px !important;
+  }
+
+  body.home-light #quiz-section .quiz-whatsapp-cta {
+    grid-area: auto !important;
+    width: 100% !important;
+    margin: 28px 0 0 !important;
+    padding: 24px 0 0 !important;
     border-top: 1px solid var(--home-line) !important;
-    border-right: 1px solid var(--home-line) !important;
+    border-right: 0 !important;
     background: transparent !important;
     display: block !important;
   }
@@ -1576,6 +1720,14 @@ body.home-light *::after {
 }
 
 @media (max-width: 900px) {
+  body.home-light #quiz-section .quiz-steps-nav {
+    display: none !important;
+  }
+
+  body.home-light #quiz-section .qstep-num {
+    display: inline !important;
+  }
+
   body.home-light #quiz-section .quiz-inner {
     display: block !important;
     border-top: 1px solid var(--home-line) !important;
@@ -1593,35 +1745,76 @@ body.home-light *::after {
 
   body.home-light #quiz-section .quiz-card {
     min-height: 0 !important;
-    padding: 34px 22px !important;
+    padding: 34px 18px !important;
   }
 
   body.home-light #quiz-section #qEventTypeChoices.qchoices {
     display: grid !important;
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 0 !important;
     background: transparent !important;
     border-top: 1px solid var(--home-line) !important;
+    border-left: 1px solid var(--home-line) !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 30px auto 0 !important;
   }
 
   body.home-light #quiz-section #qEventTypeChoices .qchoice {
-    min-height: 62px !important;
-    padding: 0 18px !important;
+    min-height: 78px !important;
+    padding: 0 8px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 12px !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    text-align: center !important;
     border: 0 !important;
+    border-right: 1px solid var(--home-line) !important;
     border-bottom: 1px solid var(--home-line) !important;
     border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice:last-child {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice:last-child .qchoice-label {
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-label {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    font-size: clamp(14px, 4vw, 16px) !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
   }
 
   body.home-light #quiz-section #qEventTypeChoices .qchoice-tick {
-    order: -1 !important;
+    display: none !important;
+  }
+
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon,
+  body.home-light #quiz-section #qEventTypeChoices .qchoice-icon--plus {
     position: static !important;
-    flex: 0 0 20px !important;
-    width: 20px !important;
-    height: 20px !important;
+    inset: auto !important;
+    order: 0 !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    translate: none !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
   }
 }
 
@@ -2604,64 +2797,46 @@ body.home-light *::after {
 </section>
 
 <!-- PROCESS -->
-<section id="process">
-  <div class="process-header process-simple-header reveal visible">
-    <div class="section-label">How It Works</div>
-    <h2 class="section-title">Simple Process,<br><em>Extraordinary Results</em></h2>
-    <p class="process-intro">From first idea to final toast — four steps, one team, zero stress, unforgettable memories.</p>
-  </div>
+<section id="process" class="process-compact">
+  <div class="process-compact-inner">
+    <div class="process-compact-header">
+      <div class="process-compact-header-left">
+        <div class="process-compact-eyebrow"><span class="process-compact-eyebrow-line"></span>How It Works</div>
+        <h2 class="process-compact-heading">Simple Process,<br><em>Extraordinary Results</em></h2>
+      </div>
+      <p class="process-compact-subtitle">From first idea to final toast — four steps, one team, zero stress.</p>
+    </div>
 
-  <div class="process-steps process-simple-timeline">
-    <div class="process-step reveal visible">
-      <div class="step-marker">
-        <div class="step-num">01</div>
+    <div class="process-compact-grid">
+      <div class="process-compact-card">
+        <div class="process-compact-card-top"><span class="process-compact-num">01</span><span class="process-compact-line"></span></div>
+        <h3 class="process-compact-title">Tell Us Your Vision</h3>
+        <p class="process-compact-desc">Share the event type, mood, guest count, and budget.</p>
       </div>
-      <div class="step-copy">
-        <h3 class="step-title">Tell Us Your Vision</h3>
-        <p class="step-desc">Share the event type, mood, guest count, and budget.</p>
-        <span class="step-tag">⚡ Takes 60 seconds</span>
+      <div class="process-compact-card">
+        <div class="process-compact-card-top"><span class="process-compact-num">02</span><span class="process-compact-line"></span></div>
+        <h3 class="process-compact-title">Receive Your Concept</h3>
+        <p class="process-compact-desc">We return a tailored direction and transparent budget within 24 hours.</p>
       </div>
-    </div>
-    <div class="process-step reveal reveal-delay-1 visible">
-      <div class="step-marker">
-        <div class="step-num">02</div>
+      <div class="process-compact-card">
+        <div class="process-compact-card-top"><span class="process-compact-num">03</span><span class="process-compact-line"></span></div>
+        <h3 class="process-compact-title">Refine Together</h3>
+        <p class="process-compact-desc">Your producer fine-tunes talent, design, timeline, and logistics.</p>
       </div>
-      <div class="step-copy">
-        <h3 class="step-title">Receive Your Custom Concept</h3>
-        <p class="step-desc">We return a tailored direction and transparent budget within 24 hours.</p>
-        <span class="step-tag">🕐 Within 24 hours</span>
-      </div>
-    </div>
-    <div class="process-step reveal reveal-delay-2 visible">
-      <div class="step-marker">
-        <div class="step-num">03</div>
-      </div>
-      <div class="step-copy">
-        <h3 class="step-title">Refine Together</h3>
-        <p class="step-desc">Your producer fine-tunes talent, design, timeline, and logistics.</p>
-        <span class="step-tag">📞 30-min call</span>
+      <div class="process-compact-card">
+        <div class="process-compact-card-top"><span class="process-compact-num">04</span><span class="process-compact-line"></span></div>
+        <h3 class="process-compact-title">Show Up &amp; Enjoy</h3>
+        <p class="process-compact-desc">We run the day quietly so you can be present with your guests.</p>
       </div>
     </div>
-    <div class="process-step reveal reveal-delay-3 visible">
-      <div class="step-marker">
-        <div class="step-num">04</div>
-      </div>
-      <div class="step-copy">
-        <h3 class="step-title">Show Up &amp; Enjoy</h3>
-        <p class="step-desc">We run the day quietly so you can be present with your guests.</p>
-        <span class="step-tag">🎉 You enjoy, we execute</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="process-cta process-cta-bridge">
-    <h3 class="process-cta-title">Step 1 takes 60 seconds.</h3>
-    <p class="process-cta-sub">Tell us about your event — get your custom concept &amp; budget within 24 hours.</p>
-    <a href="#quiz" class="process-cta-btn">PLAN MY EVENT <span aria-hidden="true">&rarr;</span></a>
-    <div class="process-trust" aria-label="Process trust notes">
-      <span><span aria-hidden="true">⚡</span> Free</span>
-      <span>No commitment</span>
-      <span>Trusted by 500+ events</span>
+    <div class="process-compact-cta">
+      <div class="process-compact-cta-left">
+        <div class="process-compact-cta-heading">Step 1 takes 60 seconds.</div>
+        <div class="process-compact-cta-divider"></div>
+        <div class="process-compact-cta-text">Tell us about your event — get your custom concept &amp; budget within 24 hours.</div>
+      </div>
+      <a href="#quiz" class="process-compact-btn">Plan My Event <span class="process-compact-arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -2669,41 +2844,84 @@ body.home-light *::after {
 <!-- QUIZ SECTION -->
 <span id="quiz" class="section-anchor" aria-hidden="true"></span>
 <section id="quiz-section">
-  <div class="quiz-inner">
-    <div class="quiz-section-header">
-      <h2 class="section-title">Tell Us About Your Vision. We'll Do the Rest.</h2>
-      <p class="quiz-intro-sub">Answer a few quick questions to get a tailored event concept and transparent budget within 24 hours. No commitment.</p>
-      <a href="#qstep1" class="quiz-intro-cta">PLAN MY EVENT <span aria-hidden="true">&rarr;</span></a>
-      <p class="quiz-intro-proof"><span aria-hidden="true">⚡</span> 60-second quiz · Free proposal · Trusted by 500+ events</p>
-    </div>
+  <div class="quiz-split">
 
-    <!-- Step 1 only -->
-    <div class="quiz-benefits" id="qBenefits" aria-label="What you'll get">
-      <p class="quiz-benefits-title">What you'll get:</p>
-      <ul>
-        <li>Custom concept tailored to your vision.</li>
-        <li>Transparent budget with no hidden fees.</li>
-        <li>Fast delivery within 24 hours.</li>
-        <li>Free consultation, no obligation.</li>
-      </ul>
-    </div>
-    <!-- Steps 2–4 compact badge -->
-    <p class="quiz-badge-compact" id="qBadgeCompact" hidden>⚡ Free custom concept in 24h · No commitment</p>
-
-    <!-- Progress -->
-    <div class="qp-wrap">
-      <div class="quiz-progress" id="qProgressBar" role="progressbar" aria-label="Quiz progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1">
-        <div class="qp-fill" id="qProgressFill"></div>
+    <!-- LEFT PANEL -->
+    <div class="quiz-left-panel">
+      <div class="quiz-left-content">
+        <div class="quiz-left-eyebrow">Gusar Entertainment</div>
+        <h2 class="quiz-left-heading">
+          Tell Us About<br>Your Vision.<br>
+          <em>We'll Do the Rest.</em>
+        </h2>
+        <p class="quiz-left-subtext">
+          Answer a few quick questions to get a tailored event concept and transparent budget within 24 hours. No commitment.
+        </p>
+        <div class="quiz-left-divider"></div>
+        <div class="quiz-left-benefits-label">What you'll get</div>
+        <ul class="quiz-left-benefits">
+          <li>
+            <span class="qlb-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2" stroke="rgba(184,150,90,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Custom concept tailored to your vision
+          </li>
+          <li>
+            <span class="qlb-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2" stroke="rgba(184,150,90,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Transparent budget with no hidden fees
+          </li>
+          <li>
+            <span class="qlb-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2" stroke="rgba(184,150,90,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Fast delivery within 24 hours
+          </li>
+          <li>
+            <span class="qlb-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5.5L4 8L8.5 2" stroke="rgba(184,150,90,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Free consultation, no obligation
+          </li>
+        </ul>
+        <a href="#quiz" class="quiz-left-cta" onclick="document.querySelector('.quiz-right-panel').scrollIntoView({behavior:'smooth',block:'start'});return false;">
+          Plan my event
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="quiz-trust-badge">
+          <div class="quiz-trust-number">500+</div>
+          <div class="quiz-trust-label">Events delivered<br>Miami's trusted team</div>
+        </div>
       </div>
-      <span class="qp-label" id="qProgressLabel">Step 1 of 4</span>
     </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="quiz-right-panel">
+
+    <!-- Hidden elements kept for JS compatibility -->
+    <div id="qBenefits" hidden></div>
+    <p id="qBadgeCompact" hidden></p>
 
     <!-- Card -->
     <div class="quiz-card">
 
+      <!-- New progress bar (visual) -->
+      <div class="progress-bar-new" aria-hidden="true">
+        <div class="pstep active" data-step="1">
+          <span class="pstep-num">01</span>
+          <span class="pstep-label">Event Type</span>
+        </div>
+        <div class="pstep" data-step="2">
+          <span class="pstep-num">02</span>
+          <span class="pstep-label">Services</span>
+        </div>
+        <div class="pstep" data-step="3">
+          <span class="pstep-num">03</span>
+          <span class="pstep-label">Details</span>
+        </div>
+        <div class="pstep" data-step="4">
+          <span class="pstep-num">04</span>
+          <span class="pstep-label">Contact</span>
+        </div>
+      </div>
+      <div class="pstep-indicator" id="qProgressLabel" hidden>Step 1 of 4</div>
+
       <!-- STEP 1: Event Type -->
       <div class="qstep active" id="qstep1">
-        <span class="qstep-num">01 · Event Type</span>
+        <span class="qstep-num" aria-hidden="true">01 · Event Type</span>
         <h2 class="qstep-title">What are we creating together?</h2>
         <p class="qstep-sub">Pick what's closest — we'll dial in the details next.</p>
         <div class="qchoices" id="qEventTypeChoices">
@@ -2961,18 +3179,20 @@ body.home-light *::after {
         </div>
       </div>
 
-    </div><!-- /quiz-card -->
-    <div class="quiz-whatsapp-cta">
-      <div class="quiz-whatsapp-trust"><span></span>500+ Events · Miami's Trusted Event Team<span></span></div>
-      <div class="quiz-whatsapp-row">
-        <span>Questions before you start?</span>
-        <a href="https://wa.me/19402793660" target="_blank" rel="noopener">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Chat on WhatsApp
-        </a>
+      <div class="quiz-whatsapp-cta">
+        <div class="quiz-whatsapp-trust"><span></span>500+ Events · Miami's Trusted Event Team<span></span></div>
+        <div class="quiz-whatsapp-row">
+          <span>Questions before you start?</span>
+          <a href="https://wa.me/19402793660" target="_blank" rel="noopener">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
       </div>
-    </div>
-  </div><!-- /quiz-inner -->
+
+    </div><!-- /quiz-card -->
+    </div><!-- /quiz-right-panel -->
+  </div><!-- /quiz-split -->
 </section>
 
 
@@ -3020,47 +3240,38 @@ body.home-light *::after {
 </section>
 
 <!-- CTA -->
-<section id="cta" style="position:relative;overflow:hidden;">
-  <div class="botanical-layer" aria-hidden="true">
-    <svg viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <g opacity="0.14">
-        <path d="M1380,0 C1360,80 1340,160 1330,240 C1320,320 1315,400 1320,500" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
-        <path d="M1355,70 C1320,52 1285,48 1260,62" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
-        <ellipse cx="1232" cy="55" rx="88" ry="27" stroke="#C9A84C" stroke-width="1.3" fill="none" transform="rotate(-16 1232 55)"/>
-        <ellipse cx="1232" cy="55" rx="63" ry="19" stroke="#C9A84C" stroke-width="0.7" fill="none" transform="rotate(-16 1232 55)" opacity="0.6"/>
-        <path d="M1342,162 C1308,144 1272,140 1248,153" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
-        <ellipse cx="1220" cy="146" rx="84" ry="25" stroke="#C9A84C" stroke-width="1.3" fill="none" transform="rotate(-10 1220 146)"/>
-        <ellipse cx="1220" cy="146" rx="60" ry="18" stroke="#C9A84C" stroke-width="0.7" fill="none" transform="rotate(-10 1220 146)" opacity="0.6"/>
-        <!-- Left accent -->
-        <path d="M60,80 C70,150 65,220 58,300" stroke="#C9A84C" stroke-width="1.2" fill="none" opacity="0.6"/>
-        <ellipse cx="96" cy="125" rx="60" ry="18" stroke="#C9A84C" stroke-width="1.0" fill="none" transform="rotate(18 96 125)" opacity="0.5"/>
-        <ellipse cx="88" cy="205" rx="52" ry="16" stroke="#C9A84C" stroke-width="0.9" fill="none" transform="rotate(-14 88 205)" opacity="0.4"/>
-        <!-- Rules -->
-        <line x1="0" y1="1" x2="1440" y2="1" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
-        <line x1="0" y1="5" x2="1440" y2="5" stroke="#C9A84C" stroke-width="0.4" opacity="0.18"/>
-        <line x1="0" y1="599" x2="1440" y2="599" stroke="#C9A84C" stroke-width="0.8" opacity="0.25"/>
-      </g>
-    </svg>
+<section id="cta" class="cta-compact">
+  <div class="cta-compact-inner">
+    <div class="cta-compact-left">
+      <div class="cta-compact-eyebrow"><span class="cta-compact-line"></span>Ready to Begin</div>
+      <h2 class="cta-compact-heading">Your event deserves<br>more than <em>a planner.</em></h2>
+    </div>
+
+    <div class="cta-compact-mid">
+      <p class="cta-compact-subtitle">It deserves a producer who obsesses over every detail — so you don't have to.</p>
+      <div class="cta-compact-trust">
+        <span>24h Response</span>
+        <span class="cta-compact-dot"></span>
+        <span>500+ Events</span>
+        <span class="cta-compact-dot"></span>
+        <span>Miami's Trusted Team</span>
+      </div>
+    </div>
+
+    <div class="cta-compact-right">
+      <a href="#quiz" class="cta-compact-primary">Start Planning <span class="cta-compact-arrow" aria-hidden="true">&rarr;</span></a>
+      <div class="cta-compact-button-row">
+        <a href="https://wa.me/19402793660" target="_blank" rel="noopener" class="cta-compact-small cta-compact-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="tel:+19402793660" class="cta-compact-small cta-compact-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Direct Line
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="section-label cta-label reveal visible">Ready to Begin</div>
-  <h2 class="cta-title reveal reveal-delay-1 visible">Your event deserves <br>more than a planner.</h2>
-  <p class="cta-sub reveal reveal-delay-2 visible">It deserves a producer who<br>obsesses over every detail —<br>so you don't have to.</p>
-  <div class="cta-actions reveal reveal-delay-3 visible">
-    <a href="#quiz" class="btn-primary">Start Planning <span aria-hidden="true">&rarr;</span></a>
-  </div>
-  <div class="cta-quick-links reveal reveal-delay-3 visible">
-    <span>or</span>
-    <a href="https://wa.me/19402793660" target="_blank" rel="noopener">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-      WhatsApp
-    </a>
-    <span>·</span>
-    <a href="tel:+19402793660">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Direct line
-    </a>
-  </div>
-  <p class="cta-trust reveal reveal-delay-3 visible">24h response · 500+ events · Miami's trusted team</p>
 </section>
 
 <section class="portfolio-section" id="portfolio">

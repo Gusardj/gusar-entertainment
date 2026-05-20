@@ -426,9 +426,19 @@ updateNavState();
     btn.textContent = label;
   }
 
+  function updateStepsNav() {
+    quiz.querySelectorAll('.qsn-step, .pstep').forEach((dot) => {
+      const s = parseInt(dot.dataset.step, 10);
+      dot.classList.remove('active', 'done');
+      if (s === currentStep) dot.classList.add('active');
+      else if (s < currentStep) dot.classList.add('done');
+    });
+  }
+
   function syncStepUi() {
     updateProgress();
     updateBenefitsVisibility();
+    updateStepsNav();
 
     const companyWrap = document.getElementById('qCompanyWrap');
     if (companyWrap && currentStep === 4) {
